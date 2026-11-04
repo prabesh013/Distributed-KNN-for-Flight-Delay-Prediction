@@ -1347,4 +1347,6 @@ Large datasets and logs stored in S3 should be removed after the project is comp
 
 GitHub Repository:
 
-https://github.com/nepalpra/LSPDP-Project
+https://github.com/nepalpra/LSPDP-Project (Private Khoury Server)
+https://github.com/prabesh013/Distributed-KNN-for-Flight-Delay-Prediction (Public Github Server)
+
