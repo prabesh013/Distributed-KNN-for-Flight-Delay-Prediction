@@ -1,0 +1,313 @@
+OpenJDK 64-Bit Server VM warning: Option UseConcMarkSweepGC was deprecated in version 9.0 and will likely be removed in a future release.
+26/08/14 22:48:07 INFO SignalUtils: Registering signal handler for TERM
+26/08/14 22:48:07 INFO SignalUtils: Registering signal handler for HUP
+26/08/14 22:48:07 INFO SignalUtils: Registering signal handler for INT
+26/08/14 22:48:08 INFO SecurityManager: Changing view acls to: yarn,hadoop
+26/08/14 22:48:08 INFO SecurityManager: Changing modify acls to: yarn,hadoop
+26/08/14 22:48:08 INFO SecurityManager: Changing view acls groups to: 
+26/08/14 22:48:08 INFO SecurityManager: Changing modify acls groups to: 
+26/08/14 22:48:08 INFO SecurityManager: SecurityManager: authentication disabled; ui acls disabled; users  with view permissions: Set(yarn, hadoop); groups with view permissions: Set(); users  with modify permissions: Set(yarn, hadoop); groups with modify permissions: Set()
+26/08/14 22:48:09 INFO ApplicationMaster: ApplicationAttemptId: appattempt_1786747592839_0001_000001
+26/08/14 22:48:09 INFO ApplicationMaster: Starting the user application in a separate Thread
+26/08/14 22:48:09 INFO ApplicationMaster: Waiting for spark context initialization...
+26/08/14 22:48:09 INFO SparkContext: Running Spark version 3.3.2-amzn-0.1
+26/08/14 22:48:09 INFO ResourceUtils: ==============================================================
+26/08/14 22:48:09 INFO ResourceUtils: No custom resources configured for spark.driver.
+26/08/14 22:48:09 INFO ResourceUtils: ==============================================================
+26/08/14 22:48:09 INFO SparkContext: Submitted application: Distributed Spark KNN
+26/08/14 22:48:09 INFO ResourceProfile: Default ResourceProfile created, executor resources: Map(cores -> name: cores, amount: 2, script: , vendor: , memory -> name: memory, amount: 2048, script: , vendor: , offHeap -> name: offHeap, amount: 0, script: , vendor: ), task resources: Map(cpus -> name: cpus, amount: 1.0)
+26/08/14 22:48:09 INFO ResourceProfile: Limiting resource is cpus at 2 tasks per executor
+26/08/14 22:48:09 INFO ResourceProfileManager: Added ResourceProfile id: 0
+26/08/14 22:48:09 INFO SecurityManager: Changing view acls to: yarn,hadoop
+26/08/14 22:48:09 INFO SecurityManager: Changing modify acls to: yarn,hadoop
+26/08/14 22:48:09 INFO SecurityManager: Changing view acls groups to: 
+26/08/14 22:48:09 INFO SecurityManager: Changing modify acls groups to: 
+26/08/14 22:48:09 INFO SecurityManager: SecurityManager: authentication disabled; ui acls disabled; users  with view permissions: Set(yarn, hadoop); groups with view permissions: Set(); users  with modify permissions: Set(yarn, hadoop); groups with modify permissions: Set()
+26/08/14 22:48:10 INFO Utils: Successfully started service 'sparkDriver' on port 46453.
+26/08/14 22:48:10 INFO SparkEnv: Registering MapOutputTracker
+26/08/14 22:48:10 INFO SparkEnv: Registering BlockManagerMaster
+26/08/14 22:48:10 INFO BlockManagerMasterEndpoint: Using org.apache.spark.storage.DefaultTopologyMapper for getting topology information
+26/08/14 22:48:10 INFO BlockManagerMasterEndpoint: BlockManagerMasterEndpoint up
+26/08/14 22:48:10 INFO SparkEnv: Registering BlockManagerMasterHeartbeat
+26/08/14 22:48:10 INFO DiskBlockManager: Created local directory at /mnt/yarn/usercache/hadoop/appcache/application_1786747592839_0001/blockmgr-a5c9f99b-d631-43b9-b7ef-e06ed321c792
+26/08/14 22:48:10 INFO MemoryStore: MemoryStore started with capacity 1038.8 MiB
+26/08/14 22:48:10 INFO SparkEnv: Registering OutputCommitCoordinator
+26/08/14 22:48:10 INFO SubResultCacheManager: Sub-result caches are disabled.
+26/08/14 22:48:10 INFO Utils: Successfully started service 'SparkUI' on port 43021.
+26/08/14 22:48:10 INFO ServerInfo: Adding filter to /: org.apache.hadoop.yarn.server.webproxy.amfilter.AmIpFilter
+26/08/14 22:48:11 INFO YarnClusterScheduler: Created YarnClusterScheduler
+26/08/14 22:48:11 INFO Utils: Successfully started service 'org.apache.spark.network.netty.NettyBlockTransferService' on port 36435.
+26/08/14 22:48:11 INFO NettyBlockTransferService: Server created on ip-172-31-18-88.ec2.internal:36435
+26/08/14 22:48:11 INFO BlockManager: Using org.apache.spark.storage.RandomBlockReplicationPolicy for block replication policy
+26/08/14 22:48:11 INFO BlockManager: external shuffle service port = 7337
+26/08/14 22:48:11 INFO BlockManagerMaster: Registering BlockManager BlockManagerId(driver, ip-172-31-18-88.ec2.internal, 36435, None)
+26/08/14 22:48:11 INFO BlockManagerMasterEndpoint: Registering block manager ip-172-31-18-88.ec2.internal:36435 with 1038.8 MiB RAM, BlockManagerId(driver, ip-172-31-18-88.ec2.internal, 36435, None)
+26/08/14 22:48:11 INFO BlockManagerMaster: Registered BlockManager BlockManagerId(driver, ip-172-31-18-88.ec2.internal, 36435, None)
+26/08/14 22:48:11 INFO BlockManager: Initialized BlockManager: BlockManagerId(driver, ip-172-31-18-88.ec2.internal, 36435, None)
+26/08/14 22:48:12 INFO SingleEventLogFileWriter: Logging events to hdfs:/var/log/spark/apps/application_1786747592839_0001_1.inprogress
+26/08/14 22:48:12 INFO ServerInfo: Adding filter to /jobs: org.apache.hadoop.yarn.server.webproxy.amfilter.AmIpFilter
+26/08/14 22:48:12 INFO ServerInfo: Adding filter to /jobs/json: org.apache.hadoop.yarn.server.webproxy.amfilter.AmIpFilter
+26/08/14 22:48:12 INFO ServerInfo: Adding filter to /jobs/job: org.apache.hadoop.yarn.server.webproxy.amfilter.AmIpFilter
+26/08/14 22:48:12 INFO ServerInfo: Adding filter to /jobs/job/json: org.apache.hadoop.yarn.server.webproxy.amfilter.AmIpFilter
+26/08/14 22:48:12 INFO ServerInfo: Adding filter to /stages: org.apache.hadoop.yarn.server.webproxy.amfilter.AmIpFilter
+26/08/14 22:48:12 INFO ServerInfo: Adding filter to /stages/json: org.apache.hadoop.yarn.server.webproxy.amfilter.AmIpFilter
+26/08/14 22:48:12 INFO ServerInfo: Adding filter to /stages/stage: org.apache.hadoop.yarn.server.webproxy.amfilter.AmIpFilter
+26/08/14 22:48:12 INFO ServerInfo: Adding filter to /stages/stage/json: org.apache.hadoop.yarn.server.webproxy.amfilter.AmIpFilter
+26/08/14 22:48:12 INFO ServerInfo: Adding filter to /stages/pool: org.apache.hadoop.yarn.server.webproxy.amfilter.AmIpFilter
+26/08/14 22:48:12 INFO ServerInfo: Adding filter to /stages/pool/json: org.apache.hadoop.yarn.server.webproxy.amfilter.AmIpFilter
+26/08/14 22:48:12 INFO ServerInfo: Adding filter to /storage: org.apache.hadoop.yarn.server.webproxy.amfilter.AmIpFilter
+26/08/14 22:48:12 INFO ServerInfo: Adding filter to /storage/json: org.apache.hadoop.yarn.server.webproxy.amfilter.AmIpFilter
+26/08/14 22:48:12 INFO ServerInfo: Adding filter to /storage/rdd: org.apache.hadoop.yarn.server.webproxy.amfilter.AmIpFilter
+26/08/14 22:48:12 INFO ServerInfo: Adding filter to /storage/rdd/json: org.apache.hadoop.yarn.server.webproxy.amfilter.AmIpFilter
+26/08/14 22:48:12 INFO ServerInfo: Adding filter to /environment: org.apache.hadoop.yarn.server.webproxy.amfilter.AmIpFilter
+26/08/14 22:48:12 INFO ServerInfo: Adding filter to /environment/json: org.apache.hadoop.yarn.server.webproxy.amfilter.AmIpFilter
+26/08/14 22:48:12 INFO ServerInfo: Adding filter to /executors: org.apache.hadoop.yarn.server.webproxy.amfilter.AmIpFilter
+26/08/14 22:48:12 INFO ServerInfo: Adding filter to /executors/json: org.apache.hadoop.yarn.server.webproxy.amfilter.AmIpFilter
+26/08/14 22:48:12 INFO ServerInfo: Adding filter to /executors/threadDump: org.apache.hadoop.yarn.server.webproxy.amfilter.AmIpFilter
+26/08/14 22:48:12 INFO ServerInfo: Adding filter to /executors/threadDump/json: org.apache.hadoop.yarn.server.webproxy.amfilter.AmIpFilter
+26/08/14 22:48:12 INFO ServerInfo: Adding filter to /static: org.apache.hadoop.yarn.server.webproxy.amfilter.AmIpFilter
+26/08/14 22:48:12 INFO ServerInfo: Adding filter to /: org.apache.hadoop.yarn.server.webproxy.amfilter.AmIpFilter
+26/08/14 22:48:12 INFO ServerInfo: Adding filter to /api: org.apache.hadoop.yarn.server.webproxy.amfilter.AmIpFilter
+26/08/14 22:48:12 INFO ServerInfo: Adding filter to /jobs/job/kill: org.apache.hadoop.yarn.server.webproxy.amfilter.AmIpFilter
+26/08/14 22:48:12 INFO ServerInfo: Adding filter to /stages/stage/kill: org.apache.hadoop.yarn.server.webproxy.amfilter.AmIpFilter
+26/08/14 22:48:12 INFO ServerInfo: Adding filter to /metrics/json: org.apache.hadoop.yarn.server.webproxy.amfilter.AmIpFilter
+26/08/14 22:48:12 INFO DefaultNoHARMFailoverProxyProvider: Connecting to ResourceManager at ip-172-31-17-38.ec2.internal/172.31.17.38:8030
+26/08/14 22:48:12 INFO YarnRMClient: Registering the ApplicationMaster
+26/08/14 22:48:12 INFO ApplicationMaster: Preparing Local resources
+26/08/14 22:48:13 INFO ApplicationMaster: 
+===============================================================================
+Default YARN executor launch context:
+  env:
+    CLASSPATH -> /usr/lib/hadoop-lzo/lib/*:/usr/lib/hadoop/hadoop-aws.jar:/usr/share/aws/aws-java-sdk/*:/usr/share/aws/emr/goodies/lib/emr-spark-goodies.jar:/usr/share/aws/emr/security/conf:/usr/share/aws/emr/security/lib/*:/usr/share/aws/redshift/jdbc/RedshiftJDBC.jar:/usr/share/aws/redshift/spark-redshift/lib/*:/usr/share/aws/hmclient/lib/aws-glue-datacatalog-spark-client.jar:/usr/share/java/Hive-JSON-Serde/hive-openx-serde.jar:/usr/share/aws/sagemaker-spark-sdk/lib/sagemaker-spark-sdk.jar:/usr/share/aws/emr/s3select/lib/emr-s3-select-spark-connector.jar:/docker/usr/lib/hadoop-lzo/lib/*:/docker/usr/lib/hadoop/hadoop-aws.jar:/docker/usr/share/aws/aws-java-sdk/*:/docker/usr/share/aws/emr/goodies/lib/emr-spark-goodies.jar:/docker/usr/share/aws/emr/security/conf:/docker/usr/share/aws/emr/security/lib/*:/docker/usr/share/aws/redshift/jdbc/RedshiftJDBC.jar:/docker/usr/share/aws/redshift/spark-redshift/lib/*:/docker/usr/share/aws/hmclient/lib/aws-glue-datacatalog-spark-client.jar:/docker/usr/share/java/Hive-JSON-Serde/hive-openx-serde.jar:/docker/usr/share/aws/sagemaker-spark-sdk/lib/sagemaker-spark-sdk.jar:/docker/usr/share/aws/emr/s3select/lib/emr-s3-select-spark-connector.jar<CPS>{{PWD}}<CPS>{{PWD}}/__spark_conf__<CPS>{{PWD}}/__spark_libs__/*<CPS>{{PWD}}/__spark_conf__/__hadoop_conf__
+    SPARK_YARN_CONTAINER_CORES -> 2
+    SPARK_YARN_STAGING_DIR -> hdfs://ip-172-31-17-38.ec2.internal:8020/user/hadoop/.sparkStaging/application_1786747592839_0001
+    SPARK_USER -> hadoop
+    SPARK_PUBLIC_DNS -> ip-172-31-18-88.ec2.internal
+
+  command:
+    LD_LIBRARY_PATH=\"/usr/lib/hadoop/lib/native:/usr/lib/hadoop-lzo/lib/native:/docker/usr/lib/hadoop/lib/native:/docker/usr/lib/hadoop-lzo/lib/native:$LD_LIBRARY_PATH\" \ 
+      {{JAVA_HOME}}/bin/java \ 
+      -server \ 
+      -Xmx2048m \ 
+      '-verbose:gc' \ 
+      '-XX:+PrintGCDetails' \ 
+      '-XX:+PrintGCDateStamps' \ 
+      '-XX:OnOutOfMemoryError=kill -9 %p' \ 
+      '-XX:+IgnoreUnrecognizedVMOptions' \ 
+      '--add-opens=java.base/java.lang=ALL-UNNAMED' \ 
+      '--add-opens=java.base/java.lang.invoke=ALL-UNNAMED' \ 
+      '--add-opens=java.base/java.lang.reflect=ALL-UNNAMED' \ 
+      '--add-opens=java.base/java.io=ALL-UNNAMED' \ 
+      '--add-opens=java.base/java.net=ALL-UNNAMED' \ 
+      '--add-opens=java.base/java.nio=ALL-UNNAMED' \ 
+      '--add-opens=java.base/java.util=ALL-UNNAMED' \ 
+      '--add-opens=java.base/java.util.concurrent=ALL-UNNAMED' \ 
+      '--add-opens=java.base/java.util.concurrent.atomic=ALL-UNNAMED' \ 
+      '--add-opens=java.base/sun.nio.ch=ALL-UNNAMED' \ 
+      '--add-opens=java.base/sun.nio.cs=ALL-UNNAMED' \ 
+      '--add-opens=java.base/sun.security.action=ALL-UNNAMED' \ 
+      '--add-opens=java.base/sun.util.calendar=ALL-UNNAMED' \ 
+      '--add-opens=java.security.jgss/sun.security.krb5=ALL-UNNAMED' \ 
+      '-verbose:gc' \ 
+      '-XX:+PrintGCDetails' \ 
+      '-XX:+PrintGCDateStamps' \ 
+      '-XX:OnOutOfMemoryError=kill -9 %p' \ 
+      '-XX:+UseParallelGC' \ 
+      '-XX:InitiatingHeapOccupancyPercent=70' \ 
+      -Djava.io.tmpdir={{PWD}}/tmp \ 
+      '-Dspark.history.ui.port=18080' \ 
+      '-Dspark.ui.port=0' \ 
+      '-Dspark.driver.port=46453' \ 
+      -Dspark.yarn.app.container.log.dir=<LOG_DIR> \ 
+      "$(jar='/usr/share/log4j-cve-2021-44228-hotpatch/jdk17/Log4jHotPatchFat.jar'; [ -f "$jar" ] && echo "-javaagent:$jar=log4jFixerVerbose=false" || echo "" )" \ 
+      org.apache.spark.executor.YarnCoarseGrainedExecutorBackend \ 
+      --driver-url \ 
+      spark://CoarseGrainedScheduler@ip-172-31-18-88.ec2.internal:46453 \ 
+      --executor-id \ 
+      <executorId> \ 
+      --hostname \ 
+      <hostname> \ 
+      --cores \ 
+      2 \ 
+      --app-id \ 
+      application_1786747592839_0001 \ 
+      --resourceProfileId \ 
+      0 \ 
+      1><LOG_DIR>/stdout \ 
+      2><LOG_DIR>/stderr
+
+  resources:
+    __app__.jar -> resource { scheme: "hdfs" host: "ip-172-31-17-38.ec2.internal" port: 8020 file: "/user/hadoop/.sparkStaging/application_1786747592839_0001/spark-demo.jar" } size: 55337 timestamp: 1786747675723 type: FILE visibility: PRIVATE
+    hudi-defaults.conf -> resource { scheme: "hdfs" host: "ip-172-31-17-38.ec2.internal" port: 8020 file: "/user/hadoop/.sparkStaging/application_1786747592839_0001/hudi-defaults.conf" } size: 1345 timestamp: 1786747675801 type: FILE visibility: PRIVATE
+    __spark_libs__ -> resource { scheme: "hdfs" host: "ip-172-31-17-38.ec2.internal" port: 8020 file: "/user/hadoop/.sparkStaging/application_1786747592839_0001/__spark_libs__8285704109471927574.zip" } size: 333147547 timestamp: 1786747672312 type: ARCHIVE visibility: PRIVATE
+    __spark_conf__ -> resource { scheme: "hdfs" host: "ip-172-31-17-38.ec2.internal" port: 8020 file: "/user/hadoop/.sparkStaging/application_1786747592839_0001/__spark_conf__.zip" } size: 320701 timestamp: 1786747676523 type: ARCHIVE visibility: PRIVATE
+
+===============================================================================
+26/08/14 22:48:13 INFO YarnAllocator: Resource profile 0 doesn't exist, adding it
+26/08/14 22:48:13 INFO Configuration: resource-types.xml not found
+26/08/14 22:48:13 INFO ResourceUtils: Unable to find 'resource-types.xml'.
+26/08/14 22:48:13 INFO YarnSchedulerBackend$YarnSchedulerEndpoint: ApplicationMaster registered as NettyRpcEndpointRef(spark://YarnAM@ip-172-31-18-88.ec2.internal:46453)
+26/08/14 22:48:13 INFO YarnAllocator: Will request 2 executor container(s) for  ResourceProfile Id: 0, each with 2 core(s) and 2432 MB memory. with custom resources: <memory:2432, max memory:2147483647, vCores:2, max vCores:2147483647>
+26/08/14 22:48:13 INFO YarnAllocator: Submitted 2 unlocalized container requests.
+26/08/14 22:48:13 INFO ApplicationMaster: Started progress reporter thread with (heartbeat : 3000, initial allocation : 200) intervals
+26/08/14 22:48:13 INFO YarnClusterSchedulerBackend: SchedulerBackend is ready for scheduling beginning after reached minRegisteredResourcesRatio: 0.0
+26/08/14 22:48:13 INFO YarnClusterScheduler: YarnClusterScheduler.postStartHook done
+26/08/14 22:48:13 INFO YarnAllocator: Launching container container_1786747592839_0001_01_000002 on host ip-172-31-18-23.ec2.internal for executor with ID 1 for ResourceProfile Id 0 with resources <memory:2432, max memory:6144, vCores:1, max vCores:4>
+26/08/14 22:48:13 INFO YarnAllocator: Launching executor with 2048m of heap (plus 384m overhead/off heap) and 2 cores
+26/08/14 22:48:13 INFO YarnAllocator: Launching container container_1786747592839_0001_01_000003 on host ip-172-31-18-23.ec2.internal for executor with ID 2 for ResourceProfile Id 0 with resources <memory:2432, max memory:6144, vCores:1, max vCores:4>
+26/08/14 22:48:13 INFO YarnAllocator: Launching executor with 2048m of heap (plus 384m overhead/off heap) and 2 cores
+26/08/14 22:48:13 INFO YarnAllocator: Received 2 containers from YARN, launching executors on 2 of them.
+26/08/14 22:48:13 INFO ExecutorRunnable: Initializing service data for shuffle service using name 'spark_shuffle'
+26/08/14 22:48:13 INFO ExecutorRunnable: Initializing service data for shuffle service using name 'spark_shuffle'
+26/08/14 22:51:11 ERROR TransportResponseHandler: Still have 1 requests outstanding when connection from /172.31.18.23:43034 is closed
+26/08/14 22:51:11 ERROR TransportResponseHandler: Still have 1 requests outstanding when connection from /172.31.18.23:43048 is closed
+java.util.concurrent.RejectedExecutionException: Task scala.concurrent.impl.CallbackRunnable@55fb01bc rejected from java.util.concurrent.ThreadPoolExecutor@6fefc423[Terminated, pool size = 0, active threads = 0, queued tasks = 0, completed tasks = 56]
+	at java.base/java.util.concurrent.ThreadPoolExecutor$AbortPolicy.rejectedExecution(ThreadPoolExecutor.java:2055)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.reject(ThreadPoolExecutor.java:825)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.execute(ThreadPoolExecutor.java:1355)
+	at scala.concurrent.impl.ExecutionContextImpl$$anon$4.execute(ExecutionContextImpl.scala:138)
+	at scala.concurrent.impl.CallbackRunnable.executeWithValue(Promise.scala:72)
+	at scala.concurrent.impl.Promise$DefaultPromise.$anonfun$tryComplete$1(Promise.scala:288)
+	at scala.concurrent.impl.Promise$DefaultPromise.$anonfun$tryComplete$1$adapted(Promise.scala:288)
+	at scala.concurrent.impl.Promise$DefaultPromise.tryComplete(Promise.scala:288)
+	at scala.concurrent.Promise.complete(Promise.scala:53)
+	at scala.concurrent.Promise.complete$(Promise.scala:52)
+	at scala.concurrent.impl.Promise$DefaultPromise.complete(Promise.scala:187)
+	at scala.concurrent.impl.Promise.$anonfun$transform$1(Promise.scala:33)
+	at scala.concurrent.impl.CallbackRunnable.run(Promise.scala:64)
+	at org.apache.spark.util.ThreadUtils$$anon$1.execute(ThreadUtils.scala:99)
+	at scala.concurrent.impl.ExecutionContextImpl$$anon$4.execute(ExecutionContextImpl.scala:138)
+	at scala.concurrent.impl.CallbackRunnable.executeWithValue(Promise.scala:72)
+	at scala.concurrent.impl.Promise$DefaultPromise.$anonfun$tryComplete$1(Promise.scala:288)
+	at scala.concurrent.impl.Promise$DefaultPromise.$anonfun$tryComplete$1$adapted(Promise.scala:288)
+	at scala.concurrent.impl.Promise$DefaultPromise.tryComplete(Promise.scala:288)
+	at scala.concurrent.Promise.complete(Promise.scala:53)
+	at scala.concurrent.Promise.complete$(Promise.scala:52)
+	at scala.concurrent.impl.Promise$DefaultPromise.complete(Promise.scala:187)
+	at scala.concurrent.impl.Promise.$anonfun$transform$1(Promise.scala:33)
+	at scala.concurrent.impl.CallbackRunnable.run(Promise.scala:64)
+	at scala.concurrent.BatchingExecutor$Batch.processBatch$1(BatchingExecutor.scala:67)
+	at scala.concurrent.BatchingExecutor$Batch.$anonfun$run$1(BatchingExecutor.scala:82)
+	at scala.runtime.java8.JFunction0$mcV$sp.apply(JFunction0$mcV$sp.java:23)
+	at scala.concurrent.BlockContext$.withBlockContext(BlockContext.scala:85)
+	at scala.concurrent.BatchingExecutor$Batch.run(BatchingExecutor.scala:59)
+	at scala.concurrent.Future$InternalCallbackExecutor$.unbatchedExecute(Future.scala:875)
+	at scala.concurrent.BatchingExecutor.execute(BatchingExecutor.scala:110)
+	at scala.concurrent.BatchingExecutor.execute$(BatchingExecutor.scala:107)
+	at scala.concurrent.Future$InternalCallbackExecutor$.execute(Future.scala:873)
+	at scala.concurrent.impl.CallbackRunnable.executeWithValue(Promise.scala:72)
+	at scala.concurrent.impl.Promise$DefaultPromise.$anonfun$tryComplete$1(Promise.scala:288)
+	at scala.concurrent.impl.Promise$DefaultPromise.$anonfun$tryComplete$1$adapted(Promise.scala:288)
+	at scala.concurrent.impl.Promise$DefaultPromise.tryComplete(Promise.scala:288)
+	at scala.concurrent.Promise.tryFailure(Promise.scala:112)
+	at scala.concurrent.Promise.tryFailure$(Promise.scala:112)
+	at scala.concurrent.impl.Promise$DefaultPromise.tryFailure(Promise.scala:187)
+	at org.apache.spark.rpc.netty.NettyRpcEnv.org$apache$spark$rpc$netty$NettyRpcEnv$$onFailure$1(NettyRpcEnv.scala:214)
+	at org.apache.spark.rpc.netty.NettyRpcEnv.$anonfun$askAbortable$6(NettyRpcEnv.scala:245)
+	at org.apache.spark.rpc.netty.NettyRpcEnv.$anonfun$askAbortable$6$adapted(NettyRpcEnv.scala:245)
+	at org.apache.spark.rpc.netty.RpcOutboxMessage.onFailure(Outbox.scala:86)
+	at org.apache.spark.network.client.TransportResponseHandler.failOutstandingRequests(TransportResponseHandler.java:118)
+	at org.apache.spark.network.client.TransportResponseHandler.channelInactive(TransportResponseHandler.java:147)
+	at org.apache.spark.network.server.TransportChannelHandler.channelInactive(TransportChannelHandler.java:117)
+	at io.netty.channel.AbstractChannelHandlerContext.invokeChannelInactive(AbstractChannelHandlerContext.java:262)
+	at io.netty.channel.AbstractChannelHandlerContext.invokeChannelInactive(AbstractChannelHandlerContext.java:248)
+	at io.netty.channel.AbstractChannelHandlerContext.fireChannelInactive(AbstractChannelHandlerContext.java:241)
+	at io.netty.channel.ChannelInboundHandlerAdapter.channelInactive(ChannelInboundHandlerAdapter.java:81)
+	at io.netty.handler.timeout.IdleStateHandler.channelInactive(IdleStateHandler.java:277)
+	at io.netty.channel.AbstractChannelHandlerContext.invokeChannelInactive(AbstractChannelHandlerContext.java:262)
+	at io.netty.channel.AbstractChannelHandlerContext.invokeChannelInactive(AbstractChannelHandlerContext.java:248)
+	at io.netty.channel.AbstractChannelHandlerContext.fireChannelInactive(AbstractChannelHandlerContext.java:241)
+	at io.netty.channel.ChannelInboundHandlerAdapter.channelInactive(ChannelInboundHandlerAdapter.java:81)
+	at org.apache.spark.network.util.TransportFrameDecoder.channelInactive(TransportFrameDecoder.java:225)
+	at io.netty.channel.AbstractChannelHandlerContext.invokeChannelInactive(AbstractChannelHandlerContext.java:262)
+	at io.netty.channel.AbstractChannelHandlerContext.invokeChannelInactive(AbstractChannelHandlerContext.java:248)
+	at io.netty.channel.AbstractChannelHandlerContext.fireChannelInactive(AbstractChannelHandlerContext.java:241)
+	at io.netty.channel.DefaultChannelPipeline$HeadContext.channelInactive(DefaultChannelPipeline.java:1405)
+	at io.netty.channel.AbstractChannelHandlerContext.invokeChannelInactive(AbstractChannelHandlerContext.java:262)
+	at io.netty.channel.AbstractChannelHandlerContext.invokeChannelInactive(AbstractChannelHandlerContext.java:248)
+	at io.netty.channel.DefaultChannelPipeline.fireChannelInactive(DefaultChannelPipeline.java:901)
+	at io.netty.channel.AbstractChannel$AbstractUnsafe$7.run(AbstractChannel.java:813)
+	at io.netty.util.concurrent.AbstractEventExecutor.safeExecute(AbstractEventExecutor.java:164)
+	at io.netty.util.concurrent.SingleThreadEventExecutor.runAllTasksFrom(SingleThreadEventExecutor.java:425)
+	at io.netty.util.concurrent.SingleThreadEventExecutor.runAllTasks(SingleThreadEventExecutor.java:374)
+	at io.netty.util.concurrent.SingleThreadEventExecutor.confirmShutdown(SingleThreadEventExecutor.java:760)
+	at io.netty.channel.nio.NioEventLoop.run(NioEventLoop.java:530)
+	at io.netty.util.concurrent.SingleThreadEventExecutor$4.run(SingleThreadEventExecutor.java:986)
+	at io.netty.util.internal.ThreadExecutorMap$2.run(ThreadExecutorMap.java:74)
+	at io.netty.util.concurrent.FastThreadLocalRunnable.run(FastThreadLocalRunnable.java:30)
+	at java.base/java.lang.Thread.run(Thread.java:829)
+java.util.concurrent.RejectedExecutionException: Task scala.concurrent.impl.CallbackRunnable@2a95344 rejected from java.util.concurrent.ThreadPoolExecutor@6fefc423[Terminated, pool size = 0, active threads = 0, queued tasks = 0, completed tasks = 56]
+	at java.base/java.util.concurrent.ThreadPoolExecutor$AbortPolicy.rejectedExecution(ThreadPoolExecutor.java:2055)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.reject(ThreadPoolExecutor.java:825)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.execute(ThreadPoolExecutor.java:1355)
+	at scala.concurrent.impl.ExecutionContextImpl$$anon$4.execute(ExecutionContextImpl.scala:138)
+	at scala.concurrent.impl.CallbackRunnable.executeWithValue(Promise.scala:72)
+	at scala.concurrent.impl.Promise$DefaultPromise.$anonfun$tryComplete$1(Promise.scala:288)
+	at scala.concurrent.impl.Promise$DefaultPromise.$anonfun$tryComplete$1$adapted(Promise.scala:288)
+	at scala.concurrent.impl.Promise$DefaultPromise.tryComplete(Promise.scala:288)
+	at scala.concurrent.Promise.complete(Promise.scala:53)
+	at scala.concurrent.Promise.complete$(Promise.scala:52)
+	at scala.concurrent.impl.Promise$DefaultPromise.complete(Promise.scala:187)
+	at scala.concurrent.impl.Promise.$anonfun$transform$1(Promise.scala:33)
+	at scala.concurrent.impl.CallbackRunnable.run(Promise.scala:64)
+	at org.apache.spark.util.ThreadUtils$$anon$1.execute(ThreadUtils.scala:99)
+	at scala.concurrent.impl.ExecutionContextImpl$$anon$4.execute(ExecutionContextImpl.scala:138)
+	at scala.concurrent.impl.CallbackRunnable.executeWithValue(Promise.scala:72)
+	at scala.concurrent.impl.Promise$DefaultPromise.$anonfun$tryComplete$1(Promise.scala:288)
+	at scala.concurrent.impl.Promise$DefaultPromise.$anonfun$tryComplete$1$adapted(Promise.scala:288)
+	at scala.concurrent.impl.Promise$DefaultPromise.tryComplete(Promise.scala:288)
+	at scala.concurrent.Promise.complete(Promise.scala:53)
+	at scala.concurrent.Promise.complete$(Promise.scala:52)
+	at scala.concurrent.impl.Promise$DefaultPromise.complete(Promise.scala:187)
+	at scala.concurrent.impl.Promise.$anonfun$transform$1(Promise.scala:33)
+	at scala.concurrent.impl.CallbackRunnable.run(Promise.scala:64)
+	at scala.concurrent.BatchingExecutor$Batch.processBatch$1(BatchingExecutor.scala:67)
+	at scala.concurrent.BatchingExecutor$Batch.$anonfun$run$1(BatchingExecutor.scala:82)
+	at scala.runtime.java8.JFunction0$mcV$sp.apply(JFunction0$mcV$sp.java:23)
+	at scala.concurrent.BlockContext$.withBlockContext(BlockContext.scala:85)
+	at scala.concurrent.BatchingExecutor$Batch.run(BatchingExecutor.scala:59)
+	at scala.concurrent.Future$InternalCallbackExecutor$.unbatchedExecute(Future.scala:875)
+	at scala.concurrent.BatchingExecutor.execute(BatchingExecutor.scala:110)
+	at scala.concurrent.BatchingExecutor.execute$(BatchingExecutor.scala:107)
+	at scala.concurrent.Future$InternalCallbackExecutor$.execute(Future.scala:873)
+	at scala.concurrent.impl.CallbackRunnable.executeWithValue(Promise.scala:72)
+	at scala.concurrent.impl.Promise$DefaultPromise.$anonfun$tryComplete$1(Promise.scala:288)
+	at scala.concurrent.impl.Promise$DefaultPromise.$anonfun$tryComplete$1$adapted(Promise.scala:288)
+	at scala.concurrent.impl.Promise$DefaultPromise.tryComplete(Promise.scala:288)
+	at scala.concurrent.Promise.tryFailure(Promise.scala:112)
+	at scala.concurrent.Promise.tryFailure$(Promise.scala:112)
+	at scala.concurrent.impl.Promise$DefaultPromise.tryFailure(Promise.scala:187)
+	at org.apache.spark.rpc.netty.NettyRpcEnv.org$apache$spark$rpc$netty$NettyRpcEnv$$onFailure$1(NettyRpcEnv.scala:214)
+	at org.apache.spark.rpc.netty.NettyRpcEnv.$anonfun$askAbortable$6(NettyRpcEnv.scala:245)
+	at org.apache.spark.rpc.netty.NettyRpcEnv.$anonfun$askAbortable$6$adapted(NettyRpcEnv.scala:245)
+	at org.apache.spark.rpc.netty.RpcOutboxMessage.onFailure(Outbox.scala:86)
+	at org.apache.spark.network.client.TransportResponseHandler.failOutstandingRequests(TransportResponseHandler.java:118)
+	at org.apache.spark.network.client.TransportResponseHandler.channelInactive(TransportResponseHandler.java:147)
+	at org.apache.spark.network.server.TransportChannelHandler.channelInactive(TransportChannelHandler.java:117)
+	at io.netty.channel.AbstractChannelHandlerContext.invokeChannelInactive(AbstractChannelHandlerContext.java:262)
+	at io.netty.channel.AbstractChannelHandlerContext.invokeChannelInactive(AbstractChannelHandlerContext.java:248)
+	at io.netty.channel.AbstractChannelHandlerContext.fireChannelInactive(AbstractChannelHandlerContext.java:241)
+	at io.netty.channel.ChannelInboundHandlerAdapter.channelInactive(ChannelInboundHandlerAdapter.java:81)
+	at io.netty.handler.timeout.IdleStateHandler.channelInactive(IdleStateHandler.java:277)
+	at io.netty.channel.AbstractChannelHandlerContext.invokeChannelInactive(AbstractChannelHandlerContext.java:262)
+	at io.netty.channel.AbstractChannelHandlerContext.invokeChannelInactive(AbstractChannelHandlerContext.java:248)
+	at io.netty.channel.AbstractChannelHandlerContext.fireChannelInactive(AbstractChannelHandlerContext.java:241)
+	at io.netty.channel.ChannelInboundHandlerAdapter.channelInactive(ChannelInboundHandlerAdapter.java:81)
+	at org.apache.spark.network.util.TransportFrameDecoder.channelInactive(TransportFrameDecoder.java:225)
+	at io.netty.channel.AbstractChannelHandlerContext.invokeChannelInactive(AbstractChannelHandlerContext.java:262)
+	at io.netty.channel.AbstractChannelHandlerContext.invokeChannelInactive(AbstractChannelHandlerContext.java:248)
+	at io.netty.channel.AbstractChannelHandlerContext.fireChannelInactive(AbstractChannelHandlerContext.java:241)
+	at io.netty.channel.DefaultChannelPipeline$HeadContext.channelInactive(DefaultChannelPipeline.java:1405)
+	at io.netty.channel.AbstractChannelHandlerContext.invokeChannelInactive(AbstractChannelHandlerContext.java:262)
+	at io.netty.channel.AbstractChannelHandlerContext.invokeChannelInactive(AbstractChannelHandlerContext.java:248)
+	at io.netty.channel.DefaultChannelPipeline.fireChannelInactive(DefaultChannelPipeline.java:901)
+	at io.netty.channel.AbstractChannel$AbstractUnsafe$7.run(AbstractChannel.java:813)
+	at io.netty.util.concurrent.AbstractEventExecutor.safeExecute(AbstractEventExecutor.java:164)
+	at io.netty.util.concurrent.SingleThreadEventExecutor.runAllTasksFrom(SingleThreadEventExecutor.java:425)
+	at io.netty.util.concurrent.SingleThreadEventExecutor.runAllTasks(SingleThreadEventExecutor.java:374)
+	at io.netty.util.concurrent.SingleThreadEventExecutor.confirmShutdown(SingleThreadEventExecutor.java:760)
+	at io.netty.channel.nio.NioEventLoop.run(NioEventLoop.java:530)
+	at io.netty.util.concurrent.SingleThreadEventExecutor$4.run(SingleThreadEventExecutor.java:986)
+	at io.netty.util.internal.ThreadExecutorMap$2.run(ThreadExecutorMap.java:74)
+	at io.netty.util.concurrent.FastThreadLocalRunnable.run(FastThreadLocalRunnable.java:30)
+	at java.base/java.lang.Thread.run(Thread.java:829)

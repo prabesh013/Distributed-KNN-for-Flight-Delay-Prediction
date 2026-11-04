@@ -1,0 +1,1401 @@
+spark-submit \
+		--class knn.SparkKNN \
+		--master local[4] \
+		--name "Distributed Spark KNN" \
+		spark-demo.jar \
+		data/processed/train.parquet \
+		data/processed/validation.parquet \
+		200000 \
+		1000 \
+		5 \
+		4
+2026-08-14 13:37:20,525 WARN util.Utils: Your hostname, Prabeshs-MacBook-Air.local resolves to a loopback address: 127.0.0.1; using 10.110.207.214 instead (on interface en0)
+2026-08-14 13:37:20,526 WARN util.Utils: Set SPARK_LOCAL_IP if you need to bind to another address
+2026-08-14 13:37:20,772 INFO spark.SparkContext: Running Spark version 3.3.2
+2026-08-14 13:37:20,844 WARN util.NativeCodeLoader: Unable to load native-hadoop library for your platform... using builtin-java classes where applicable
+2026-08-14 13:37:20,883 INFO resource.ResourceUtils: ==============================================================
+2026-08-14 13:37:20,883 INFO resource.ResourceUtils: No custom resources configured for spark.driver.
+2026-08-14 13:37:20,883 INFO resource.ResourceUtils: ==============================================================
+2026-08-14 13:37:20,884 INFO spark.SparkContext: Submitted application: Distributed Spark KNN
+2026-08-14 13:37:20,896 INFO resource.ResourceProfile: Default ResourceProfile created, executor resources: Map(cores -> name: cores, amount: 1, script: , vendor: , memory -> name: memory, amount: 1024, script: , vendor: , offHeap -> name: offHeap, amount: 0, script: , vendor: ), task resources: Map(cpus -> name: cpus, amount: 1.0)
+2026-08-14 13:37:20,904 INFO resource.ResourceProfile: Limiting resource is cpu
+2026-08-14 13:37:20,905 INFO resource.ResourceProfileManager: Added ResourceProfile id: 0
+2026-08-14 13:37:20,934 INFO spark.SecurityManager: Changing view acls to: prabeshnepal
+2026-08-14 13:37:20,934 INFO spark.SecurityManager: Changing modify acls to: prabeshnepal
+2026-08-14 13:37:20,934 INFO spark.SecurityManager: Changing view acls groups to: 
+2026-08-14 13:37:20,935 INFO spark.SecurityManager: Changing modify acls groups to: 
+2026-08-14 13:37:20,935 INFO spark.SecurityManager: SecurityManager: authentication disabled; ui acls disabled; users  with view permissions: Set(prabeshnepal); groups with view permissions: Set(); users  with modify permissions: Set(prabeshnepal); groups with modify permissions: Set()
+2026-08-14 13:37:21,070 INFO util.Utils: Successfully started service 'sparkDriver' on port 65364.
+2026-08-14 13:37:21,088 INFO spark.SparkEnv: Registering MapOutputTracker
+2026-08-14 13:37:21,108 INFO spark.SparkEnv: Registering BlockManagerMaster
+2026-08-14 13:37:21,118 INFO storage.BlockManagerMasterEndpoint: Using org.apache.spark.storage.DefaultTopologyMapper for getting topology information
+2026-08-14 13:37:21,118 INFO storage.BlockManagerMasterEndpoint: BlockManagerMasterEndpoint up
+2026-08-14 13:37:21,120 INFO spark.SparkEnv: Registering BlockManagerMasterHeartbeat
+2026-08-14 13:37:21,132 INFO storage.DiskBlockManager: Created local directory at /private/var/folders/7t/jsjm7cp539576dt_scs5w6c40000gn/T/blockmgr-4e32d125-9e13-441f-93da-24e6eea51df1
+2026-08-14 13:37:21,142 INFO memory.MemoryStore: MemoryStore started with capacity 434.4 MiB
+2026-08-14 13:37:21,152 INFO spark.SparkEnv: Registering OutputCommitCoordinator
+2026-08-14 13:37:21,181 INFO util.log: Logging initialized @1387ms to org.sparkproject.jetty.util.log.Slf4jLog
+2026-08-14 13:37:21,251 INFO server.Server: jetty-9.4.48.v20220622; built: 2022-06-21T20:42:25.880Z; git: 6b67c5719d1f4371b33655ff2d047d24e171e49a; jvm 11.0.24+7-LTS-271
+2026-08-14 13:37:21,260 INFO server.Server: Started @1467ms
+2026-08-14 13:37:21,279 INFO server.AbstractConnector: Started ServerConnector@588f63c{HTTP/1.1, (http/1.1)}{0.0.0.0:4040}
+2026-08-14 13:37:21,279 INFO util.Utils: Successfully started service 'SparkUI' on port 4040.
+2026-08-14 13:37:21,290 INFO handler.ContextHandler: Started o.s.j.s.ServletContextHandler@3a082ff4{/,null,AVAILABLE,@Spark}
+2026-08-14 13:37:21,298 INFO spark.SparkContext: Added JAR file:/Users/prabeshnepal/Desktop/LSPDP/final_project/spark-demo.jar at spark://10.110.207.214:65364/jars/spark-demo.jar with timestamp 1786729040766
+2026-08-14 13:37:21,360 INFO executor.Executor: Starting executor ID driver on host 10.110.207.214
+2026-08-14 13:37:21,363 INFO executor.Executor: Starting executor with user classpath (userClassPathFirst = false): ''
+2026-08-14 13:37:21,369 INFO executor.Executor: Fetching spark://10.110.207.214:65364/jars/spark-demo.jar with timestamp 1786729040766
+2026-08-14 13:37:21,394 INFO client.TransportClientFactory: Successfully created connection to /10.110.207.214:65364 after 14 ms (0 ms spent in bootstraps)
+2026-08-14 13:37:21,397 INFO util.Utils: Fetching spark://10.110.207.214:65364/jars/spark-demo.jar to /private/var/folders/7t/jsjm7cp539576dt_scs5w6c40000gn/T/spark-c50a15cf-6ceb-4624-aed9-47f4224d5229/userFiles-d66be461-4442-4cb9-a8e9-2a6e8ce8218a/fetchFileTemp5710762740806130623.tmp
+2026-08-14 13:37:21,427 INFO executor.Executor: Adding file:/private/var/folders/7t/jsjm7cp539576dt_scs5w6c40000gn/T/spark-c50a15cf-6ceb-4624-aed9-47f4224d5229/userFiles-d66be461-4442-4cb9-a8e9-2a6e8ce8218a/spark-demo.jar to class loader
+2026-08-14 13:37:21,432 INFO util.Utils: Successfully started service 'org.apache.spark.network.netty.NettyBlockTransferService' on port 65366.
+2026-08-14 13:37:21,432 INFO netty.NettyBlockTransferService: Server created on 10.110.207.214:65366
+2026-08-14 13:37:21,433 INFO storage.BlockManager: Using org.apache.spark.storage.RandomBlockReplicationPolicy for block replication policy
+2026-08-14 13:37:21,436 INFO storage.BlockManagerMaster: Registering BlockManager BlockManagerId(driver, 10.110.207.214, 65366, None)
+2026-08-14 13:37:21,438 INFO storage.BlockManagerMasterEndpoint: Registering block manager 10.110.207.214:65366 with 434.4 MiB RAM, BlockManagerId(driver, 10.110.207.214, 65366, None)
+2026-08-14 13:37:21,439 INFO storage.BlockManagerMaster: Registered BlockManager BlockManagerId(driver, 10.110.207.214, 65366, None)
+2026-08-14 13:37:21,440 INFO storage.BlockManager: Initialized BlockManager: BlockManagerId(driver, 10.110.207.214, 65366, None)
+2026-08-14 13:37:21,536 INFO handler.ContextHandler: Stopped o.s.j.s.ServletContextHandler@3a082ff4{/,null,STOPPED,@Spark}
+2026-08-14 13:37:21,536 INFO handler.ContextHandler: Started o.s.j.s.ServletContextHandler@1934ad7c{/jobs,null,AVAILABLE,@Spark}
+2026-08-14 13:37:21,537 INFO handler.ContextHandler: Started o.s.j.s.ServletContextHandler@69aa7d76{/jobs/json,null,AVAILABLE,@Spark}
+2026-08-14 13:37:21,537 INFO handler.ContextHandler: Started o.s.j.s.ServletContextHandler@3e8799f{/jobs/job,null,AVAILABLE,@Spark}
+2026-08-14 13:37:21,538 INFO handler.ContextHandler: Started o.s.j.s.ServletContextHandler@270d43a7{/jobs/job/json,null,AVAILABLE,@Spark}
+2026-08-14 13:37:21,538 INFO handler.ContextHandler: Started o.s.j.s.ServletContextHandler@41ccb3b9{/stages,null,AVAILABLE,@Spark}
+2026-08-14 13:37:21,538 INFO handler.ContextHandler: Started o.s.j.s.ServletContextHandler@1e84f3c8{/stages/json,null,AVAILABLE,@Spark}
+2026-08-14 13:37:21,539 INFO handler.ContextHandler: Started o.s.j.s.ServletContextHandler@50ab56e2{/stages/stage,null,AVAILABLE,@Spark}
+2026-08-14 13:37:21,540 INFO handler.ContextHandler: Started o.s.j.s.ServletContextHandler@74834afd{/stages/stage/json,null,AVAILABLE,@Spark}
+2026-08-14 13:37:21,540 INFO handler.ContextHandler: Started o.s.j.s.ServletContextHandler@d499c13{/stages/pool,null,AVAILABLE,@Spark}
+2026-08-14 13:37:21,540 INFO handler.ContextHandler: Started o.s.j.s.ServletContextHandler@42d6c12d{/stages/pool/json,null,AVAILABLE,@Spark}
+2026-08-14 13:37:21,541 INFO handler.ContextHandler: Started o.s.j.s.ServletContextHandler@7a2ab862{/storage,null,AVAILABLE,@Spark}
+2026-08-14 13:37:21,541 INFO handler.ContextHandler: Started o.s.j.s.ServletContextHandler@4733f6f5{/storage/json,null,AVAILABLE,@Spark}
+2026-08-14 13:37:21,541 INFO handler.ContextHandler: Started o.s.j.s.ServletContextHandler@438c9aa7{/storage/rdd,null,AVAILABLE,@Spark}
+2026-08-14 13:37:21,542 INFO handler.ContextHandler: Started o.s.j.s.ServletContextHandler@6c8f60f3{/storage/rdd/json,null,AVAILABLE,@Spark}
+2026-08-14 13:37:21,542 INFO handler.ContextHandler: Started o.s.j.s.ServletContextHandler@71b6172c{/environment,null,AVAILABLE,@Spark}
+2026-08-14 13:37:21,542 INFO handler.ContextHandler: Started o.s.j.s.ServletContextHandler@4fb56bea{/environment/json,null,AVAILABLE,@Spark}
+2026-08-14 13:37:21,543 INFO handler.ContextHandler: Started o.s.j.s.ServletContextHandler@1f95881a{/executors,null,AVAILABLE,@Spark}
+2026-08-14 13:37:21,543 INFO handler.ContextHandler: Started o.s.j.s.ServletContextHandler@733ec58b{/executors/json,null,AVAILABLE,@Spark}
+2026-08-14 13:37:21,543 INFO handler.ContextHandler: Started o.s.j.s.ServletContextHandler@415ef4d8{/executors/threadDump,null,AVAILABLE,@Spark}
+2026-08-14 13:37:21,544 INFO handler.ContextHandler: Started o.s.j.s.ServletContextHandler@535b1ae6{/executors/threadDump/json,null,AVAILABLE,@Spark}
+2026-08-14 13:37:21,549 INFO handler.ContextHandler: Started o.s.j.s.ServletContextHandler@54a2d96e{/static,null,AVAILABLE,@Spark}
+2026-08-14 13:37:21,549 INFO handler.ContextHandler: Started o.s.j.s.ServletContextHandler@287ae90c{/,null,AVAILABLE,@Spark}
+2026-08-14 13:37:21,550 INFO handler.ContextHandler: Started o.s.j.s.ServletContextHandler@3fcee3d9{/api,null,AVAILABLE,@Spark}
+2026-08-14 13:37:21,550 INFO handler.ContextHandler: Started o.s.j.s.ServletContextHandler@77d4ac52{/jobs/job/kill,null,AVAILABLE,@Spark}
+2026-08-14 13:37:21,551 INFO handler.ContextHandler: Started o.s.j.s.ServletContextHandler@161dd92a{/stages/stage/kill,null,AVAILABLE,@Spark}
+2026-08-14 13:37:21,553 INFO handler.ContextHandler: Started o.s.j.s.ServletContextHandler@9f86dc3{/metrics/json,null,AVAILABLE,@Spark}
+
+============================
+DISTRIBUTED SPARK KNN
+============================
+Training path: data/processed/train.parquet
+Evaluation path: data/processed/validation.parquet
+Training sample size: 200000
+Evaluation sample size: 1000
+K: 5
+Spark partitions: 4
+
+Reading Parquet data...
+2026-08-14 13:37:21,786 INFO internal.SharedState: Setting hive.metastore.warehouse.dir ('null') to the value of spark.sql.warehouse.dir.
+2026-08-14 13:37:21,791 INFO internal.SharedState: Warehouse path is 'file:/Users/prabeshnepal/Desktop/LSPDP/final_project/spark-warehouse'.
+2026-08-14 13:37:21,804 INFO handler.ContextHandler: Started o.s.j.s.ServletContextHandler@4aed311e{/SQL,null,AVAILABLE,@Spark}
+2026-08-14 13:37:21,804 INFO handler.ContextHandler: Started o.s.j.s.ServletContextHandler@7ddcb0dc{/SQL/json,null,AVAILABLE,@Spark}
+2026-08-14 13:37:21,804 INFO handler.ContextHandler: Started o.s.j.s.ServletContextHandler@6e9a0bea{/SQL/execution,null,AVAILABLE,@Spark}
+2026-08-14 13:37:21,805 INFO handler.ContextHandler: Started o.s.j.s.ServletContextHandler@355ce6a6{/SQL/execution/json,null,AVAILABLE,@Spark}
+2026-08-14 13:37:21,814 INFO handler.ContextHandler: Started o.s.j.s.ServletContextHandler@233f52f8{/static/sql,null,AVAILABLE,@Spark}
+2026-08-14 13:37:22,332 INFO datasources.InMemoryFileIndex: It took 19 ms to list leaf files for 1 paths.
+2026-08-14 13:37:22,800 INFO spark.SparkContext: Starting job: parquet at SparkKNN.scala:804
+2026-08-14 13:37:22,809 INFO scheduler.DAGScheduler: Got job 0 (parquet at SparkKNN.scala:804) with 1 output partitions
+2026-08-14 13:37:22,809 INFO scheduler.DAGScheduler: Final stage: ResultStage 0 (parquet at SparkKNN.scala:804)
+2026-08-14 13:37:22,809 INFO scheduler.DAGScheduler: Parents of final stage: List()
+2026-08-14 13:37:22,810 INFO scheduler.DAGScheduler: Missing parents: List()
+2026-08-14 13:37:22,814 INFO scheduler.DAGScheduler: Submitting ResultStage 0 (MapPartitionsRDD[1] at parquet at SparkKNN.scala:804), which has no missing parents
+2026-08-14 13:37:22,862 INFO memory.MemoryStore: Block broadcast_0 stored as values in memory (estimated size 151.5 KiB, free 434.3 MiB)
+2026-08-14 13:37:23,054 INFO memory.MemoryStore: Block broadcast_0_piece0 stored as bytes in memory (estimated size 55.7 KiB, free 434.2 MiB)
+2026-08-14 13:37:23,055 INFO storage.BlockManagerInfo: Added broadcast_0_piece0 in memory on 10.110.207.214:65366 (size: 55.7 KiB, free: 434.3 MiB)
+2026-08-14 13:37:23,057 INFO spark.SparkContext: Created broadcast 0 from broadcast at DAGScheduler.scala:1513
+2026-08-14 13:37:23,064 INFO scheduler.DAGScheduler: Submitting 1 missing tasks from ResultStage 0 (MapPartitionsRDD[1] at parquet at SparkKNN.scala:804) (first 15 tasks are for partitions Vector(0))
+2026-08-14 13:37:23,064 INFO scheduler.TaskSchedulerImpl: Adding task set 0.0 with 1 tasks resource profile 0
+2026-08-14 13:37:23,094 INFO scheduler.TaskSetManager: Starting task 0.0 in stage 0.0 (TID 0) (10.110.207.214, executor driver, partition 0, PROCESS_LOCAL, 4629 bytes) taskResourceAssignments Map()
+2026-08-14 13:37:23,101 INFO executor.Executor: Running task 0.0 in stage 0.0 (TID 0)
+2026-08-14 13:37:23,302 INFO executor.Executor: Finished task 0.0 in stage 0.0 (TID 0). 2004 bytes result sent to driver
+2026-08-14 13:37:23,306 INFO scheduler.TaskSetManager: Finished task 0.0 in stage 0.0 (TID 0) in 223 ms on 10.110.207.214 (executor driver) (1/1)
+2026-08-14 13:37:23,307 INFO scheduler.TaskSchedulerImpl: Removed TaskSet 0.0, whose tasks have all completed, from pool 
+2026-08-14 13:37:23,309 INFO scheduler.DAGScheduler: ResultStage 0 (parquet at SparkKNN.scala:804) finished in 0.486 s
+2026-08-14 13:37:23,310 INFO scheduler.DAGScheduler: Job 0 is finished. Cancelling potential speculative or zombie tasks for this job
+2026-08-14 13:37:23,311 INFO scheduler.TaskSchedulerImpl: Killing all running tasks in stage 0: Stage finished
+2026-08-14 13:37:23,311 INFO scheduler.DAGScheduler: Job 0 finished: parquet at SparkKNN.scala:804, took 0.511143 s
+2026-08-14 13:37:23,438 INFO storage.BlockManagerInfo: Removed broadcast_0_piece0 on 10.110.207.214:65366 in memory (size: 55.7 KiB, free: 434.4 MiB)
+2026-08-14 13:37:24,075 INFO datasources.InMemoryFileIndex: It took 1 ms to list leaf files for 1 paths.
+2026-08-14 13:37:24,125 INFO spark.SparkContext: Starting job: parquet at SparkKNN.scala:810
+2026-08-14 13:37:24,126 INFO scheduler.DAGScheduler: Got job 1 (parquet at SparkKNN.scala:810) with 1 output partitions
+2026-08-14 13:37:24,126 INFO scheduler.DAGScheduler: Final stage: ResultStage 1 (parquet at SparkKNN.scala:810)
+2026-08-14 13:37:24,126 INFO scheduler.DAGScheduler: Parents of final stage: List()
+2026-08-14 13:37:24,126 INFO scheduler.DAGScheduler: Missing parents: List()
+2026-08-14 13:37:24,126 INFO scheduler.DAGScheduler: Submitting ResultStage 1 (MapPartitionsRDD[3] at parquet at SparkKNN.scala:810), which has no missing parents
+2026-08-14 13:37:24,135 INFO memory.MemoryStore: Block broadcast_1 stored as values in memory (estimated size 151.5 KiB, free 434.3 MiB)
+2026-08-14 13:37:24,137 INFO memory.MemoryStore: Block broadcast_1_piece0 stored as bytes in memory (estimated size 55.7 KiB, free 434.2 MiB)
+2026-08-14 13:37:24,137 INFO storage.BlockManagerInfo: Added broadcast_1_piece0 in memory on 10.110.207.214:65366 (size: 55.7 KiB, free: 434.3 MiB)
+2026-08-14 13:37:24,137 INFO spark.SparkContext: Created broadcast 1 from broadcast at DAGScheduler.scala:1513
+2026-08-14 13:37:24,138 INFO scheduler.DAGScheduler: Submitting 1 missing tasks from ResultStage 1 (MapPartitionsRDD[3] at parquet at SparkKNN.scala:810) (first 15 tasks are for partitions Vector(0))
+2026-08-14 13:37:24,138 INFO scheduler.TaskSchedulerImpl: Adding task set 1.0 with 1 tasks resource profile 0
+2026-08-14 13:37:24,139 INFO scheduler.TaskSetManager: Starting task 0.0 in stage 1.0 (TID 1) (10.110.207.214, executor driver, partition 0, PROCESS_LOCAL, 4634 bytes) taskResourceAssignments Map()
+2026-08-14 13:37:24,143 INFO executor.Executor: Running task 0.0 in stage 1.0 (TID 1)
+2026-08-14 13:37:24,156 INFO executor.Executor: Finished task 0.0 in stage 1.0 (TID 1). 1918 bytes result sent to driver
+2026-08-14 13:37:24,157 INFO scheduler.TaskSetManager: Finished task 0.0 in stage 1.0 (TID 1) in 18 ms on 10.110.207.214 (executor driver) (1/1)
+2026-08-14 13:37:24,157 INFO scheduler.TaskSchedulerImpl: Removed TaskSet 1.0, whose tasks have all completed, from pool 
+2026-08-14 13:37:24,158 INFO scheduler.DAGScheduler: ResultStage 1 (parquet at SparkKNN.scala:810) finished in 0.031 s
+2026-08-14 13:37:24,158 INFO scheduler.DAGScheduler: Job 1 is finished. Cancelling potential speculative or zombie tasks for this job
+2026-08-14 13:37:24,158 INFO scheduler.TaskSchedulerImpl: Killing all running tasks in stage 1: Stage finished
+2026-08-14 13:37:24,158 INFO scheduler.DAGScheduler: Job 1 finished: parquet at SparkKNN.scala:810, took 0.033029 s
+Selecting deterministic training sample...
+Selecting deterministic evaluation sample...
+Collecting evaluation sample to driver...
+2026-08-14 13:37:24,399 INFO datasources.FileSourceStrategy: Pushed Filters: 
+2026-08-14 13:37:24,400 INFO datasources.FileSourceStrategy: Post-Scan Filters: 
+2026-08-14 13:37:24,401 INFO datasources.FileSourceStrategy: Output Data Schema: struct<RecordId: bigint, DepDelayMinutes: double, CRSElapsedTime: double, Distance: double, DepTimeSin: double ... 7 more fields>
+2026-08-14 13:37:24,493 INFO storage.BlockManagerInfo: Removed broadcast_1_piece0 on 10.110.207.214:65366 in memory (size: 55.7 KiB, free: 434.4 MiB)
+2026-08-14 13:37:24,538 INFO codegen.CodeGenerator: Code generated in 74.065541 ms
+2026-08-14 13:37:24,602 INFO codegen.CodeGenerator: Code generated in 34.52125 ms
+2026-08-14 13:37:24,618 INFO memory.MemoryStore: Block broadcast_2 stored as values in memory (estimated size 303.0 KiB, free 434.1 MiB)
+2026-08-14 13:37:24,626 INFO memory.MemoryStore: Block broadcast_2_piece0 stored as bytes in memory (estimated size 53.9 KiB, free 434.1 MiB)
+2026-08-14 13:37:24,626 INFO storage.BlockManagerInfo: Added broadcast_2_piece0 in memory on 10.110.207.214:65366 (size: 53.9 KiB, free: 434.3 MiB)
+2026-08-14 13:37:24,626 INFO spark.SparkContext: Created broadcast 2 from collect at SparkKNN.scala:377
+2026-08-14 13:37:24,632 INFO execution.FileSourceScanExec: Planning scan with bin packing, max size: 4194304 bytes, open cost is considered as scanning 4194304 bytes.
+2026-08-14 13:37:24,672 INFO spark.SparkContext: Starting job: collect at SparkKNN.scala:377
+2026-08-14 13:37:24,673 INFO scheduler.DAGScheduler: Got job 2 (collect at SparkKNN.scala:377) with 1 output partitions
+2026-08-14 13:37:24,673 INFO scheduler.DAGScheduler: Final stage: ResultStage 2 (collect at SparkKNN.scala:377)
+2026-08-14 13:37:24,673 INFO scheduler.DAGScheduler: Parents of final stage: List()
+2026-08-14 13:37:24,673 INFO scheduler.DAGScheduler: Missing parents: List()
+2026-08-14 13:37:24,673 INFO scheduler.DAGScheduler: Submitting ResultStage 2 (MapPartitionsRDD[8] at collect at SparkKNN.scala:377), which has no missing parents
+2026-08-14 13:37:24,686 INFO memory.MemoryStore: Block broadcast_3 stored as values in memory (estimated size 22.3 KiB, free 434.0 MiB)
+2026-08-14 13:37:24,687 INFO memory.MemoryStore: Block broadcast_3_piece0 stored as bytes in memory (estimated size 7.8 KiB, free 434.0 MiB)
+2026-08-14 13:37:24,687 INFO storage.BlockManagerInfo: Added broadcast_3_piece0 in memory on 10.110.207.214:65366 (size: 7.8 KiB, free: 434.3 MiB)
+2026-08-14 13:37:24,687 INFO spark.SparkContext: Created broadcast 3 from broadcast at DAGScheduler.scala:1513
+2026-08-14 13:37:24,687 INFO scheduler.DAGScheduler: Submitting 1 missing tasks from ResultStage 2 (MapPartitionsRDD[8] at collect at SparkKNN.scala:377) (first 15 tasks are for partitions Vector(0))
+2026-08-14 13:37:24,688 INFO scheduler.TaskSchedulerImpl: Adding task set 2.0 with 1 tasks resource profile 0
+2026-08-14 13:37:24,689 INFO scheduler.TaskSetManager: Starting task 0.0 in stage 2.0 (TID 2) (10.110.207.214, executor driver, partition 0, PROCESS_LOCAL, 4959 bytes) taskResourceAssignments Map()
+2026-08-14 13:37:24,689 INFO executor.Executor: Running task 0.0 in stage 2.0 (TID 2)
+2026-08-14 13:37:24,718 INFO datasources.FileScanRDD: Reading File path: file:///Users/prabeshnepal/Desktop/LSPDP/final_project/data/processed/validation.parquet, range: 0-1038280, partition values: [empty row]
+2026-08-14 13:37:24,785 INFO compress.CodecPool: Got brand-new decompressor [.snappy]
+2026-08-14 13:37:25,129 INFO executor.Executor: Finished task 0.0 in stage 2.0 (TID 2). 109718 bytes result sent to driver
+2026-08-14 13:37:25,134 INFO scheduler.TaskSetManager: Finished task 0.0 in stage 2.0 (TID 2) in 446 ms on 10.110.207.214 (executor driver) (1/1)
+2026-08-14 13:37:25,134 INFO scheduler.TaskSchedulerImpl: Removed TaskSet 2.0, whose tasks have all completed, from pool 
+2026-08-14 13:37:25,134 INFO scheduler.DAGScheduler: ResultStage 2 (collect at SparkKNN.scala:377) finished in 0.458 s
+2026-08-14 13:37:25,134 INFO scheduler.DAGScheduler: Job 2 is finished. Cancelling potential speculative or zombie tasks for this job
+2026-08-14 13:37:25,134 INFO scheduler.TaskSchedulerImpl: Killing all running tasks in stage 2: Stage finished
+2026-08-14 13:37:25,135 INFO scheduler.DAGScheduler: Job 2 finished: collect at SparkKNN.scala:377, took 0.462212 s
+2026-08-14 13:37:25,151 INFO codegen.CodeGenerator: Code generated in 11.015916 ms
+2026-08-14 13:37:25,165 INFO codegen.CodeGenerator: Code generated in 7.262042 ms
+Preparing distributed training RDD...
+2026-08-14 13:37:25,189 INFO datasources.FileSourceStrategy: Pushed Filters: 
+2026-08-14 13:37:25,189 INFO datasources.FileSourceStrategy: Post-Scan Filters: 
+2026-08-14 13:37:25,189 INFO datasources.FileSourceStrategy: Output Data Schema: struct<RecordId: bigint, DepDelayMinutes: double, CRSElapsedTime: double, Distance: double, DepTimeSin: double ... 7 more fields>
+2026-08-14 13:37:25,198 INFO memory.MemoryStore: Block broadcast_4 stored as values in memory (estimated size 303.0 KiB, free 433.7 MiB)
+2026-08-14 13:37:25,218 INFO memory.MemoryStore: Block broadcast_4_piece0 stored as bytes in memory (estimated size 53.9 KiB, free 433.7 MiB)
+2026-08-14 13:37:25,218 INFO storage.BlockManagerInfo: Added broadcast_4_piece0 in memory on 10.110.207.214:65366 (size: 53.9 KiB, free: 434.3 MiB)
+2026-08-14 13:37:25,219 INFO spark.SparkContext: Created broadcast 4 from rdd at SparkKNN.scala:867
+2026-08-14 13:37:25,219 INFO execution.FileSourceScanExec: Planning scan with bin packing, max size: 4194304 bytes, open cost is considered as scanning 4194304 bytes.
+2026-08-14 13:37:25,284 INFO spark.SparkContext: Starting job: count at SparkKNN.scala:877
+2026-08-14 13:37:25,285 INFO scheduler.DAGScheduler: Registering RDD 17 (repartition at SparkKNN.scala:871) as input to shuffle 0
+2026-08-14 13:37:25,287 INFO scheduler.DAGScheduler: Got job 3 (count at SparkKNN.scala:877) with 4 output partitions
+2026-08-14 13:37:25,287 INFO scheduler.DAGScheduler: Final stage: ResultStage 4 (count at SparkKNN.scala:877)
+2026-08-14 13:37:25,287 INFO scheduler.DAGScheduler: Parents of final stage: List(ShuffleMapStage 3)
+2026-08-14 13:37:25,288 INFO scheduler.DAGScheduler: Missing parents: List(ShuffleMapStage 3)
+2026-08-14 13:37:25,289 INFO scheduler.DAGScheduler: Submitting ShuffleMapStage 3 (MapPartitionsRDD[17] at repartition at SparkKNN.scala:871), which has no missing parents
+2026-08-14 13:37:25,296 INFO memory.MemoryStore: Block broadcast_5 stored as values in memory (estimated size 37.1 KiB, free 433.6 MiB)
+2026-08-14 13:37:25,301 INFO memory.MemoryStore: Block broadcast_5_piece0 stored as bytes in memory (estimated size 14.6 KiB, free 433.6 MiB)
+2026-08-14 13:37:25,301 INFO storage.BlockManagerInfo: Added broadcast_5_piece0 in memory on 10.110.207.214:65366 (size: 14.6 KiB, free: 434.3 MiB)
+2026-08-14 13:37:25,302 INFO spark.SparkContext: Created broadcast 5 from broadcast at DAGScheduler.scala:1513
+2026-08-14 13:37:25,302 INFO scheduler.DAGScheduler: Submitting 1 missing tasks from ShuffleMapStage 3 (MapPartitionsRDD[17] at repartition at SparkKNN.scala:871) (first 15 tasks are for partitions Vector(0))
+2026-08-14 13:37:25,303 INFO scheduler.TaskSchedulerImpl: Adding task set 3.0 with 1 tasks resource profile 0
+2026-08-14 13:37:25,304 INFO scheduler.TaskSetManager: Starting task 0.0 in stage 3.0 (TID 3) (10.110.207.214, executor driver, partition 0, PROCESS_LOCAL, 4943 bytes) taskResourceAssignments Map()
+2026-08-14 13:37:25,304 INFO executor.Executor: Running task 0.0 in stage 3.0 (TID 3)
+2026-08-14 13:37:25,331 INFO storage.BlockManagerInfo: Removed broadcast_2_piece0 on 10.110.207.214:65366 in memory (size: 53.9 KiB, free: 434.3 MiB)
+2026-08-14 13:37:25,333 INFO storage.BlockManagerInfo: Removed broadcast_3_piece0 on 10.110.207.214:65366 in memory (size: 7.8 KiB, free: 434.3 MiB)
+2026-08-14 13:37:25,338 INFO datasources.FileScanRDD: Reading File path: file:///Users/prabeshnepal/Desktop/LSPDP/final_project/data/processed/train.parquet, range: 0-3374654, partition values: [empty row]
+2026-08-14 13:37:27,487 INFO executor.Executor: Finished task 0.0 in stage 3.0 (TID 3). 1996 bytes result sent to driver
+2026-08-14 13:37:27,494 INFO scheduler.TaskSetManager: Finished task 0.0 in stage 3.0 (TID 3) in 2191 ms on 10.110.207.214 (executor driver) (1/1)
+2026-08-14 13:37:27,494 INFO scheduler.TaskSchedulerImpl: Removed TaskSet 3.0, whose tasks have all completed, from pool 
+2026-08-14 13:37:27,496 INFO scheduler.DAGScheduler: ShuffleMapStage 3 (repartition at SparkKNN.scala:871) finished in 2.206 s
+2026-08-14 13:37:27,497 INFO scheduler.DAGScheduler: looking for newly runnable stages
+2026-08-14 13:37:27,497 INFO scheduler.DAGScheduler: running: Set()
+2026-08-14 13:37:27,498 INFO scheduler.DAGScheduler: waiting: Set(ResultStage 4)
+2026-08-14 13:37:27,498 INFO scheduler.DAGScheduler: failed: Set()
+2026-08-14 13:37:27,501 INFO scheduler.DAGScheduler: Submitting ResultStage 4 (MapPartitionsRDD[20] at repartition at SparkKNN.scala:871), which has no missing parents
+2026-08-14 13:37:27,514 INFO memory.MemoryStore: Block broadcast_6 stored as values in memory (estimated size 5.5 KiB, free 434.0 MiB)
+2026-08-14 13:37:27,519 INFO memory.MemoryStore: Block broadcast_6_piece0 stored as bytes in memory (estimated size 3.0 KiB, free 434.0 MiB)
+2026-08-14 13:37:27,519 INFO storage.BlockManagerInfo: Added broadcast_6_piece0 in memory on 10.110.207.214:65366 (size: 3.0 KiB, free: 434.3 MiB)
+2026-08-14 13:37:27,520 INFO spark.SparkContext: Created broadcast 6 from broadcast at DAGScheduler.scala:1513
+2026-08-14 13:37:27,521 INFO scheduler.DAGScheduler: Submitting 4 missing tasks from ResultStage 4 (MapPartitionsRDD[20] at repartition at SparkKNN.scala:871) (first 15 tasks are for partitions Vector(0, 1, 2, 3))
+2026-08-14 13:37:27,521 INFO scheduler.TaskSchedulerImpl: Adding task set 4.0 with 4 tasks resource profile 0
+2026-08-14 13:37:27,526 INFO scheduler.TaskSetManager: Starting task 0.0 in stage 4.0 (TID 4) (10.110.207.214, executor driver, partition 0, NODE_LOCAL, 4547 bytes) taskResourceAssignments Map()
+2026-08-14 13:37:27,526 INFO scheduler.TaskSetManager: Starting task 1.0 in stage 4.0 (TID 5) (10.110.207.214, executor driver, partition 1, NODE_LOCAL, 4547 bytes) taskResourceAssignments Map()
+2026-08-14 13:37:27,526 INFO scheduler.TaskSetManager: Starting task 2.0 in stage 4.0 (TID 6) (10.110.207.214, executor driver, partition 2, NODE_LOCAL, 4547 bytes) taskResourceAssignments Map()
+2026-08-14 13:37:27,526 INFO scheduler.TaskSetManager: Starting task 3.0 in stage 4.0 (TID 7) (10.110.207.214, executor driver, partition 3, NODE_LOCAL, 4547 bytes) taskResourceAssignments Map()
+2026-08-14 13:37:27,527 INFO executor.Executor: Running task 0.0 in stage 4.0 (TID 4)
+2026-08-14 13:37:27,527 INFO executor.Executor: Running task 1.0 in stage 4.0 (TID 5)
+2026-08-14 13:37:27,527 INFO executor.Executor: Running task 2.0 in stage 4.0 (TID 6)
+2026-08-14 13:37:27,528 INFO executor.Executor: Running task 3.0 in stage 4.0 (TID 7)
+2026-08-14 13:37:27,637 INFO storage.ShuffleBlockFetcherIterator: Getting 1 (2.1 MiB) non-empty blocks including 1 (2.1 MiB) local and 0 (0.0 B) host-local and 0 (0.0 B) push-merged-local and 0 (0.0 B) remote blocks
+2026-08-14 13:37:27,637 INFO storage.ShuffleBlockFetcherIterator: Getting 1 (2.1 MiB) non-empty blocks including 1 (2.1 MiB) local and 0 (0.0 B) host-local and 0 (0.0 B) push-merged-local and 0 (0.0 B) remote blocks
+2026-08-14 13:37:27,637 INFO storage.ShuffleBlockFetcherIterator: Getting 1 (2.1 MiB) non-empty blocks including 1 (2.1 MiB) local and 0 (0.0 B) host-local and 0 (0.0 B) push-merged-local and 0 (0.0 B) remote blocks
+2026-08-14 13:37:27,637 INFO storage.ShuffleBlockFetcherIterator: Getting 1 (2.1 MiB) non-empty blocks including 1 (2.1 MiB) local and 0 (0.0 B) host-local and 0 (0.0 B) push-merged-local and 0 (0.0 B) remote blocks
+2026-08-14 13:37:27,638 INFO storage.ShuffleBlockFetcherIterator: Started 0 remote fetches in 6 ms
+2026-08-14 13:37:27,638 INFO storage.ShuffleBlockFetcherIterator: Started 0 remote fetches in 6 ms
+2026-08-14 13:37:27,638 INFO storage.ShuffleBlockFetcherIterator: Started 0 remote fetches in 6 ms
+2026-08-14 13:37:27,638 INFO storage.ShuffleBlockFetcherIterator: Started 0 remote fetches in 6 ms
+2026-08-14 13:37:28,149 INFO memory.MemoryStore: Block rdd_20_3 stored as values in memory (estimated size 5.1 MiB, free 428.8 MiB)
+2026-08-14 13:37:28,150 INFO storage.BlockManagerInfo: Added rdd_20_3 in memory on 10.110.207.214:65366 (size: 5.1 MiB, free: 429.2 MiB)
+2026-08-14 13:37:28,152 INFO memory.MemoryStore: Block rdd_20_1 stored as values in memory (estimated size 5.1 MiB, free 423.7 MiB)
+2026-08-14 13:37:28,152 INFO storage.BlockManagerInfo: Added rdd_20_1 in memory on 10.110.207.214:65366 (size: 5.1 MiB, free: 424.0 MiB)
+2026-08-14 13:37:28,163 INFO memory.MemoryStore: Block rdd_20_0 stored as values in memory (estimated size 5.1 MiB, free 418.5 MiB)
+2026-08-14 13:37:28,163 INFO executor.Executor: Finished task 3.0 in stage 4.0 (TID 7). 1227 bytes result sent to driver
+2026-08-14 13:37:28,163 INFO executor.Executor: Finished task 1.0 in stage 4.0 (TID 5). 1227 bytes result sent to driver
+2026-08-14 13:37:28,164 INFO storage.BlockManagerInfo: Added rdd_20_0 in memory on 10.110.207.214:65366 (size: 5.1 MiB, free: 418.9 MiB)
+2026-08-14 13:37:28,165 INFO scheduler.TaskSetManager: Finished task 3.0 in stage 4.0 (TID 7) in 639 ms on 10.110.207.214 (executor driver) (1/4)
+2026-08-14 13:37:28,166 INFO scheduler.TaskSetManager: Finished task 1.0 in stage 4.0 (TID 5) in 640 ms on 10.110.207.214 (executor driver) (2/4)
+2026-08-14 13:37:28,166 INFO executor.Executor: Finished task 0.0 in stage 4.0 (TID 4). 1227 bytes result sent to driver
+2026-08-14 13:37:28,167 INFO scheduler.TaskSetManager: Finished task 0.0 in stage 4.0 (TID 4) in 643 ms on 10.110.207.214 (executor driver) (3/4)
+2026-08-14 13:37:28,167 INFO memory.MemoryStore: Block rdd_20_2 stored as values in memory (estimated size 5.1 MiB, free 413.4 MiB)
+2026-08-14 13:37:28,167 INFO storage.BlockManagerInfo: Added rdd_20_2 in memory on 10.110.207.214:65366 (size: 5.1 MiB, free: 413.7 MiB)
+2026-08-14 13:37:28,169 INFO executor.Executor: Finished task 2.0 in stage 4.0 (TID 6). 1227 bytes result sent to driver
+2026-08-14 13:37:28,169 INFO scheduler.TaskSetManager: Finished task 2.0 in stage 4.0 (TID 6) in 643 ms on 10.110.207.214 (executor driver) (4/4)
+2026-08-14 13:37:28,169 INFO scheduler.TaskSchedulerImpl: Removed TaskSet 4.0, whose tasks have all completed, from pool 
+2026-08-14 13:37:28,169 INFO scheduler.DAGScheduler: ResultStage 4 (count at SparkKNN.scala:877) finished in 0.662 s
+2026-08-14 13:37:28,170 INFO scheduler.DAGScheduler: Job 3 is finished. Cancelling potential speculative or zombie tasks for this job
+2026-08-14 13:37:28,170 INFO scheduler.TaskSchedulerImpl: Killing all running tasks in stage 4: Stage finished
+2026-08-14 13:37:28,170 INFO scheduler.DAGScheduler: Job 3 finished: count at SparkKNN.scala:877, took 2.885968 s
+
+Actual training sample: 200000
+Actual evaluation sample: 1000
+
+Distance comparisons: 200,000,000
+
+Broadcasting evaluation flights...
+2026-08-14 13:37:28,172 INFO memory.MemoryStore: Block broadcast_7 stored as values in memory (estimated size 105.5 KiB, free 413.3 MiB)
+2026-08-14 13:37:28,177 INFO memory.MemoryStore: Block broadcast_7_piece0 stored as bytes in memory (estimated size 35.6 KiB, free 413.3 MiB)
+2026-08-14 13:37:28,178 INFO storage.BlockManagerInfo: Added broadcast_7_piece0 in memory on 10.110.207.214:65366 (size: 35.6 KiB, free: 413.7 MiB)
+2026-08-14 13:37:28,178 INFO spark.SparkContext: Created broadcast 7 from broadcast at SparkKNN.scala:923
+2026-08-14 13:37:28,192 INFO spark.SparkContext: Starting job: collect at SparkKNN.scala:1045
+2026-08-14 13:37:28,194 INFO scheduler.DAGScheduler: Registering RDD 21 (mapPartitions at SparkKNN.scala:949) as input to shuffle 1
+2026-08-14 13:37:28,194 INFO scheduler.DAGScheduler: Got job 4 (collect at SparkKNN.scala:1045) with 4 output partitions
+2026-08-14 13:37:28,194 INFO scheduler.DAGScheduler: Final stage: ResultStage 7 (collect at SparkKNN.scala:1045)
+2026-08-14 13:37:28,194 INFO scheduler.DAGScheduler: Parents of final stage: List(ShuffleMapStage 6)
+2026-08-14 13:37:28,194 INFO scheduler.DAGScheduler: Missing parents: List(ShuffleMapStage 6)
+2026-08-14 13:37:28,195 INFO scheduler.DAGScheduler: Submitting ShuffleMapStage 6 (MapPartitionsRDD[21] at mapPartitions at SparkKNN.scala:949), which has no missing parents
+2026-08-14 13:37:28,198 INFO memory.MemoryStore: Block broadcast_8 stored as values in memory (estimated size 6.5 KiB, free 413.2 MiB)
+2026-08-14 13:37:28,223 INFO memory.MemoryStore: Block broadcast_8_piece0 stored as bytes in memory (estimated size 3.6 KiB, free 413.2 MiB)
+2026-08-14 13:37:28,224 INFO storage.BlockManagerInfo: Added broadcast_8_piece0 in memory on 10.110.207.214:65366 (size: 3.6 KiB, free: 413.7 MiB)
+2026-08-14 13:37:28,224 INFO storage.BlockManagerInfo: Removed broadcast_6_piece0 on 10.110.207.214:65366 in memory (size: 3.0 KiB, free: 413.7 MiB)
+2026-08-14 13:37:28,224 INFO spark.SparkContext: Created broadcast 8 from broadcast at DAGScheduler.scala:1513
+2026-08-14 13:37:28,225 INFO scheduler.DAGScheduler: Submitting 4 missing tasks from ShuffleMapStage 6 (MapPartitionsRDD[21] at mapPartitions at SparkKNN.scala:949) (first 15 tasks are for partitions Vector(0, 1, 2, 3))
+2026-08-14 13:37:28,225 INFO scheduler.TaskSchedulerImpl: Adding task set 6.0 with 4 tasks resource profile 0
+2026-08-14 13:37:28,226 INFO scheduler.TaskSetManager: Starting task 0.0 in stage 6.0 (TID 8) (10.110.207.214, executor driver, partition 0, PROCESS_LOCAL, 4536 bytes) taskResourceAssignments Map()
+2026-08-14 13:37:28,226 INFO scheduler.TaskSetManager: Starting task 1.0 in stage 6.0 (TID 9) (10.110.207.214, executor driver, partition 1, PROCESS_LOCAL, 4536 bytes) taskResourceAssignments Map()
+2026-08-14 13:37:28,227 INFO scheduler.TaskSetManager: Starting task 2.0 in stage 6.0 (TID 10) (10.110.207.214, executor driver, partition 2, PROCESS_LOCAL, 4536 bytes) taskResourceAssignments Map()
+2026-08-14 13:37:28,227 INFO scheduler.TaskSetManager: Starting task 3.0 in stage 6.0 (TID 11) (10.110.207.214, executor driver, partition 3, PROCESS_LOCAL, 4536 bytes) taskResourceAssignments Map()
+2026-08-14 13:37:28,227 INFO executor.Executor: Running task 0.0 in stage 6.0 (TID 8)
+2026-08-14 13:37:28,227 INFO executor.Executor: Running task 2.0 in stage 6.0 (TID 10)
+2026-08-14 13:37:28,227 INFO executor.Executor: Running task 3.0 in stage 6.0 (TID 11)
+2026-08-14 13:37:28,227 INFO executor.Executor: Running task 1.0 in stage 6.0 (TID 9)
+2026-08-14 13:37:28,229 INFO storage.BlockManagerInfo: Removed broadcast_5_piece0 on 10.110.207.214:65366 in memory (size: 14.6 KiB, free: 413.7 MiB)
+2026-08-14 13:37:28,233 INFO storage.BlockManager: Found block rdd_20_1 locally
+2026-08-14 13:37:28,233 INFO storage.BlockManager: Found block rdd_20_0 locally
+2026-08-14 13:37:28,233 INFO storage.BlockManager: Found block rdd_20_3 locally
+2026-08-14 13:37:28,233 INFO storage.BlockManager: Found block rdd_20_2 locally
+2026-08-14 13:37:29,726 INFO executor.Executor: Finished task 0.0 in stage 6.0 (TID 8). 1303 bytes result sent to driver
+2026-08-14 13:37:29,726 INFO executor.Executor: Finished task 2.0 in stage 6.0 (TID 10). 1303 bytes result sent to driver
+2026-08-14 13:37:29,727 INFO executor.Executor: Finished task 1.0 in stage 6.0 (TID 9). 1303 bytes result sent to driver
+2026-08-14 13:37:29,728 INFO scheduler.TaskSetManager: Finished task 0.0 in stage 6.0 (TID 8) in 1502 ms on 10.110.207.214 (executor driver) (1/4)
+2026-08-14 13:37:29,728 INFO scheduler.TaskSetManager: Finished task 2.0 in stage 6.0 (TID 10) in 1502 ms on 10.110.207.214 (executor driver) (2/4)
+2026-08-14 13:37:29,728 INFO scheduler.TaskSetManager: Finished task 1.0 in stage 6.0 (TID 9) in 1502 ms on 10.110.207.214 (executor driver) (3/4)
+2026-08-14 13:37:29,728 INFO executor.Executor: Finished task 3.0 in stage 6.0 (TID 11). 1303 bytes result sent to driver
+2026-08-14 13:37:29,728 INFO scheduler.TaskSetManager: Finished task 3.0 in stage 6.0 (TID 11) in 1501 ms on 10.110.207.214 (executor driver) (4/4)
+2026-08-14 13:37:29,728 INFO scheduler.TaskSchedulerImpl: Removed TaskSet 6.0, whose tasks have all completed, from pool 
+2026-08-14 13:37:29,729 INFO scheduler.DAGScheduler: ShuffleMapStage 6 (mapPartitions at SparkKNN.scala:949) finished in 1.533 s
+2026-08-14 13:37:29,729 INFO scheduler.DAGScheduler: looking for newly runnable stages
+2026-08-14 13:37:29,729 INFO scheduler.DAGScheduler: running: Set()
+2026-08-14 13:37:29,729 INFO scheduler.DAGScheduler: waiting: Set(ResultStage 7)
+2026-08-14 13:37:29,729 INFO scheduler.DAGScheduler: failed: Set()
+2026-08-14 13:37:29,729 INFO scheduler.DAGScheduler: Submitting ResultStage 7 (ShuffledRDD[22] at reduceByKey at SparkKNN.scala:1045), which has no missing parents
+2026-08-14 13:37:29,732 INFO memory.MemoryStore: Block broadcast_9 stored as values in memory (estimated size 4.8 KiB, free 413.3 MiB)
+2026-08-14 13:37:29,735 INFO memory.MemoryStore: Block broadcast_9_piece0 stored as bytes in memory (estimated size 2.7 KiB, free 413.3 MiB)
+2026-08-14 13:37:29,736 INFO storage.BlockManagerInfo: Added broadcast_9_piece0 in memory on 10.110.207.214:65366 (size: 2.7 KiB, free: 413.7 MiB)
+2026-08-14 13:37:29,736 INFO spark.SparkContext: Created broadcast 9 from broadcast at DAGScheduler.scala:1513
+2026-08-14 13:37:29,737 INFO scheduler.DAGScheduler: Submitting 4 missing tasks from ResultStage 7 (ShuffledRDD[22] at reduceByKey at SparkKNN.scala:1045) (first 15 tasks are for partitions Vector(0, 1, 2, 3))
+2026-08-14 13:37:29,737 INFO scheduler.TaskSchedulerImpl: Adding task set 7.0 with 4 tasks resource profile 0
+2026-08-14 13:37:29,738 INFO scheduler.TaskSetManager: Starting task 0.0 in stage 7.0 (TID 12) (10.110.207.214, executor driver, partition 0, NODE_LOCAL, 4271 bytes) taskResourceAssignments Map()
+2026-08-14 13:37:29,738 INFO scheduler.TaskSetManager: Starting task 1.0 in stage 7.0 (TID 13) (10.110.207.214, executor driver, partition 1, NODE_LOCAL, 4271 bytes) taskResourceAssignments Map()
+2026-08-14 13:37:29,738 INFO scheduler.TaskSetManager: Starting task 2.0 in stage 7.0 (TID 14) (10.110.207.214, executor driver, partition 2, NODE_LOCAL, 4271 bytes) taskResourceAssignments Map()
+2026-08-14 13:37:29,738 INFO scheduler.TaskSetManager: Starting task 3.0 in stage 7.0 (TID 15) (10.110.207.214, executor driver, partition 3, NODE_LOCAL, 4271 bytes) taskResourceAssignments Map()
+2026-08-14 13:37:29,738 INFO executor.Executor: Running task 1.0 in stage 7.0 (TID 13)
+2026-08-14 13:37:29,738 INFO executor.Executor: Running task 0.0 in stage 7.0 (TID 12)
+2026-08-14 13:37:29,738 INFO executor.Executor: Running task 2.0 in stage 7.0 (TID 14)
+2026-08-14 13:37:29,739 INFO executor.Executor: Running task 3.0 in stage 7.0 (TID 15)
+2026-08-14 13:37:29,742 INFO storage.ShuffleBlockFetcherIterator: Getting 4 (93.2 KiB) non-empty blocks including 4 (93.2 KiB) local and 0 (0.0 B) host-local and 0 (0.0 B) push-merged-local and 0 (0.0 B) remote blocks
+2026-08-14 13:37:29,742 INFO storage.ShuffleBlockFetcherIterator: Getting 4 (93.2 KiB) non-empty blocks including 4 (93.2 KiB) local and 0 (0.0 B) host-local and 0 (0.0 B) push-merged-local and 0 (0.0 B) remote blocks
+2026-08-14 13:37:29,742 INFO storage.ShuffleBlockFetcherIterator: Getting 4 (93.2 KiB) non-empty blocks including 4 (93.2 KiB) local and 0 (0.0 B) host-local and 0 (0.0 B) push-merged-local and 0 (0.0 B) remote blocks
+2026-08-14 13:37:29,742 INFO storage.ShuffleBlockFetcherIterator: Started 0 remote fetches in 0 ms
+2026-08-14 13:37:29,742 INFO storage.ShuffleBlockFetcherIterator: Started 0 remote fetches in 0 ms
+2026-08-14 13:37:29,742 INFO storage.ShuffleBlockFetcherIterator: Started 0 remote fetches in 1 ms
+2026-08-14 13:37:29,743 INFO storage.ShuffleBlockFetcherIterator: Getting 4 (93.2 KiB) non-empty blocks including 4 (93.2 KiB) local and 0 (0.0 B) host-local and 0 (0.0 B) push-merged-local and 0 (0.0 B) remote blocks
+2026-08-14 13:37:29,743 INFO storage.ShuffleBlockFetcherIterator: Started 0 remote fetches in 0 ms
+2026-08-14 13:37:29,787 INFO executor.Executor: Finished task 1.0 in stage 7.0 (TID 13). 40687 bytes result sent to driver
+2026-08-14 13:37:29,789 INFO executor.Executor: Finished task 2.0 in stage 7.0 (TID 14). 40687 bytes result sent to driver
+2026-08-14 13:37:29,790 INFO executor.Executor: Finished task 0.0 in stage 7.0 (TID 12). 40730 bytes result sent to driver
+2026-08-14 13:37:29,790 INFO scheduler.TaskSetManager: Finished task 1.0 in stage 7.0 (TID 13) in 52 ms on 10.110.207.214 (executor driver) (1/4)
+2026-08-14 13:37:29,791 INFO executor.Executor: Finished task 3.0 in stage 7.0 (TID 15). 40687 bytes result sent to driver
+2026-08-14 13:37:29,791 INFO scheduler.TaskSetManager: Finished task 2.0 in stage 7.0 (TID 14) in 53 ms on 10.110.207.214 (executor driver) (2/4)
+2026-08-14 13:37:29,792 INFO scheduler.TaskSetManager: Finished task 0.0 in stage 7.0 (TID 12) in 55 ms on 10.110.207.214 (executor driver) (3/4)
+2026-08-14 13:37:29,794 INFO scheduler.TaskSetManager: Finished task 3.0 in stage 7.0 (TID 15) in 56 ms on 10.110.207.214 (executor driver) (4/4)
+2026-08-14 13:37:29,794 INFO scheduler.TaskSchedulerImpl: Removed TaskSet 7.0, whose tasks have all completed, from pool 
+2026-08-14 13:37:29,794 INFO scheduler.DAGScheduler: ResultStage 7 (collect at SparkKNN.scala:1045) finished in 0.063 s
+2026-08-14 13:37:29,794 INFO scheduler.DAGScheduler: Job 4 is finished. Cancelling potential speculative or zombie tasks for this job
+2026-08-14 13:37:29,794 INFO scheduler.TaskSchedulerImpl: Killing all running tasks in stage 7: Stage finished
+2026-08-14 13:37:29,794 INFO scheduler.DAGScheduler: Job 4 finished: collect at SparkKNN.scala:1045, took 1.602499 s
+
+============================
+RUNTIME
+============================
+Spark KNN runtime: 1.6174 seconds
+
+============================
+CONFUSION MATRIX
+============================
+True Negative:  772
+False Positive: 30
+False Negative: 56
+True Positive:  142
+
+============================
+METRICS
+============================
+Accuracy:  0.9140
+Precision: 0.8256
+Recall:    0.7172
+F1 Score:  0.7676
+
+============================
+BASELINE
+============================
+Baseline model: always predict NOT delayed
+Baseline accuracy: 0.8020
+
+============================
+INDIVIDUAL PREDICTIONS
+============================
+PREDICTION RecordId=130641 Actual=0 Predicted=0
+PREDICTION RecordId=505276 Actual=0 Predicted=0
+PREDICTION RecordId=120182 Actual=1 Predicted=1
+PREDICTION RecordId=217424 Actual=0 Predicted=0
+PREDICTION RecordId=135284 Actual=0 Predicted=0
+PREDICTION RecordId=339119 Actual=0 Predicted=0
+PREDICTION RecordId=193905 Actual=0 Predicted=0
+PREDICTION RecordId=513329 Actual=0 Predicted=0
+PREDICTION RecordId=102429 Actual=1 Predicted=1
+PREDICTION RecordId=68247 Actual=0 Predicted=0
+PREDICTION RecordId=424262 Actual=0 Predicted=0
+PREDICTION RecordId=415227 Actual=0 Predicted=0
+PREDICTION RecordId=339446 Actual=0 Predicted=0
+PREDICTION RecordId=79723 Actual=0 Predicted=0
+PREDICTION RecordId=452601 Actual=1 Predicted=0
+PREDICTION RecordId=378149 Actual=0 Predicted=0
+PREDICTION RecordId=227496 Actual=0 Predicted=0
+PREDICTION RecordId=367843 Actual=0 Predicted=0
+PREDICTION RecordId=403355 Actual=0 Predicted=0
+PREDICTION RecordId=502175 Actual=0 Predicted=0
+PREDICTION RecordId=121113 Actual=0 Predicted=0
+PREDICTION RecordId=39104 Actual=0 Predicted=0
+PREDICTION RecordId=502210 Actual=0 Predicted=0
+PREDICTION RecordId=378868 Actual=0 Predicted=0
+PREDICTION RecordId=371693 Actual=1 Predicted=1
+PREDICTION RecordId=18792 Actual=1 Predicted=1
+PREDICTION RecordId=512943 Actual=1 Predicted=1
+PREDICTION RecordId=407363 Actual=0 Predicted=0
+PREDICTION RecordId=244755 Actual=0 Predicted=0
+PREDICTION RecordId=142883 Actual=0 Predicted=0
+PREDICTION RecordId=119014 Actual=0 Predicted=0
+PREDICTION RecordId=120028 Actual=0 Predicted=0
+PREDICTION RecordId=219218 Actual=0 Predicted=0
+PREDICTION RecordId=368891 Actual=0 Predicted=0
+PREDICTION RecordId=53977 Actual=0 Predicted=0
+PREDICTION RecordId=427658 Actual=0 Predicted=0
+PREDICTION RecordId=504792 Actual=0 Predicted=0
+PREDICTION RecordId=314974 Actual=0 Predicted=0
+PREDICTION RecordId=91346 Actual=0 Predicted=0
+PREDICTION RecordId=175061 Actual=0 Predicted=0
+PREDICTION RecordId=370389 Actual=1 Predicted=1
+PREDICTION RecordId=120776 Actual=0 Predicted=0
+PREDICTION RecordId=75153 Actual=0 Predicted=0
+PREDICTION RecordId=60901 Actual=0 Predicted=0
+PREDICTION RecordId=234569 Actual=1 Predicted=1
+PREDICTION RecordId=373110 Actual=0 Predicted=0
+PREDICTION RecordId=341844 Actual=0 Predicted=0
+PREDICTION RecordId=237894 Actual=0 Predicted=0
+PREDICTION RecordId=369612 Actual=0 Predicted=0
+PREDICTION RecordId=57271 Actual=0 Predicted=0
+PREDICTION RecordId=315952 Actual=0 Predicted=0
+PREDICTION RecordId=130104 Actual=0 Predicted=0
+PREDICTION RecordId=240844 Actual=1 Predicted=0
+PREDICTION RecordId=369284 Actual=0 Predicted=0
+PREDICTION RecordId=505599 Actual=0 Predicted=0
+PREDICTION RecordId=394375 Actual=0 Predicted=0
+PREDICTION RecordId=156357 Actual=0 Predicted=0
+PREDICTION RecordId=145585 Actual=0 Predicted=0
+PREDICTION RecordId=82479 Actual=0 Predicted=0
+PREDICTION RecordId=136109 Actual=0 Predicted=0
+PREDICTION RecordId=427755 Actual=0 Predicted=0
+PREDICTION RecordId=345563 Actual=0 Predicted=0
+PREDICTION RecordId=153963 Actual=0 Predicted=0
+PREDICTION RecordId=55451 Actual=1 Predicted=1
+PREDICTION RecordId=143410 Actual=0 Predicted=0
+PREDICTION RecordId=368899 Actual=0 Predicted=0
+PREDICTION RecordId=369293 Actual=1 Predicted=0
+PREDICTION RecordId=369797 Actual=0 Predicted=0
+PREDICTION RecordId=501238 Actual=0 Predicted=0
+PREDICTION RecordId=62044 Actual=0 Predicted=0
+PREDICTION RecordId=379704 Actual=0 Predicted=0
+PREDICTION RecordId=502803 Actual=0 Predicted=0
+PREDICTION RecordId=256181 Actual=0 Predicted=0
+PREDICTION RecordId=368007 Actual=0 Predicted=0
+PREDICTION RecordId=442400 Actual=0 Predicted=0
+PREDICTION RecordId=148055 Actual=0 Predicted=0
+PREDICTION RecordId=103192 Actual=0 Predicted=0
+PREDICTION RecordId=63274 Actual=0 Predicted=0
+PREDICTION RecordId=431895 Actual=1 Predicted=1
+PREDICTION RecordId=419341 Actual=0 Predicted=0
+PREDICTION RecordId=158092 Actual=0 Predicted=0
+PREDICTION RecordId=398465 Actual=0 Predicted=0
+PREDICTION RecordId=121198 Actual=0 Predicted=0
+PREDICTION RecordId=56376 Actual=1 Predicted=1
+PREDICTION RecordId=40123 Actual=1 Predicted=1
+PREDICTION RecordId=503162 Actual=0 Predicted=0
+PREDICTION RecordId=403574 Actual=0 Predicted=0
+PREDICTION RecordId=120230 Actual=1 Predicted=1
+PREDICTION RecordId=202063 Actual=0 Predicted=0
+PREDICTION RecordId=132982 Actual=0 Predicted=0
+PREDICTION RecordId=423455 Actual=1 Predicted=1
+PREDICTION RecordId=173294 Actual=1 Predicted=1
+PREDICTION RecordId=513766 Actual=0 Predicted=0
+PREDICTION RecordId=371551 Actual=0 Predicted=0
+PREDICTION RecordId=422529 Actual=1 Predicted=1
+PREDICTION RecordId=246796 Actual=0 Predicted=0
+PREDICTION RecordId=502381 Actual=0 Predicted=0
+PREDICTION RecordId=457948 Actual=1 Predicted=1
+PREDICTION RecordId=442409 Actual=0 Predicted=1
+PREDICTION RecordId=149899 Actual=0 Predicted=0
+PREDICTION RecordId=440291 Actual=0 Predicted=0
+PREDICTION RecordId=142632 Actual=0 Predicted=0
+PREDICTION RecordId=418747 Actual=0 Predicted=0
+PREDICTION RecordId=410781 Actual=0 Predicted=0
+PREDICTION RecordId=159917 Actual=0 Predicted=0
+PREDICTION RecordId=26507 Actual=1 Predicted=1
+PREDICTION RecordId=171990 Actual=1 Predicted=0
+PREDICTION RecordId=88845 Actual=0 Predicted=0
+PREDICTION RecordId=23640 Actual=0 Predicted=0
+PREDICTION RecordId=163313 Actual=0 Predicted=0
+PREDICTION RecordId=143562 Actual=0 Predicted=0
+PREDICTION RecordId=341768 Actual=0 Predicted=0
+PREDICTION RecordId=345266 Actual=0 Predicted=0
+PREDICTION RecordId=340462 Actual=1 Predicted=1
+PREDICTION RecordId=440338 Actual=0 Predicted=0
+PREDICTION RecordId=422863 Actual=0 Predicted=0
+PREDICTION RecordId=389578 Actual=0 Predicted=0
+PREDICTION RecordId=433778 Actual=0 Predicted=0
+PREDICTION RecordId=369692 Actual=0 Predicted=0
+PREDICTION RecordId=215906 Actual=0 Predicted=0
+PREDICTION RecordId=315163 Actual=1 Predicted=1
+PREDICTION RecordId=87273 Actual=1 Predicted=0
+PREDICTION RecordId=315933 Actual=0 Predicted=0
+PREDICTION RecordId=58588 Actual=0 Predicted=0
+PREDICTION RecordId=187514 Actual=0 Predicted=0
+PREDICTION RecordId=459575 Actual=0 Predicted=0
+PREDICTION RecordId=215604 Actual=0 Predicted=0
+PREDICTION RecordId=102324 Actual=0 Predicted=0
+PREDICTION RecordId=389627 Actual=0 Predicted=0
+PREDICTION RecordId=372050 Actual=0 Predicted=0
+PREDICTION RecordId=139487 Actual=0 Predicted=0
+PREDICTION RecordId=90059 Actual=1 Predicted=1
+PREDICTION RecordId=411715 Actual=1 Predicted=1
+PREDICTION RecordId=147260 Actual=0 Predicted=0
+PREDICTION RecordId=500723 Actual=0 Predicted=0
+PREDICTION RecordId=367734 Actual=0 Predicted=0
+PREDICTION RecordId=314290 Actual=0 Predicted=0
+PREDICTION RecordId=240336 Actual=0 Predicted=0
+PREDICTION RecordId=120702 Actual=0 Predicted=0
+PREDICTION RecordId=229319 Actual=0 Predicted=0
+PREDICTION RecordId=339084 Actual=0 Predicted=0
+PREDICTION RecordId=427003 Actual=0 Predicted=0
+PREDICTION RecordId=138763 Actual=0 Predicted=0
+PREDICTION RecordId=195132 Actual=0 Predicted=0
+PREDICTION RecordId=129474 Actual=0 Predicted=0
+PREDICTION RecordId=161119 Actual=1 Predicted=0
+PREDICTION RecordId=369519 Actual=0 Predicted=0
+PREDICTION RecordId=504426 Actual=0 Predicted=0
+PREDICTION RecordId=423678 Actual=0 Predicted=0
+PREDICTION RecordId=119711 Actual=0 Predicted=0
+PREDICTION RecordId=368693 Actual=0 Predicted=1
+PREDICTION RecordId=407193 Actual=0 Predicted=1
+PREDICTION RecordId=120863 Actual=0 Predicted=0
+PREDICTION RecordId=339218 Actual=1 Predicted=1
+PREDICTION RecordId=147788 Actual=0 Predicted=0
+PREDICTION RecordId=503136 Actual=0 Predicted=0
+PREDICTION RecordId=86745 Actual=1 Predicted=1
+PREDICTION RecordId=230654 Actual=0 Predicted=0
+PREDICTION RecordId=367919 Actual=0 Predicted=0
+PREDICTION RecordId=83795 Actual=1 Predicted=1
+PREDICTION RecordId=258333 Actual=0 Predicted=0
+PREDICTION RecordId=314488 Actual=0 Predicted=0
+PREDICTION RecordId=221962 Actual=0 Predicted=0
+PREDICTION RecordId=31704 Actual=0 Predicted=0
+PREDICTION RecordId=432987 Actual=1 Predicted=1
+PREDICTION RecordId=187081 Actual=0 Predicted=0
+PREDICTION RecordId=419326 Actual=0 Predicted=0
+PREDICTION RecordId=16296 Actual=0 Predicted=0
+PREDICTION RecordId=314142 Actual=0 Predicted=0
+PREDICTION RecordId=39526 Actual=0 Predicted=0
+PREDICTION RecordId=313069 Actual=0 Predicted=0
+PREDICTION RecordId=399638 Actual=0 Predicted=0
+PREDICTION RecordId=223441 Actual=0 Predicted=0
+PREDICTION RecordId=144770 Actual=0 Predicted=0
+PREDICTION RecordId=186927 Actual=0 Predicted=0
+PREDICTION RecordId=389772 Actual=0 Predicted=0
+PREDICTION RecordId=383897 Actual=1 Predicted=1
+PREDICTION RecordId=502353 Actual=0 Predicted=0
+PREDICTION RecordId=76338 Actual=0 Predicted=0
+PREDICTION RecordId=343028 Actual=0 Predicted=0
+PREDICTION RecordId=436553 Actual=0 Predicted=0
+PREDICTION RecordId=67181 Actual=0 Predicted=0
+PREDICTION RecordId=196347 Actual=0 Predicted=0
+PREDICTION RecordId=25685 Actual=1 Predicted=1
+PREDICTION RecordId=145776 Actual=0 Predicted=0
+PREDICTION RecordId=502406 Actual=0 Predicted=0
+PREDICTION RecordId=345459 Actual=0 Predicted=0
+PREDICTION RecordId=158423 Actual=0 Predicted=0
+PREDICTION RecordId=513982 Actual=0 Predicted=0
+PREDICTION RecordId=23010 Actual=0 Predicted=0
+PREDICTION RecordId=435039 Actual=0 Predicted=0
+PREDICTION RecordId=26645 Actual=0 Predicted=0
+PREDICTION RecordId=46704 Actual=0 Predicted=0
+PREDICTION RecordId=41388 Actual=0 Predicted=0
+PREDICTION RecordId=128542 Actual=0 Predicted=0
+PREDICTION RecordId=369966 Actual=0 Predicted=0
+PREDICTION RecordId=119706 Actual=0 Predicted=0
+PREDICTION RecordId=512745 Actual=0 Predicted=0
+PREDICTION RecordId=102662 Actual=0 Predicted=0
+PREDICTION RecordId=55545 Actual=1 Predicted=0
+PREDICTION RecordId=343763 Actual=1 Predicted=1
+PREDICTION RecordId=313109 Actual=0 Predicted=0
+PREDICTION RecordId=162049 Actual=0 Predicted=0
+PREDICTION RecordId=184216 Actual=1 Predicted=1
+PREDICTION RecordId=454392 Actual=0 Predicted=0
+PREDICTION RecordId=503364 Actual=0 Predicted=0
+PREDICTION RecordId=493667 Actual=0 Predicted=0
+PREDICTION RecordId=37592 Actual=1 Predicted=1
+PREDICTION RecordId=339361 Actual=0 Predicted=0
+PREDICTION RecordId=315194 Actual=0 Predicted=0
+PREDICTION RecordId=373381 Actual=0 Predicted=0
+PREDICTION RecordId=151454 Actual=1 Predicted=1
+PREDICTION RecordId=58347 Actual=1 Predicted=0
+PREDICTION RecordId=175383 Actual=1 Predicted=0
+PREDICTION RecordId=427696 Actual=0 Predicted=0
+PREDICTION RecordId=245957 Actual=0 Predicted=0
+PREDICTION RecordId=419090 Actual=0 Predicted=0
+PREDICTION RecordId=504005 Actual=0 Predicted=0
+PREDICTION RecordId=441010 Actual=1 Predicted=1
+PREDICTION RecordId=513605 Actual=1 Predicted=1
+PREDICTION RecordId=501868 Actual=0 Predicted=0
+PREDICTION RecordId=372524 Actual=0 Predicted=0
+PREDICTION RecordId=180176 Actual=0 Predicted=0
+PREDICTION RecordId=223287 Actual=0 Predicted=0
+PREDICTION RecordId=342751 Actual=1 Predicted=1
+PREDICTION RecordId=344558 Actual=0 Predicted=0
+PREDICTION RecordId=101671 Actual=0 Predicted=0
+PREDICTION RecordId=431880 Actual=0 Predicted=0
+PREDICTION RecordId=185784 Actual=0 Predicted=0
+PREDICTION RecordId=30939 Actual=0 Predicted=0
+PREDICTION RecordId=88325 Actual=0 Predicted=0
+PREDICTION RecordId=121006 Actual=0 Predicted=0
+PREDICTION RecordId=144198 Actual=0 Predicted=0
+PREDICTION RecordId=340091 Actual=0 Predicted=0
+PREDICTION RecordId=415876 Actual=0 Predicted=0
+PREDICTION RecordId=146934 Actual=0 Predicted=0
+PREDICTION RecordId=151026 Actual=0 Predicted=0
+PREDICTION RecordId=102392 Actual=0 Predicted=0
+PREDICTION RecordId=403884 Actual=0 Predicted=0
+PREDICTION RecordId=184457 Actual=0 Predicted=0
+PREDICTION RecordId=372902 Actual=0 Predicted=0
+PREDICTION RecordId=202699 Actual=0 Predicted=0
+PREDICTION RecordId=185153 Actual=0 Predicted=0
+PREDICTION RecordId=228779 Actual=0 Predicted=0
+PREDICTION RecordId=185982 Actual=1 Predicted=1
+PREDICTION RecordId=232896 Actual=1 Predicted=1
+PREDICTION RecordId=35120 Actual=0 Predicted=0
+PREDICTION RecordId=315573 Actual=0 Predicted=0
+PREDICTION RecordId=138024 Actual=1 Predicted=0
+PREDICTION RecordId=418743 Actual=0 Predicted=0
+PREDICTION RecordId=16236 Actual=1 Predicted=1
+PREDICTION RecordId=161546 Actual=0 Predicted=0
+PREDICTION RecordId=398817 Actual=0 Predicted=0
+PREDICTION RecordId=143141 Actual=0 Predicted=0
+PREDICTION RecordId=493722 Actual=0 Predicted=0
+PREDICTION RecordId=161826 Actual=0 Predicted=0
+PREDICTION RecordId=196870 Actual=0 Predicted=0
+PREDICTION RecordId=504205 Actual=0 Predicted=0
+PREDICTION RecordId=313611 Actual=0 Predicted=0
+PREDICTION RecordId=457696 Actual=0 Predicted=0
+PREDICTION RecordId=407815 Actual=0 Predicted=0
+PREDICTION RecordId=120989 Actual=0 Predicted=0
+PREDICTION RecordId=243117 Actual=0 Predicted=0
+PREDICTION RecordId=514021 Actual=1 Predicted=0
+PREDICTION RecordId=343942 Actual=0 Predicted=0
+PREDICTION RecordId=120495 Actual=0 Predicted=0
+PREDICTION RecordId=46873 Actual=1 Predicted=0
+PREDICTION RecordId=442773 Actual=0 Predicted=0
+PREDICTION RecordId=120280 Actual=0 Predicted=0
+PREDICTION RecordId=76513 Actual=0 Predicted=0
+PREDICTION RecordId=502008 Actual=0 Predicted=0
+PREDICTION RecordId=314408 Actual=0 Predicted=0
+PREDICTION RecordId=178748 Actual=0 Predicted=0
+PREDICTION RecordId=341254 Actual=1 Predicted=1
+PREDICTION RecordId=313993 Actual=0 Predicted=0
+PREDICTION RecordId=31423 Actual=0 Predicted=0
+PREDICTION RecordId=419144 Actual=0 Predicted=0
+PREDICTION RecordId=368257 Actual=0 Predicted=0
+PREDICTION RecordId=316568 Actual=0 Predicted=1
+PREDICTION RecordId=459415 Actual=1 Predicted=1
+PREDICTION RecordId=340293 Actual=0 Predicted=0
+PREDICTION RecordId=432392 Actual=0 Predicted=0
+PREDICTION RecordId=77998 Actual=0 Predicted=0
+PREDICTION RecordId=77587 Actual=0 Predicted=0
+PREDICTION RecordId=145844 Actual=0 Predicted=0
+PREDICTION RecordId=121234 Actual=1 Predicted=1
+PREDICTION RecordId=314513 Actual=0 Predicted=0
+PREDICTION RecordId=174808 Actual=0 Predicted=0
+PREDICTION RecordId=390193 Actual=0 Predicted=0
+PREDICTION RecordId=210075 Actual=0 Predicted=0
+PREDICTION RecordId=440083 Actual=1 Predicted=1
+PREDICTION RecordId=316479 Actual=0 Predicted=0
+PREDICTION RecordId=345525 Actual=0 Predicted=0
+PREDICTION RecordId=514192 Actual=0 Predicted=0
+PREDICTION RecordId=315026 Actual=0 Predicted=0
+PREDICTION RecordId=500455 Actual=0 Predicted=0
+PREDICTION RecordId=170104 Actual=0 Predicted=0
+PREDICTION RecordId=102765 Actual=1 Predicted=1
+PREDICTION RecordId=4779 Actual=0 Predicted=0
+PREDICTION RecordId=66594 Actual=0 Predicted=0
+PREDICTION RecordId=119795 Actual=0 Predicted=0
+PREDICTION RecordId=85656 Actual=1 Predicted=0
+PREDICTION RecordId=226897 Actual=0 Predicted=0
+PREDICTION RecordId=54691 Actual=0 Predicted=0
+PREDICTION RecordId=410196 Actual=0 Predicted=0
+PREDICTION RecordId=370500 Actual=0 Predicted=1
+PREDICTION RecordId=342662 Actual=0 Predicted=0
+PREDICTION RecordId=344622 Actual=0 Predicted=0
+PREDICTION RecordId=340272 Actual=0 Predicted=0
+PREDICTION RecordId=503659 Actual=0 Predicted=0
+PREDICTION RecordId=135211 Actual=0 Predicted=0
+PREDICTION RecordId=505566 Actual=1 Predicted=1
+PREDICTION RecordId=314771 Actual=0 Predicted=0
+PREDICTION RecordId=1046 Actual=0 Predicted=0
+PREDICTION RecordId=119586 Actual=0 Predicted=0
+PREDICTION RecordId=42151 Actual=1 Predicted=1
+PREDICTION RecordId=313457 Actual=0 Predicted=0
+PREDICTION RecordId=67498 Actual=0 Predicted=0
+PREDICTION RecordId=30730 Actual=0 Predicted=0
+PREDICTION RecordId=15903 Actual=1 Predicted=1
+PREDICTION RecordId=369277 Actual=0 Predicted=0
+PREDICTION RecordId=92079 Actual=1 Predicted=1
+PREDICTION RecordId=314755 Actual=0 Predicted=0
+PREDICTION RecordId=88984 Actual=0 Predicted=0
+PREDICTION RecordId=261568 Actual=0 Predicted=0
+PREDICTION RecordId=79214 Actual=0 Predicted=0
+PREDICTION RecordId=255731 Actual=0 Predicted=0
+PREDICTION RecordId=369674 Actual=0 Predicted=0
+PREDICTION RecordId=247621 Actual=0 Predicted=0
+PREDICTION RecordId=441265 Actual=0 Predicted=0
+PREDICTION RecordId=368885 Actual=0 Predicted=0
+PREDICTION RecordId=313885 Actual=0 Predicted=0
+PREDICTION RecordId=409181 Actual=0 Predicted=0
+PREDICTION RecordId=433244 Actual=0 Predicted=0
+PREDICTION RecordId=139156 Actual=0 Predicted=0
+PREDICTION RecordId=211967 Actual=0 Predicted=0
+PREDICTION RecordId=504224 Actual=0 Predicted=0
+PREDICTION RecordId=88139 Actual=0 Predicted=0
+PREDICTION RecordId=135363 Actual=0 Predicted=0
+PREDICTION RecordId=131226 Actual=0 Predicted=0
+PREDICTION RecordId=371628 Actual=0 Predicted=0
+PREDICTION RecordId=404470 Actual=0 Predicted=0
+PREDICTION RecordId=339921 Actual=0 Predicted=0
+PREDICTION RecordId=371530 Actual=0 Predicted=0
+PREDICTION RecordId=159442 Actual=0 Predicted=0
+PREDICTION RecordId=121215 Actual=0 Predicted=0
+PREDICTION RecordId=192804 Actual=0 Predicted=0
+PREDICTION RecordId=179319 Actual=0 Predicted=0
+PREDICTION RecordId=369476 Actual=0 Predicted=0
+PREDICTION RecordId=175572 Actual=0 Predicted=0
+PREDICTION RecordId=263188 Actual=0 Predicted=0
+PREDICTION RecordId=345395 Actual=0 Predicted=0
+PREDICTION RecordId=165566 Actual=0 Predicted=0
+PREDICTION RecordId=376898 Actual=0 Predicted=0
+PREDICTION RecordId=25405 Actual=0 Predicted=0
+PREDICTION RecordId=168826 Actual=0 Predicted=0
+PREDICTION RecordId=172158 Actual=0 Predicted=0
+PREDICTION RecordId=201002 Actual=0 Predicted=0
+PREDICTION RecordId=389746 Actual=0 Predicted=0
+PREDICTION RecordId=102825 Actual=0 Predicted=1
+PREDICTION RecordId=254455 Actual=0 Predicted=0
+PREDICTION RecordId=194754 Actual=1 Predicted=1
+PREDICTION RecordId=57273 Actual=0 Predicted=0
+PREDICTION RecordId=132980 Actual=0 Predicted=0
+PREDICTION RecordId=152940 Actual=0 Predicted=0
+PREDICTION RecordId=316487 Actual=0 Predicted=0
+PREDICTION RecordId=372365 Actual=1 Predicted=0
+PREDICTION RecordId=101873 Actual=0 Predicted=0
+PREDICTION RecordId=372461 Actual=0 Predicted=0
+PREDICTION RecordId=502424 Actual=1 Predicted=1
+PREDICTION RecordId=370566 Actual=0 Predicted=0
+PREDICTION RecordId=41132 Actual=1 Predicted=1
+PREDICTION RecordId=49907 Actual=0 Predicted=0
+PREDICTION RecordId=399442 Actual=0 Predicted=0
+PREDICTION RecordId=211031 Actual=0 Predicted=0
+PREDICTION RecordId=158928 Actual=0 Predicted=1
+PREDICTION RecordId=371119 Actual=1 Predicted=1
+PREDICTION RecordId=33113 Actual=0 Predicted=0
+PREDICTION RecordId=369459 Actual=0 Predicted=0
+PREDICTION RecordId=218850 Actual=1 Predicted=1
+PREDICTION RecordId=168478 Actual=0 Predicted=0
+PREDICTION RecordId=185699 Actual=0 Predicted=0
+PREDICTION RecordId=197546 Actual=0 Predicted=0
+PREDICTION RecordId=47674 Actual=0 Predicted=0
+PREDICTION RecordId=513037 Actual=0 Predicted=0
+PREDICTION RecordId=202938 Actual=0 Predicted=0
+PREDICTION RecordId=414786 Actual=0 Predicted=0
+PREDICTION RecordId=40214 Actual=0 Predicted=0
+PREDICTION RecordId=102524 Actual=0 Predicted=0
+PREDICTION RecordId=389789 Actual=0 Predicted=0
+PREDICTION RecordId=371365 Actual=1 Predicted=1
+PREDICTION RecordId=184978 Actual=0 Predicted=0
+PREDICTION RecordId=81551 Actual=0 Predicted=0
+PREDICTION RecordId=402353 Actual=0 Predicted=0
+PREDICTION RecordId=54604 Actual=1 Predicted=0
+PREDICTION RecordId=422636 Actual=1 Predicted=1
+PREDICTION RecordId=398182 Actual=1 Predicted=0
+PREDICTION RecordId=504058 Actual=1 Predicted=1
+PREDICTION RecordId=74286 Actual=1 Predicted=1
+PREDICTION RecordId=341607 Actual=0 Predicted=0
+PREDICTION RecordId=205180 Actual=0 Predicted=0
+PREDICTION RecordId=135714 Actual=0 Predicted=0
+PREDICTION RecordId=432934 Actual=1 Predicted=1
+PREDICTION RecordId=208094 Actual=0 Predicted=0
+PREDICTION RecordId=425908 Actual=0 Predicted=0
+PREDICTION RecordId=139974 Actual=1 Predicted=1
+PREDICTION RecordId=141322 Actual=0 Predicted=0
+PREDICTION RecordId=315140 Actual=0 Predicted=0
+PREDICTION RecordId=90920 Actual=0 Predicted=0
+PREDICTION RecordId=64704 Actual=1 Predicted=0
+PREDICTION RecordId=504957 Actual=1 Predicted=1
+PREDICTION RecordId=501882 Actual=0 Predicted=0
+PREDICTION RecordId=339505 Actual=0 Predicted=0
+PREDICTION RecordId=183043 Actual=0 Predicted=0
+PREDICTION RecordId=394171 Actual=0 Predicted=0
+PREDICTION RecordId=120512 Actual=0 Predicted=0
+PREDICTION RecordId=432897 Actual=1 Predicted=1
+PREDICTION RecordId=405969 Actual=0 Predicted=0
+PREDICTION RecordId=24286 Actual=0 Predicted=0
+PREDICTION RecordId=232490 Actual=0 Predicted=0
+PREDICTION RecordId=314313 Actual=1 Predicted=1
+PREDICTION RecordId=506110 Actual=0 Predicted=0
+PREDICTION RecordId=380535 Actual=0 Predicted=0
+PREDICTION RecordId=239202 Actual=0 Predicted=0
+PREDICTION RecordId=30095 Actual=1 Predicted=1
+PREDICTION RecordId=224821 Actual=0 Predicted=0
+PREDICTION RecordId=149260 Actual=0 Predicted=0
+PREDICTION RecordId=43150 Actual=0 Predicted=0
+PREDICTION RecordId=136813 Actual=0 Predicted=0
+PREDICTION RecordId=168693 Actual=1 Predicted=0
+PREDICTION RecordId=501681 Actual=1 Predicted=0
+PREDICTION RecordId=432447 Actual=0 Predicted=0
+PREDICTION RecordId=126333 Actual=0 Predicted=1
+PREDICTION RecordId=72198 Actual=0 Predicted=0
+PREDICTION RecordId=342471 Actual=0 Predicted=0
+PREDICTION RecordId=384731 Actual=0 Predicted=0
+PREDICTION RecordId=29601 Actual=0 Predicted=0
+PREDICTION RecordId=345253 Actual=1 Predicted=0
+PREDICTION RecordId=371379 Actual=0 Predicted=0
+PREDICTION RecordId=51745 Actual=0 Predicted=0
+PREDICTION RecordId=62537 Actual=1 Predicted=0
+PREDICTION RecordId=444552 Actual=1 Predicted=1
+PREDICTION RecordId=241518 Actual=0 Predicted=0
+PREDICTION RecordId=221382 Actual=1 Predicted=1
+PREDICTION RecordId=207616 Actual=0 Predicted=0
+PREDICTION RecordId=505365 Actual=0 Predicted=0
+PREDICTION RecordId=28287 Actual=0 Predicted=0
+PREDICTION RecordId=500098 Actual=0 Predicted=0
+PREDICTION RecordId=502464 Actual=0 Predicted=0
+PREDICTION RecordId=384087 Actual=0 Predicted=0
+PREDICTION RecordId=49556 Actual=0 Predicted=0
+PREDICTION RecordId=369484 Actual=1 Predicted=0
+PREDICTION RecordId=228726 Actual=0 Predicted=0
+PREDICTION RecordId=229344 Actual=0 Predicted=0
+PREDICTION RecordId=369361 Actual=0 Predicted=0
+PREDICTION RecordId=370551 Actual=0 Predicted=0
+PREDICTION RecordId=222782 Actual=0 Predicted=0
+PREDICTION RecordId=513846 Actual=0 Predicted=0
+PREDICTION RecordId=426757 Actual=0 Predicted=0
+PREDICTION RecordId=316585 Actual=0 Predicted=0
+PREDICTION RecordId=369599 Actual=0 Predicted=0
+PREDICTION RecordId=505890 Actual=0 Predicted=0
+PREDICTION RecordId=120279 Actual=0 Predicted=0
+PREDICTION RecordId=313818 Actual=0 Predicted=0
+PREDICTION RecordId=314079 Actual=0 Predicted=0
+PREDICTION RecordId=373437 Actual=0 Predicted=0
+PREDICTION RecordId=11973 Actual=1 Predicted=1
+PREDICTION RecordId=2409 Actual=1 Predicted=1
+PREDICTION RecordId=379653 Actual=0 Predicted=0
+PREDICTION RecordId=313596 Actual=0 Predicted=0
+PREDICTION RecordId=165288 Actual=0 Predicted=0
+PREDICTION RecordId=390054 Actual=0 Predicted=0
+PREDICTION RecordId=47430 Actual=0 Predicted=0
+PREDICTION RecordId=241119 Actual=0 Predicted=0
+PREDICTION RecordId=28349 Actual=0 Predicted=0
+PREDICTION RecordId=390195 Actual=0 Predicted=0
+PREDICTION RecordId=169546 Actual=0 Predicted=0
+PREDICTION RecordId=378367 Actual=0 Predicted=0
+PREDICTION RecordId=135859 Actual=0 Predicted=0
+PREDICTION RecordId=418668 Actual=0 Predicted=0
+PREDICTION RecordId=101688 Actual=0 Predicted=1
+PREDICTION RecordId=390080 Actual=0 Predicted=0
+PREDICTION RecordId=512638 Actual=1 Predicted=1
+PREDICTION RecordId=382630 Actual=0 Predicted=0
+PREDICTION RecordId=190815 Actual=0 Predicted=0
+PREDICTION RecordId=341803 Actual=0 Predicted=0
+PREDICTION RecordId=129271 Actual=1 Predicted=0
+PREDICTION RecordId=7019 Actual=0 Predicted=0
+PREDICTION RecordId=84296 Actual=0 Predicted=0
+PREDICTION RecordId=390156 Actual=0 Predicted=0
+PREDICTION RecordId=130105 Actual=0 Predicted=1
+PREDICTION RecordId=426348 Actual=1 Predicted=0
+PREDICTION RecordId=84995 Actual=1 Predicted=1
+PREDICTION RecordId=432509 Actual=0 Predicted=0
+PREDICTION RecordId=343484 Actual=0 Predicted=0
+PREDICTION RecordId=503073 Actual=0 Predicted=0
+PREDICTION RecordId=372338 Actual=0 Predicted=0
+PREDICTION RecordId=418587 Actual=1 Predicted=0
+PREDICTION RecordId=211040 Actual=1 Predicted=1
+PREDICTION RecordId=339408 Actual=1 Predicted=1
+PREDICTION RecordId=344666 Actual=1 Predicted=1
+PREDICTION RecordId=913 Actual=0 Predicted=0
+PREDICTION RecordId=119546 Actual=0 Predicted=0
+PREDICTION RecordId=512585 Actual=0 Predicted=0
+PREDICTION RecordId=368474 Actual=1 Predicted=0
+PREDICTION RecordId=44293 Actual=0 Predicted=0
+PREDICTION RecordId=369018 Actual=0 Predicted=0
+PREDICTION RecordId=23201 Actual=1 Predicted=0
+PREDICTION RecordId=50573 Actual=0 Predicted=0
+PREDICTION RecordId=500339 Actual=0 Predicted=0
+PREDICTION RecordId=316250 Actual=0 Predicted=0
+PREDICTION RecordId=313878 Actual=1 Predicted=0
+PREDICTION RecordId=417351 Actual=1 Predicted=0
+PREDICTION RecordId=399999 Actual=0 Predicted=0
+PREDICTION RecordId=376638 Actual=0 Predicted=0
+PREDICTION RecordId=217592 Actual=0 Predicted=0
+PREDICTION RecordId=44628 Actual=0 Predicted=0
+PREDICTION RecordId=393800 Actual=0 Predicted=0
+PREDICTION RecordId=512973 Actual=0 Predicted=0
+PREDICTION RecordId=180278 Actual=0 Predicted=0
+PREDICTION RecordId=372201 Actual=0 Predicted=0
+PREDICTION RecordId=419063 Actual=0 Predicted=0
+PREDICTION RecordId=503186 Actual=1 Predicted=1
+PREDICTION RecordId=147428 Actual=0 Predicted=0
+PREDICTION RecordId=315778 Actual=0 Predicted=1
+PREDICTION RecordId=18853 Actual=0 Predicted=0
+PREDICTION RecordId=414083 Actual=0 Predicted=0
+PREDICTION RecordId=11843 Actual=0 Predicted=0
+PREDICTION RecordId=65313 Actual=1 Predicted=0
+PREDICTION RecordId=428097 Actual=0 Predicted=0
+PREDICTION RecordId=6289 Actual=1 Predicted=0
+PREDICTION RecordId=389923 Actual=0 Predicted=0
+PREDICTION RecordId=162395 Actual=1 Predicted=0
+PREDICTION RecordId=313292 Actual=1 Predicted=1
+PREDICTION RecordId=171375 Actual=0 Predicted=0
+PREDICTION RecordId=37240 Actual=0 Predicted=0
+PREDICTION RecordId=342204 Actual=1 Predicted=0
+PREDICTION RecordId=246733 Actual=0 Predicted=0
+PREDICTION RecordId=170023 Actual=0 Predicted=0
+PREDICTION RecordId=130778 Actual=0 Predicted=0
+PREDICTION RecordId=227760 Actual=1 Predicted=1
+PREDICTION RecordId=40867 Actual=0 Predicted=0
+PREDICTION RecordId=505602 Actual=0 Predicted=0
+PREDICTION RecordId=161605 Actual=0 Predicted=0
+PREDICTION RecordId=240103 Actual=0 Predicted=0
+PREDICTION RecordId=158322 Actual=0 Predicted=0
+PREDICTION RecordId=417572 Actual=0 Predicted=0
+PREDICTION RecordId=77320 Actual=1 Predicted=1
+PREDICTION RecordId=423685 Actual=0 Predicted=0
+PREDICTION RecordId=372315 Actual=0 Predicted=0
+PREDICTION RecordId=102487 Actual=0 Predicted=0
+PREDICTION RecordId=315069 Actual=0 Predicted=0
+PREDICTION RecordId=182582 Actual=0 Predicted=0
+PREDICTION RecordId=506142 Actual=0 Predicted=0
+PREDICTION RecordId=231714 Actual=1 Predicted=0
+PREDICTION RecordId=126540 Actual=1 Predicted=0
+PREDICTION RecordId=119200 Actual=0 Predicted=0
+PREDICTION RecordId=206000 Actual=0 Predicted=1
+PREDICTION RecordId=120162 Actual=1 Predicted=1
+PREDICTION RecordId=373285 Actual=0 Predicted=0
+PREDICTION RecordId=205972 Actual=0 Predicted=0
+PREDICTION RecordId=368260 Actual=0 Predicted=0
+PREDICTION RecordId=25612 Actual=0 Predicted=1
+PREDICTION RecordId=379973 Actual=1 Predicted=0
+PREDICTION RecordId=203013 Actual=1 Predicted=1
+PREDICTION RecordId=400767 Actual=0 Predicted=0
+PREDICTION RecordId=369836 Actual=0 Predicted=0
+PREDICTION RecordId=339968 Actual=0 Predicted=0
+PREDICTION RecordId=40046 Actual=0 Predicted=0
+PREDICTION RecordId=500312 Actual=0 Predicted=0
+PREDICTION RecordId=78469 Actual=0 Predicted=0
+PREDICTION RecordId=315886 Actual=0 Predicted=0
+PREDICTION RecordId=201155 Actual=0 Predicted=0
+PREDICTION RecordId=63412 Actual=1 Predicted=1
+PREDICTION RecordId=416892 Actual=1 Predicted=0
+PREDICTION RecordId=313216 Actual=0 Predicted=1
+PREDICTION RecordId=101865 Actual=1 Predicted=1
+PREDICTION RecordId=370479 Actual=0 Predicted=0
+PREDICTION RecordId=103208 Actual=1 Predicted=1
+PREDICTION RecordId=38801 Actual=1 Predicted=1
+PREDICTION RecordId=145174 Actual=0 Predicted=0
+PREDICTION RecordId=344790 Actual=0 Predicted=0
+PREDICTION RecordId=37277 Actual=0 Predicted=0
+PREDICTION RecordId=149964 Actual=0 Predicted=1
+PREDICTION RecordId=102565 Actual=0 Predicted=0
+PREDICTION RecordId=344368 Actual=0 Predicted=0
+PREDICTION RecordId=244484 Actual=0 Predicted=0
+PREDICTION RecordId=412532 Actual=0 Predicted=0
+PREDICTION RecordId=512913 Actual=0 Predicted=0
+PREDICTION RecordId=372318 Actual=0 Predicted=0
+PREDICTION RecordId=11423 Actual=0 Predicted=0
+PREDICTION RecordId=238884 Actual=0 Predicted=0
+PREDICTION RecordId=433798 Actual=0 Predicted=0
+PREDICTION RecordId=417451 Actual=0 Predicted=0
+PREDICTION RecordId=343978 Actual=0 Predicted=0
+PREDICTION RecordId=431833 Actual=0 Predicted=0
+PREDICTION RecordId=412403 Actual=1 Predicted=1
+PREDICTION RecordId=222811 Actual=1 Predicted=0
+PREDICTION RecordId=313865 Actual=1 Predicted=1
+PREDICTION RecordId=170049 Actual=0 Predicted=0
+PREDICTION RecordId=423089 Actual=0 Predicted=0
+PREDICTION RecordId=512771 Actual=1 Predicted=1
+PREDICTION RecordId=440838 Actual=1 Predicted=0
+PREDICTION RecordId=381645 Actual=0 Predicted=0
+PREDICTION RecordId=227856 Actual=1 Predicted=1
+PREDICTION RecordId=102810 Actual=0 Predicted=0
+PREDICTION RecordId=146500 Actual=0 Predicted=0
+PREDICTION RecordId=341806 Actual=0 Predicted=0
+PREDICTION RecordId=22345 Actual=0 Predicted=0
+PREDICTION RecordId=460061 Actual=0 Predicted=0
+PREDICTION RecordId=315679 Actual=0 Predicted=0
+PREDICTION RecordId=118851 Actual=0 Predicted=0
+PREDICTION RecordId=314466 Actual=0 Predicted=0
+PREDICTION RecordId=343605 Actual=1 Predicted=1
+PREDICTION RecordId=340473 Actual=0 Predicted=0
+PREDICTION RecordId=70926 Actual=0 Predicted=0
+PREDICTION RecordId=56324 Actual=0 Predicted=0
+PREDICTION RecordId=343341 Actual=0 Predicted=0
+PREDICTION RecordId=246983 Actual=0 Predicted=0
+PREDICTION RecordId=44075 Actual=1 Predicted=0
+PREDICTION RecordId=587 Actual=1 Predicted=1
+PREDICTION RecordId=382054 Actual=0 Predicted=0
+PREDICTION RecordId=504880 Actual=0 Predicted=0
+PREDICTION RecordId=101965 Actual=0 Predicted=0
+PREDICTION RecordId=139879 Actual=0 Predicted=0
+PREDICTION RecordId=128505 Actual=0 Predicted=0
+PREDICTION RecordId=394085 Actual=0 Predicted=0
+PREDICTION RecordId=101611 Actual=0 Predicted=0
+PREDICTION RecordId=345777 Actual=0 Predicted=0
+PREDICTION RecordId=402068 Actual=1 Predicted=1
+PREDICTION RecordId=52418 Actual=0 Predicted=0
+PREDICTION RecordId=376876 Actual=0 Predicted=0
+PREDICTION RecordId=415771 Actual=0 Predicted=0
+PREDICTION RecordId=174391 Actual=0 Predicted=0
+PREDICTION RecordId=66807 Actual=0 Predicted=0
+PREDICTION RecordId=423604 Actual=0 Predicted=0
+PREDICTION RecordId=440678 Actual=0 Predicted=0
+PREDICTION RecordId=344452 Actual=0 Predicted=0
+PREDICTION RecordId=370771 Actual=0 Predicted=0
+PREDICTION RecordId=264098 Actual=0 Predicted=0
+PREDICTION RecordId=14794 Actual=0 Predicted=0
+PREDICTION RecordId=194995 Actual=0 Predicted=0
+PREDICTION RecordId=502306 Actual=0 Predicted=0
+PREDICTION RecordId=49736 Actual=0 Predicted=0
+PREDICTION RecordId=500316 Actual=0 Predicted=0
+PREDICTION RecordId=223411 Actual=0 Predicted=0
+PREDICTION RecordId=384861 Actual=0 Predicted=0
+PREDICTION RecordId=261080 Actual=0 Predicted=0
+PREDICTION RecordId=77527 Actual=0 Predicted=0
+PREDICTION RecordId=17553 Actual=0 Predicted=0
+PREDICTION RecordId=342381 Actual=0 Predicted=0
+PREDICTION RecordId=340545 Actual=0 Predicted=0
+PREDICTION RecordId=501591 Actual=0 Predicted=0
+PREDICTION RecordId=73297 Actual=1 Predicted=1
+PREDICTION RecordId=340799 Actual=0 Predicted=0
+PREDICTION RecordId=315566 Actual=0 Predicted=0
+PREDICTION RecordId=343661 Actual=1 Predicted=1
+PREDICTION RecordId=368318 Actual=0 Predicted=0
+PREDICTION RecordId=500830 Actual=0 Predicted=0
+PREDICTION RecordId=253681 Actual=0 Predicted=0
+PREDICTION RecordId=262665 Actual=0 Predicted=0
+PREDICTION RecordId=503161 Actual=0 Predicted=0
+PREDICTION RecordId=427883 Actual=1 Predicted=1
+PREDICTION RecordId=41029 Actual=0 Predicted=1
+PREDICTION RecordId=372875 Actual=0 Predicted=0
+PREDICTION RecordId=501306 Actual=0 Predicted=0
+PREDICTION RecordId=254553 Actual=0 Predicted=0
+PREDICTION RecordId=32144 Actual=0 Predicted=0
+PREDICTION RecordId=368859 Actual=0 Predicted=0
+PREDICTION RecordId=380563 Actual=0 Predicted=0
+PREDICTION RecordId=345500 Actual=0 Predicted=0
+PREDICTION RecordId=415840 Actual=0 Predicted=0
+PREDICTION RecordId=91807 Actual=0 Predicted=0
+PREDICTION RecordId=416451 Actual=0 Predicted=0
+PREDICTION RecordId=171904 Actual=1 Predicted=1
+PREDICTION RecordId=505795 Actual=0 Predicted=0
+PREDICTION RecordId=418834 Actual=0 Predicted=0
+PREDICTION RecordId=501655 Actual=0 Predicted=1
+PREDICTION RecordId=73223 Actual=1 Predicted=1
+PREDICTION RecordId=79393 Actual=1 Predicted=1
+PREDICTION RecordId=426505 Actual=0 Predicted=0
+PREDICTION RecordId=240497 Actual=0 Predicted=0
+PREDICTION RecordId=83111 Actual=0 Predicted=1
+PREDICTION RecordId=368983 Actual=0 Predicted=0
+PREDICTION RecordId=160768 Actual=0 Predicted=0
+PREDICTION RecordId=503209 Actual=1 Predicted=0
+PREDICTION RecordId=412342 Actual=0 Predicted=0
+PREDICTION RecordId=231030 Actual=0 Predicted=0
+PREDICTION RecordId=503730 Actual=0 Predicted=0
+PREDICTION RecordId=501397 Actual=0 Predicted=0
+PREDICTION RecordId=435888 Actual=0 Predicted=0
+PREDICTION RecordId=370190 Actual=0 Predicted=0
+PREDICTION RecordId=195074 Actual=0 Predicted=0
+PREDICTION RecordId=159626 Actual=1 Predicted=1
+PREDICTION RecordId=313710 Actual=0 Predicted=0
+PREDICTION RecordId=345144 Actual=0 Predicted=0
+PREDICTION RecordId=313527 Actual=0 Predicted=0
+PREDICTION RecordId=434992 Actual=1 Predicted=1
+PREDICTION RecordId=262133 Actual=0 Predicted=0
+PREDICTION RecordId=371969 Actual=0 Predicted=0
+PREDICTION RecordId=409041 Actual=0 Predicted=0
+PREDICTION RecordId=57992 Actual=1 Predicted=1
+PREDICTION RecordId=174801 Actual=0 Predicted=0
+PREDICTION RecordId=370161 Actual=0 Predicted=0
+PREDICTION RecordId=500751 Actual=0 Predicted=0
+PREDICTION RecordId=371146 Actual=1 Predicted=1
+PREDICTION RecordId=120679 Actual=1 Predicted=1
+PREDICTION RecordId=196766 Actual=0 Predicted=0
+PREDICTION RecordId=373255 Actual=0 Predicted=0
+PREDICTION RecordId=342145 Actual=1 Predicted=1
+PREDICTION RecordId=369103 Actual=0 Predicted=0
+PREDICTION RecordId=193364 Actual=0 Predicted=0
+PREDICTION RecordId=181175 Actual=1 Predicted=1
+PREDICTION RecordId=505724 Actual=0 Predicted=0
+PREDICTION RecordId=458522 Actual=0 Predicted=0
+PREDICTION RecordId=217593 Actual=0 Predicted=0
+PREDICTION RecordId=232082 Actual=0 Predicted=0
+PREDICTION RecordId=175820 Actual=1 Predicted=1
+PREDICTION RecordId=513699 Actual=0 Predicted=0
+PREDICTION RecordId=458235 Actual=0 Predicted=0
+PREDICTION RecordId=242592 Actual=0 Predicted=0
+PREDICTION RecordId=252244 Actual=0 Predicted=0
+PREDICTION RecordId=370308 Actual=0 Predicted=0
+PREDICTION RecordId=180524 Actual=0 Predicted=0
+PREDICTION RecordId=193995 Actual=0 Predicted=1
+PREDICTION RecordId=239877 Actual=0 Predicted=1
+PREDICTION RecordId=66115 Actual=0 Predicted=0
+PREDICTION RecordId=314214 Actual=1 Predicted=0
+PREDICTION RecordId=130963 Actual=0 Predicted=0
+PREDICTION RecordId=119836 Actual=0 Predicted=0
+PREDICTION RecordId=454612 Actual=0 Predicted=0
+PREDICTION RecordId=188454 Actual=0 Predicted=0
+PREDICTION RecordId=381014 Actual=0 Predicted=0
+PREDICTION RecordId=171379 Actual=0 Predicted=0
+PREDICTION RecordId=372772 Actual=0 Predicted=0
+PREDICTION RecordId=405020 Actual=0 Predicted=0
+PREDICTION RecordId=176311 Actual=0 Predicted=0
+PREDICTION RecordId=413914 Actual=0 Predicted=0
+PREDICTION RecordId=120800 Actual=0 Predicted=0
+PREDICTION RecordId=91429 Actual=1 Predicted=0
+PREDICTION RecordId=504775 Actual=0 Predicted=0
+PREDICTION RecordId=312837 Actual=1 Predicted=0
+PREDICTION RecordId=417208 Actual=0 Predicted=0
+PREDICTION RecordId=315780 Actual=0 Predicted=0
+PREDICTION RecordId=103019 Actual=0 Predicted=0
+PREDICTION RecordId=316410 Actual=0 Predicted=0
+PREDICTION RecordId=435512 Actual=0 Predicted=0
+PREDICTION RecordId=314690 Actual=1 Predicted=1
+PREDICTION RecordId=373391 Actual=0 Predicted=0
+PREDICTION RecordId=183160 Actual=0 Predicted=0
+PREDICTION RecordId=121082 Actual=0 Predicted=0
+PREDICTION RecordId=339754 Actual=0 Predicted=0
+PREDICTION RecordId=341400 Actual=0 Predicted=0
+PREDICTION RecordId=316603 Actual=0 Predicted=1
+PREDICTION RecordId=222662 Actual=0 Predicted=0
+PREDICTION RecordId=234535 Actual=0 Predicted=0
+PREDICTION RecordId=315910 Actual=0 Predicted=0
+PREDICTION RecordId=379400 Actual=0 Predicted=0
+PREDICTION RecordId=195104 Actual=0 Predicted=0
+PREDICTION RecordId=184291 Actual=0 Predicted=0
+PREDICTION RecordId=131625 Actual=0 Predicted=0
+PREDICTION RecordId=236130 Actual=0 Predicted=0
+PREDICTION RecordId=156789 Actual=0 Predicted=0
+PREDICTION RecordId=143650 Actual=0 Predicted=1
+PREDICTION RecordId=224683 Actual=0 Predicted=0
+PREDICTION RecordId=255605 Actual=0 Predicted=0
+PREDICTION RecordId=343931 Actual=0 Predicted=0
+PREDICTION RecordId=416042 Actual=0 Predicted=0
+PREDICTION RecordId=412706 Actual=0 Predicted=0
+PREDICTION RecordId=47219 Actual=0 Predicted=0
+PREDICTION RecordId=120524 Actual=0 Predicted=0
+PREDICTION RecordId=258907 Actual=0 Predicted=0
+PREDICTION RecordId=82671 Actual=0 Predicted=0
+PREDICTION RecordId=440138 Actual=0 Predicted=0
+PREDICTION RecordId=512671 Actual=0 Predicted=0
+PREDICTION RecordId=28290 Actual=0 Predicted=0
+PREDICTION RecordId=75944 Actual=1 Predicted=1
+PREDICTION RecordId=103271 Actual=1 Predicted=1
+PREDICTION RecordId=23050 Actual=0 Predicted=0
+PREDICTION RecordId=457684 Actual=0 Predicted=0
+PREDICTION RecordId=427905 Actual=0 Predicted=0
+PREDICTION RecordId=172495 Actual=0 Predicted=0
+PREDICTION RecordId=237087 Actual=0 Predicted=0
+PREDICTION RecordId=38955 Actual=0 Predicted=0
+PREDICTION RecordId=505669 Actual=0 Predicted=0
+PREDICTION RecordId=505147 Actual=0 Predicted=0
+PREDICTION RecordId=121296 Actual=0 Predicted=0
+PREDICTION RecordId=440819 Actual=0 Predicted=0
+PREDICTION RecordId=514119 Actual=0 Predicted=0
+PREDICTION RecordId=188451 Actual=0 Predicted=0
+PREDICTION RecordId=195696 Actual=1 Predicted=1
+PREDICTION RecordId=371323 Actual=1 Predicted=0
+PREDICTION RecordId=340294 Actual=0 Predicted=1
+PREDICTION RecordId=168456 Actual=0 Predicted=0
+PREDICTION RecordId=86120 Actual=1 Predicted=1
+PREDICTION RecordId=370741 Actual=1 Predicted=1
+PREDICTION RecordId=462762 Actual=0 Predicted=0
+PREDICTION RecordId=512994 Actual=0 Predicted=0
+PREDICTION RecordId=69918 Actual=1 Predicted=1
+PREDICTION RecordId=459354 Actual=0 Predicted=0
+PREDICTION RecordId=240653 Actual=0 Predicted=0
+PREDICTION RecordId=442386 Actual=1 Predicted=0
+PREDICTION RecordId=344986 Actual=0 Predicted=0
+PREDICTION RecordId=15284 Actual=1 Predicted=1
+PREDICTION RecordId=393840 Actual=0 Predicted=0
+PREDICTION RecordId=316368 Actual=0 Predicted=0
+PREDICTION RecordId=3253 Actual=0 Predicted=0
+PREDICTION RecordId=188379 Actual=0 Predicted=0
+PREDICTION RecordId=505842 Actual=0 Predicted=0
+PREDICTION RecordId=425529 Actual=1 Predicted=1
+PREDICTION RecordId=500889 Actual=0 Predicted=0
+PREDICTION RecordId=372444 Actual=0 Predicted=0
+PREDICTION RecordId=412685 Actual=0 Predicted=1
+PREDICTION RecordId=118904 Actual=0 Predicted=0
+PREDICTION RecordId=180729 Actual=0 Predicted=0
+PREDICTION RecordId=372075 Actual=0 Predicted=0
+PREDICTION RecordId=168863 Actual=0 Predicted=0
+PREDICTION RecordId=493690 Actual=0 Predicted=0
+PREDICTION RecordId=369950 Actual=0 Predicted=0
+PREDICTION RecordId=368794 Actual=0 Predicted=1
+PREDICTION RecordId=41947 Actual=1 Predicted=0
+PREDICTION RecordId=259829 Actual=0 Predicted=0
+PREDICTION RecordId=202085 Actual=1 Predicted=1
+PREDICTION RecordId=101661 Actual=0 Predicted=0
+PREDICTION RecordId=513996 Actual=0 Predicted=0
+PREDICTION RecordId=198124 Actual=1 Predicted=1
+PREDICTION RecordId=368274 Actual=0 Predicted=0
+PREDICTION RecordId=340066 Actual=1 Predicted=1
+PREDICTION RecordId=241174 Actual=1 Predicted=1
+PREDICTION RecordId=25928 Actual=0 Predicted=1
+PREDICTION RecordId=367911 Actual=1 Predicted=1
+PREDICTION RecordId=500888 Actual=0 Predicted=0
+PREDICTION RecordId=18612 Actual=0 Predicted=0
+PREDICTION RecordId=368319 Actual=0 Predicted=0
+PREDICTION RecordId=460123 Actual=0 Predicted=0
+PREDICTION RecordId=223562 Actual=1 Predicted=0
+PREDICTION RecordId=245638 Actual=0 Predicted=0
+PREDICTION RecordId=102463 Actual=0 Predicted=0
+PREDICTION RecordId=83349 Actual=0 Predicted=0
+PREDICTION RecordId=164169 Actual=0 Predicted=0
+PREDICTION RecordId=187170 Actual=1 Predicted=1
+PREDICTION RecordId=368001 Actual=1 Predicted=1
+PREDICTION RecordId=153582 Actual=0 Predicted=0
+PREDICTION RecordId=127906 Actual=0 Predicted=0
+PREDICTION RecordId=36598 Actual=0 Predicted=0
+PREDICTION RecordId=440009 Actual=0 Predicted=0
+PREDICTION RecordId=244528 Actual=1 Predicted=0
+PREDICTION RecordId=28380 Actual=1 Predicted=0
+PREDICTION RecordId=12986 Actual=1 Predicted=0
+PREDICTION RecordId=139550 Actual=0 Predicted=0
+PREDICTION RecordId=345948 Actual=1 Predicted=1
+PREDICTION RecordId=394472 Actual=0 Predicted=0
+PREDICTION RecordId=443328 Actual=0 Predicted=0
+PREDICTION RecordId=120988 Actual=0 Predicted=0
+PREDICTION RecordId=373572 Actual=0 Predicted=0
+PREDICTION RecordId=168508 Actual=0 Predicted=0
+PREDICTION RecordId=240607 Actual=1 Predicted=1
+PREDICTION RecordId=423157 Actual=1 Predicted=1
+PREDICTION RecordId=338840 Actual=0 Predicted=0
+PREDICTION RecordId=14894 Actual=0 Predicted=0
+PREDICTION RecordId=338897 Actual=0 Predicted=0
+PREDICTION RecordId=406552 Actual=0 Predicted=0
+PREDICTION RecordId=369389 Actual=0 Predicted=0
+PREDICTION RecordId=500351 Actual=1 Predicted=0
+PREDICTION RecordId=255071 Actual=0 Predicted=0
+PREDICTION RecordId=339461 Actual=0 Predicted=0
+PREDICTION RecordId=139932 Actual=0 Predicted=0
+PREDICTION RecordId=408168 Actual=1 Predicted=1
+PREDICTION RecordId=341875 Actual=0 Predicted=0
+PREDICTION RecordId=2322 Actual=0 Predicted=0
+PREDICTION RecordId=239449 Actual=1 Predicted=1
+PREDICTION RecordId=404601 Actual=0 Predicted=0
+PREDICTION RecordId=119338 Actual=0 Predicted=0
+PREDICTION RecordId=316164 Actual=0 Predicted=0
+PREDICTION RecordId=343064 Actual=0 Predicted=0
+PREDICTION RecordId=505709 Actual=0 Predicted=0
+PREDICTION RecordId=427327 Actual=0 Predicted=0
+PREDICTION RecordId=202826 Actual=0 Predicted=0
+PREDICTION RecordId=339395 Actual=0 Predicted=0
+PREDICTION RecordId=344774 Actual=0 Predicted=0
+PREDICTION RecordId=136859 Actual=0 Predicted=0
+PREDICTION RecordId=443306 Actual=0 Predicted=0
+PREDICTION RecordId=403156 Actual=0 Predicted=0
+PREDICTION RecordId=128640 Actual=0 Predicted=0
+PREDICTION RecordId=135487 Actual=0 Predicted=0
+PREDICTION RecordId=513351 Actual=0 Predicted=0
+PREDICTION RecordId=120491 Actual=0 Predicted=0
+PREDICTION RecordId=417491 Actual=0 Predicted=0
+PREDICTION RecordId=381771 Actual=0 Predicted=0
+PREDICTION RecordId=500290 Actual=0 Predicted=0
+PREDICTION RecordId=383298 Actual=0 Predicted=0
+PREDICTION RecordId=163954 Actual=0 Predicted=0
+PREDICTION RecordId=339217 Actual=0 Predicted=0
+PREDICTION RecordId=143682 Actual=0 Predicted=0
+PREDICTION RecordId=343083 Actual=0 Predicted=0
+PREDICTION RecordId=126214 Actual=0 Predicted=0
+PREDICTION RecordId=345415 Actual=0 Predicted=0
+PREDICTION RecordId=57705 Actual=0 Predicted=0
+PREDICTION RecordId=314691 Actual=0 Predicted=0
+PREDICTION RecordId=166394 Actual=0 Predicted=0
+PREDICTION RecordId=236974 Actual=0 Predicted=0
+PREDICTION RecordId=4698 Actual=0 Predicted=0
+PREDICTION RecordId=314475 Actual=0 Predicted=0
+PREDICTION RecordId=169902 Actual=1 Predicted=0
+PREDICTION RecordId=316543 Actual=0 Predicted=0
+PREDICTION RecordId=245052 Actual=1 Predicted=1
+PREDICTION RecordId=504447 Actual=0 Predicted=1
+PREDICTION RecordId=434188 Actual=0 Predicted=0
+PREDICTION RecordId=417204 Actual=1 Predicted=1
+PREDICTION RecordId=342389 Actual=0 Predicted=0
+PREDICTION RecordId=422476 Actual=0 Predicted=0
+PREDICTION RecordId=87680 Actual=0 Predicted=0
+PREDICTION RecordId=127388 Actual=0 Predicted=0
+PREDICTION RecordId=379019 Actual=1 Predicted=1
+PREDICTION RecordId=223349 Actual=0 Predicted=1
+PREDICTION RecordId=102642 Actual=0 Predicted=0
+PREDICTION RecordId=15499 Actual=0 Predicted=0
+PREDICTION RecordId=369054 Actual=0 Predicted=0
+PREDICTION RecordId=90989 Actual=1 Predicted=1
+PREDICTION RecordId=121408 Actual=0 Predicted=0
+PREDICTION RecordId=422678 Actual=1 Predicted=1
+PREDICTION RecordId=433913 Actual=0 Predicted=0
+PREDICTION RecordId=21529 Actual=0 Predicted=1
+PREDICTION RecordId=316210 Actual=0 Predicted=0
+PREDICTION RecordId=436589 Actual=0 Predicted=0
+PREDICTION RecordId=228261 Actual=0 Predicted=0
+PREDICTION RecordId=504101 Actual=0 Predicted=0
+PREDICTION RecordId=27144 Actual=0 Predicted=0
+PREDICTION RecordId=176855 Actual=0 Predicted=0
+PREDICTION RecordId=341264 Actual=0 Predicted=0
+PREDICTION RecordId=178555 Actual=0 Predicted=0
+PREDICTION RecordId=242814 Actual=0 Predicted=0
+PREDICTION RecordId=423656 Actual=0 Predicted=0
+PREDICTION RecordId=343124 Actual=1 Predicted=0
+PREDICTION RecordId=344500 Actual=1 Predicted=0
+PREDICTION RecordId=47085 Actual=1 Predicted=1
+PREDICTION RecordId=158528 Actual=1 Predicted=1
+PREDICTION RecordId=340080 Actual=0 Predicted=0
+PREDICTION RecordId=119588 Actual=1 Predicted=1
+PREDICTION RecordId=50663 Actual=0 Predicted=0
+PREDICTION RecordId=505977 Actual=0 Predicted=0
+PREDICTION RecordId=140740 Actual=0 Predicted=0
+PREDICTION RecordId=194735 Actual=0 Predicted=0
+PREDICTION RecordId=261182 Actual=0 Predicted=1
+PREDICTION RecordId=504664 Actual=0 Predicted=0
+PREDICTION RecordId=49089 Actual=0 Predicted=0
+PREDICTION RecordId=344814 Actual=0 Predicted=0
+PREDICTION RecordId=435318 Actual=1 Predicted=1
+PREDICTION RecordId=338742 Actual=0 Predicted=0
+PREDICTION RecordId=139010 Actual=0 Predicted=0
+PREDICTION RecordId=372359 Actual=0 Predicted=0
+PREDICTION RecordId=209768 Actual=1 Predicted=1
+PREDICTION RecordId=165915 Actual=0 Predicted=0
+PREDICTION RecordId=504618 Actual=0 Predicted=0
+PREDICTION RecordId=1603 Actual=0 Predicted=0
+PREDICTION RecordId=47698 Actual=0 Predicted=0
+PREDICTION RecordId=148861 Actual=0 Predicted=0
+PREDICTION RecordId=70543 Actual=1 Predicted=1
+PREDICTION RecordId=153193 Actual=0 Predicted=0
+PREDICTION RecordId=417314 Actual=0 Predicted=0
+PREDICTION RecordId=339534 Actual=0 Predicted=0
+PREDICTION RecordId=343860 Actual=0 Predicted=0
+PREDICTION RecordId=442811 Actual=0 Predicted=0
+PREDICTION RecordId=441042 Actual=1 Predicted=1
+PREDICTION RecordId=514133 Actual=0 Predicted=0
+PREDICTION RecordId=423673 Actual=0 Predicted=0
+PREDICTION RecordId=513251 Actual=0 Predicted=0
+PREDICTION RecordId=383519 Actual=0 Predicted=0
+PREDICTION RecordId=198897 Actual=0 Predicted=0
+PREDICTION RecordId=152938 Actual=0 Predicted=0
+PREDICTION RecordId=505383 Actual=0 Predicted=0
+PREDICTION RecordId=513403 Actual=1 Predicted=1
+PREDICTION RecordId=457307 Actual=0 Predicted=0
+PREDICTION RecordId=44930 Actual=1 Predicted=1
+PREDICTION RecordId=144667 Actual=1 Predicted=1
+PREDICTION RecordId=69807 Actual=0 Predicted=0
+PREDICTION RecordId=422577 Actual=1 Predicted=1
+PREDICTION RecordId=371431 Actual=0 Predicted=0
+PREDICTION RecordId=503920 Actual=0 Predicted=0
+PREDICTION RecordId=260698 Actual=0 Predicted=0
+PREDICTION RecordId=345610 Actual=0 Predicted=0
+PREDICTION RecordId=500541 Actual=0 Predicted=0
+PREDICTION RecordId=21902 Actual=0 Predicted=0
+PREDICTION RecordId=505367 Actual=0 Predicted=0
+PREDICTION RecordId=121243 Actual=0 Predicted=0
+PREDICTION RecordId=342838 Actual=0 Predicted=0
+PREDICTION RecordId=21843 Actual=1 Predicted=1
+PREDICTION RecordId=344391 Actual=0 Predicted=0
+PREDICTION RecordId=160138 Actual=0 Predicted=0
+PREDICTION RecordId=504788 Actual=0 Predicted=0
+PREDICTION RecordId=314126 Actual=1 Predicted=1
+PREDICTION RecordId=5570 Actual=1 Predicted=1
+PREDICTION RecordId=61092 Actual=0 Predicted=0
+PREDICTION RecordId=340518 Actual=0 Predicted=0
+PREDICTION RecordId=101536 Actual=0 Predicted=0
+PREDICTION RecordId=120626 Actual=0 Predicted=0
+PREDICTION RecordId=103106 Actual=1 Predicted=1
+PREDICTION RecordId=372936 Actual=1 Predicted=0
+PREDICTION RecordId=460246 Actual=0 Predicted=0
+PREDICTION RecordId=101418 Actual=0 Predicted=0
+
+Distributed Spark KNN completed successfully.
+2026-08-14 13:37:29,807 INFO broadcast.TorrentBroadcast: Destroying Broadcast(7) (from destroy at SparkKNN.scala:1151)
+2026-08-14 13:37:29,808 INFO rdd.MapPartitionsRDD: Removing RDD 20 from persistence list
+2026-08-14 13:37:29,808 INFO storage.BlockManagerInfo: Removed broadcast_7_piece0 on 10.110.207.214:65366 in memory (size: 35.6 KiB, free: 413.7 MiB)
+2026-08-14 13:37:29,811 INFO storage.BlockManager: Removing RDD 20
+2026-08-14 13:37:29,825 INFO server.AbstractConnector: Stopped Spark@588f63c{HTTP/1.1, (http/1.1)}{0.0.0.0:4040}
+2026-08-14 13:37:29,827 INFO ui.SparkUI: Stopped Spark web UI at http://10.110.207.214:4040
+2026-08-14 13:37:29,838 INFO spark.MapOutputTrackerMasterEndpoint: MapOutputTrackerMasterEndpoint stopped!
+2026-08-14 13:37:29,855 INFO memory.MemoryStore: MemoryStore cleared
+2026-08-14 13:37:29,856 INFO storage.BlockManager: BlockManager stopped
+2026-08-14 13:37:29,857 INFO storage.BlockManagerMaster: BlockManagerMaster stopped
+2026-08-14 13:37:29,858 INFO scheduler.OutputCommitCoordinator$OutputCommitCoordinatorEndpoint: OutputCommitCoordinator stopped!
+2026-08-14 13:37:29,864 INFO spark.SparkContext: Successfully stopped SparkContext
+2026-08-14 13:37:29,866 INFO util.ShutdownHookManager: Shutdown hook called
+2026-08-14 13:37:29,866 INFO util.ShutdownHookManager: Deleting directory /private/var/folders/7t/jsjm7cp539576dt_scs5w6c40000gn/T/spark-c50a15cf-6ceb-4624-aed9-47f4224d5229
+2026-08-14 13:37:29,870 INFO util.ShutdownHookManager: Deleting directory /private/var/folders/7t/jsjm7cp539576dt_scs5w6c40000gn/T/spark-40d61df9-0e41-4010-a38a-cb832b04b758

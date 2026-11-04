@@ -1,0 +1,19 @@
+FINAL HELD-OUT DECEMBER TEST
+
+Training sample: 5808482
+Evaluation sample: 1000
+K: 5
+Distance comparisons: 5808482000
+
+Spark KNN runtime: 91.3559 seconds
+
+True Negative: 755
+False Positive: 23
+False Negative: 59
+True Positive: 163
+
+Accuracy: 0.9180
+Precision: 0.8763
+Recall: 0.7342
+F1 Score: 0.7990
+Baseline accuracy: 0.7780

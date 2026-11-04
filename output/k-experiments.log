@@ -1,0 +1,1743 @@
+mvn clean package
+[INFO] Scanning for projects...
+[INFO] 
+[INFO] -------------------------< cs6240:spark-demo >--------------------------
+[INFO] Building spark-demo 1.0
+[INFO]   from pom.xml
+[INFO] --------------------------------[ jar ]---------------------------------
+[WARNING] 2 problems were encountered while building the effective model for org.apache.yetus:audience-annotations:jar:0.5.0 during dependency collection step for project (use -X to see details)
+[INFO] 
+[INFO] --- clean:3.2.0:clean (default-clean) @ spark-demo ---
+[INFO] Deleting /Users/prabeshnepal/Desktop/LSPDP/final_project/target
+[INFO] 
+[INFO] --- resources:3.4.0:resources (default-resources) @ spark-demo ---
+[WARNING] Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+[INFO] Copying 1 resource from src/main/resources to target/classes
+[INFO] 
+[INFO] --- compiler:3.15.0:compile (default-compile) @ spark-demo ---
+[INFO] Nothing to compile - all classes are up to date.
+[INFO] 
+[INFO] --- scala:3.3.1:compile (default) @ spark-demo ---
+[WARNING]  Expected all dependencies to require Scala version: 2.12.17
+[WARNING]  cs6240:spark-demo:1.0 requires scala version: 2.12.17
+[WARNING]  com.twitter:chill_2.12:0.10.0 requires scala version: 2.12.14
+[WARNING] Multiple versions of scala libraries detected!
+[INFO] /Users/prabeshnepal/Desktop/LSPDP/final_project/src/main/scala:-1: info: compiling
+[INFO] /Users/prabeshnepal/Desktop/LSPDP/final_project/target/generated-sources/annotations:-1: info: compiling
+[INFO] Compiling 2 source files to /Users/prabeshnepal/Desktop/LSPDP/final_project/target/classes at 1786658304157
+[INFO] prepare-compile in 0 s
+[INFO] compile in 2 s
+[INFO] 
+[INFO] --- resources:3.4.0:testResources (default-testResources) @ spark-demo ---
+[WARNING] Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+[INFO] skip non existing resourceDirectory /Users/prabeshnepal/Desktop/LSPDP/final_project/src/test/resources
+[INFO] 
+[INFO] --- compiler:3.15.0:testCompile (default-testCompile) @ spark-demo ---
+[INFO] No sources to compile
+[INFO] 
+[INFO] --- surefire:3.5.4:test (default-test) @ spark-demo ---
+[INFO] No tests to run.
+[INFO] 
+[INFO] --- jar:3.5.0:jar (default-jar) @ spark-demo ---
+[INFO] Building jar: /Users/prabeshnepal/Desktop/LSPDP/final_project/target/spark-demo-1.0.jar
+[INFO] 
+[INFO] --- shade:3.1.0:shade (default) @ spark-demo ---
+[INFO] Replacing original artifact with shaded artifact.
+[INFO] Replacing /Users/prabeshnepal/Desktop/LSPDP/final_project/target/spark-demo-1.0.jar with /Users/prabeshnepal/Desktop/LSPDP/final_project/target/spark-demo-1.0-shaded.jar
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD SUCCESS
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  5.084 s
+[INFO] Finished at: 2026-08-13T17:58:27-04:00
+[INFO] ------------------------------------------------------------------------
+cp target/spark-demo-1.0.jar spark-demo.jar
+
+========================================
+Sequential KNN Experiment
+Train Size = 10000
+Test Size  = 1000
+K          = 1
+========================================
+spark-submit \
+		--class knn.SequentialKNN \
+		--master local[4] \
+		--name "KNN Flight Delay" \
+		spark-demo.jar \
+		data/processed/train.parquet \
+		data/processed/test.parquet \
+		10000 \
+		1000 \
+		1
+2026-08-13 17:58:28,056 WARN util.Utils: Your hostname, Prabeshs-MacBook-Air.local resolves to a loopback address: 127.0.0.1; using 10.110.254.114 instead (on interface en0)
+2026-08-13 17:58:28,056 WARN util.Utils: Set SPARK_LOCAL_IP if you need to bind to another address
+2026-08-13 17:58:28,281 INFO spark.SparkContext: Running Spark version 3.3.2
+2026-08-13 17:58:28,349 WARN util.NativeCodeLoader: Unable to load native-hadoop library for your platform... using builtin-java classes where applicable
+2026-08-13 17:58:28,398 INFO resource.ResourceUtils: ==============================================================
+2026-08-13 17:58:28,399 INFO resource.ResourceUtils: No custom resources configured for spark.driver.
+2026-08-13 17:58:28,399 INFO resource.ResourceUtils: ==============================================================
+2026-08-13 17:58:28,399 INFO spark.SparkContext: Submitted application: Sequential KNN
+2026-08-13 17:58:28,415 INFO resource.ResourceProfile: Default ResourceProfile created, executor resources: Map(cores -> name: cores, amount: 1, script: , vendor: , memory -> name: memory, amount: 1024, script: , vendor: , offHeap -> name: offHeap, amount: 0, script: , vendor: ), task resources: Map(cpus -> name: cpus, amount: 1.0)
+2026-08-13 17:58:28,424 INFO resource.ResourceProfile: Limiting resource is cpu
+2026-08-13 17:58:28,425 INFO resource.ResourceProfileManager: Added ResourceProfile id: 0
+2026-08-13 17:58:28,462 INFO spark.SecurityManager: Changing view acls to: prabeshnepal
+2026-08-13 17:58:28,462 INFO spark.SecurityManager: Changing modify acls to: prabeshnepal
+2026-08-13 17:58:28,462 INFO spark.SecurityManager: Changing view acls groups to: 
+2026-08-13 17:58:28,462 INFO spark.SecurityManager: Changing modify acls groups to: 
+2026-08-13 17:58:28,462 INFO spark.SecurityManager: SecurityManager: authentication disabled; ui acls disabled; users  with view permissions: Set(prabeshnepal); groups with view permissions: Set(); users  with modify permissions: Set(prabeshnepal); groups with modify permissions: Set()
+2026-08-13 17:58:28,615 INFO util.Utils: Successfully started service 'sparkDriver' on port 57576.
+2026-08-13 17:58:28,632 INFO spark.SparkEnv: Registering MapOutputTracker
+2026-08-13 17:58:28,654 INFO spark.SparkEnv: Registering BlockManagerMaster
+2026-08-13 17:58:28,666 INFO storage.BlockManagerMasterEndpoint: Using org.apache.spark.storage.DefaultTopologyMapper for getting topology information
+2026-08-13 17:58:28,666 INFO storage.BlockManagerMasterEndpoint: BlockManagerMasterEndpoint up
+2026-08-13 17:58:28,668 INFO spark.SparkEnv: Registering BlockManagerMasterHeartbeat
+2026-08-13 17:58:28,683 INFO storage.DiskBlockManager: Created local directory at /private/var/folders/7t/jsjm7cp539576dt_scs5w6c40000gn/T/blockmgr-5d950a5b-0e02-4845-bfec-09b001cda65d
+2026-08-13 17:58:28,693 INFO memory.MemoryStore: MemoryStore started with capacity 434.4 MiB
+2026-08-13 17:58:28,702 INFO spark.SparkEnv: Registering OutputCommitCoordinator
+2026-08-13 17:58:28,731 INFO util.log: Logging initialized @1496ms to org.sparkproject.jetty.util.log.Slf4jLog
+2026-08-13 17:58:28,808 INFO server.Server: jetty-9.4.48.v20220622; built: 2022-06-21T20:42:25.880Z; git: 6b67c5719d1f4371b33655ff2d047d24e171e49a; jvm 11.0.24+7-LTS-271
+2026-08-13 17:58:28,818 INFO server.Server: Started @1584ms
+2026-08-13 17:58:28,840 INFO server.AbstractConnector: Started ServerConnector@7ecec90d{HTTP/1.1, (http/1.1)}{0.0.0.0:4040}
+2026-08-13 17:58:28,840 INFO util.Utils: Successfully started service 'SparkUI' on port 4040.
+2026-08-13 17:58:28,850 INFO handler.ContextHandler: Started o.s.j.s.ServletContextHandler@5d2828c9{/,null,AVAILABLE,@Spark}
+2026-08-13 17:58:28,859 INFO spark.SparkContext: Added JAR file:/Users/prabeshnepal/Desktop/LSPDP/final_project/spark-demo.jar at spark://10.110.254.114:57576/jars/spark-demo.jar with timestamp 1786658308277
+2026-08-13 17:58:28,926 INFO executor.Executor: Starting executor ID driver on host 10.110.254.114
+2026-08-13 17:58:28,930 INFO executor.Executor: Starting executor with user classpath (userClassPathFirst = false): ''
+2026-08-13 17:58:28,935 INFO executor.Executor: Fetching spark://10.110.254.114:57576/jars/spark-demo.jar with timestamp 1786658308277
+2026-08-13 17:58:28,959 INFO client.TransportClientFactory: Successfully created connection to /10.110.254.114:57576 after 13 ms (0 ms spent in bootstraps)
+2026-08-13 17:58:28,963 INFO util.Utils: Fetching spark://10.110.254.114:57576/jars/spark-demo.jar to /private/var/folders/7t/jsjm7cp539576dt_scs5w6c40000gn/T/spark-4cc07376-1b30-4835-a2ab-7ee2b4b8695a/userFiles-186fef02-59da-4d65-81c2-f7db1613e1fe/fetchFileTemp11832737513752825183.tmp
+2026-08-13 17:58:28,984 INFO executor.Executor: Adding file:/private/var/folders/7t/jsjm7cp539576dt_scs5w6c40000gn/T/spark-4cc07376-1b30-4835-a2ab-7ee2b4b8695a/userFiles-186fef02-59da-4d65-81c2-f7db1613e1fe/spark-demo.jar to class loader
+2026-08-13 17:58:28,987 INFO util.Utils: Successfully started service 'org.apache.spark.network.netty.NettyBlockTransferService' on port 57578.
+2026-08-13 17:58:28,987 INFO netty.NettyBlockTransferService: Server created on 10.110.254.114:57578
+2026-08-13 17:58:28,988 INFO storage.BlockManager: Using org.apache.spark.storage.RandomBlockReplicationPolicy for block replication policy
+2026-08-13 17:58:28,991 INFO storage.BlockManagerMaster: Registering BlockManager BlockManagerId(driver, 10.110.254.114, 57578, None)
+2026-08-13 17:58:28,993 INFO storage.BlockManagerMasterEndpoint: Registering block manager 10.110.254.114:57578 with 434.4 MiB RAM, BlockManagerId(driver, 10.110.254.114, 57578, None)
+2026-08-13 17:58:28,994 INFO storage.BlockManagerMaster: Registered BlockManager BlockManagerId(driver, 10.110.254.114, 57578, None)
+2026-08-13 17:58:28,994 INFO storage.BlockManager: Initialized BlockManager: BlockManagerId(driver, 10.110.254.114, 57578, None)
+2026-08-13 17:58:29,091 INFO handler.ContextHandler: Stopped o.s.j.s.ServletContextHandler@5d2828c9{/,null,STOPPED,@Spark}
+2026-08-13 17:58:29,091 INFO handler.ContextHandler: Started o.s.j.s.ServletContextHandler@5b5b59{/jobs,null,AVAILABLE,@Spark}
+2026-08-13 17:58:29,092 INFO handler.ContextHandler: Started o.s.j.s.ServletContextHandler@b27b210{/jobs/json,null,AVAILABLE,@Spark}
+2026-08-13 17:58:29,092 INFO handler.ContextHandler: Started o.s.j.s.ServletContextHandler@3913f206{/jobs/job,null,AVAILABLE,@Spark}
+2026-08-13 17:58:29,092 INFO handler.ContextHandler: Started o.s.j.s.ServletContextHandler@3b353651{/jobs/job/json,null,AVAILABLE,@Spark}
+2026-08-13 17:58:29,093 INFO handler.ContextHandler: Started o.s.j.s.ServletContextHandler@1280682{/stages,null,AVAILABLE,@Spark}
+2026-08-13 17:58:29,093 INFO handler.ContextHandler: Started o.s.j.s.ServletContextHandler@53d9826f{/stages/json,null,AVAILABLE,@Spark}
+2026-08-13 17:58:29,094 INFO handler.ContextHandler: Started o.s.j.s.ServletContextHandler@4dc7cd1c{/stages/stage,null,AVAILABLE,@Spark}
+2026-08-13 17:58:29,094 INFO handler.ContextHandler: Started o.s.j.s.ServletContextHandler@7b5b5bfe{/stages/stage/json,null,AVAILABLE,@Spark}
+2026-08-13 17:58:29,094 INFO handler.ContextHandler: Started o.s.j.s.ServletContextHandler@75fd65c{/stages/pool,null,AVAILABLE,@Spark}
+2026-08-13 17:58:29,095 INFO handler.ContextHandler: Started o.s.j.s.ServletContextHandler@2ceca2ef{/stages/pool/json,null,AVAILABLE,@Spark}
+2026-08-13 17:58:29,095 INFO handler.ContextHandler: Started o.s.j.s.ServletContextHandler@3b42121d{/storage,null,AVAILABLE,@Spark}
+2026-08-13 17:58:29,095 INFO handler.ContextHandler: Started o.s.j.s.ServletContextHandler@33188612{/storage/json,null,AVAILABLE,@Spark}
+2026-08-13 17:58:29,095 INFO handler.ContextHandler: Started o.s.j.s.ServletContextHandler@6ccac6f4{/storage/rdd,null,AVAILABLE,@Spark}
+2026-08-13 17:58:29,096 INFO handler.ContextHandler: Started o.s.j.s.ServletContextHandler@3453acd2{/storage/rdd/json,null,AVAILABLE,@Spark}
+2026-08-13 17:58:29,096 INFO handler.ContextHandler: Started o.s.j.s.ServletContextHandler@56c8e6f0{/environment,null,AVAILABLE,@Spark}
+2026-08-13 17:58:29,096 INFO handler.ContextHandler: Started o.s.j.s.ServletContextHandler@58aa10f4{/environment/json,null,AVAILABLE,@Spark}
+2026-08-13 17:58:29,097 INFO handler.ContextHandler: Started o.s.j.s.ServletContextHandler@5e5beb8a{/executors,null,AVAILABLE,@Spark}
+2026-08-13 17:58:29,097 INFO handler.ContextHandler: Started o.s.j.s.ServletContextHandler@17b016ac{/executors/json,null,AVAILABLE,@Spark}
+2026-08-13 17:58:29,098 INFO handler.ContextHandler: Started o.s.j.s.ServletContextHandler@723877dd{/executors/threadDump,null,AVAILABLE,@Spark}
+2026-08-13 17:58:29,098 INFO handler.ContextHandler: Started o.s.j.s.ServletContextHandler@56cc9f29{/executors/threadDump/json,null,AVAILABLE,@Spark}
+2026-08-13 17:58:29,102 INFO handler.ContextHandler: Started o.s.j.s.ServletContextHandler@626c19cf{/static,null,AVAILABLE,@Spark}
+2026-08-13 17:58:29,103 INFO handler.ContextHandler: Started o.s.j.s.ServletContextHandler@ef718de{/,null,AVAILABLE,@Spark}
+2026-08-13 17:58:29,103 INFO handler.ContextHandler: Started o.s.j.s.ServletContextHandler@2e1b374c{/api,null,AVAILABLE,@Spark}
+2026-08-13 17:58:29,104 INFO handler.ContextHandler: Started o.s.j.s.ServletContextHandler@21c747a{/jobs/job/kill,null,AVAILABLE,@Spark}
+2026-08-13 17:58:29,104 INFO handler.ContextHandler: Started o.s.j.s.ServletContextHandler@29f38091{/stages/stage/kill,null,AVAILABLE,@Spark}
+2026-08-13 17:58:29,106 INFO handler.ContextHandler: Started o.s.j.s.ServletContextHandler@7c369270{/metrics/json,null,AVAILABLE,@Spark}
+
+============================
+SEQUENTIAL KNN
+============================
+Training path: data/processed/train.parquet
+Testing path:  data/processed/test.parquet
+Training sample size: 10000
+Testing sample size:  1000
+K: 1
+
+Reading Parquet data...
+2026-08-13 17:58:29,314 INFO internal.SharedState: Setting hive.metastore.warehouse.dir ('null') to the value of spark.sql.warehouse.dir.
+2026-08-13 17:58:29,323 INFO internal.SharedState: Warehouse path is 'file:/Users/prabeshnepal/Desktop/LSPDP/final_project/spark-warehouse'.
+2026-08-13 17:58:29,332 INFO handler.ContextHandler: Started o.s.j.s.ServletContextHandler@7ddcb0dc{/SQL,null,AVAILABLE,@Spark}
+2026-08-13 17:58:29,332 INFO handler.ContextHandler: Started o.s.j.s.ServletContextHandler@2c1d57bc{/SQL/json,null,AVAILABLE,@Spark}
+2026-08-13 17:58:29,333 INFO handler.ContextHandler: Started o.s.j.s.ServletContextHandler@355ce6a6{/SQL/execution,null,AVAILABLE,@Spark}
+2026-08-13 17:58:29,333 INFO handler.ContextHandler: Started o.s.j.s.ServletContextHandler@1e3f86d5{/SQL/execution/json,null,AVAILABLE,@Spark}
+2026-08-13 17:58:29,342 INFO handler.ContextHandler: Started o.s.j.s.ServletContextHandler@19fec3d6{/static/sql,null,AVAILABLE,@Spark}
+2026-08-13 17:58:30,066 INFO datasources.InMemoryFileIndex: It took 22 ms to list leaf files for 1 paths.
+2026-08-13 17:58:30,418 INFO spark.SparkContext: Starting job: parquet at SequentialKNN.scala:533
+2026-08-13 17:58:30,425 INFO scheduler.DAGScheduler: Got job 0 (parquet at SequentialKNN.scala:533) with 1 output partitions
+2026-08-13 17:58:30,425 INFO scheduler.DAGScheduler: Final stage: ResultStage 0 (parquet at SequentialKNN.scala:533)
+2026-08-13 17:58:30,425 INFO scheduler.DAGScheduler: Parents of final stage: List()
+2026-08-13 17:58:30,426 INFO scheduler.DAGScheduler: Missing parents: List()
+2026-08-13 17:58:30,428 INFO scheduler.DAGScheduler: Submitting ResultStage 0 (MapPartitionsRDD[1] at parquet at SequentialKNN.scala:533), which has no missing parents
+2026-08-13 17:58:30,481 INFO memory.MemoryStore: Block broadcast_0 stored as values in memory (estimated size 151.5 KiB, free 434.3 MiB)
+2026-08-13 17:58:30,655 INFO memory.MemoryStore: Block broadcast_0_piece0 stored as bytes in memory (estimated size 55.6 KiB, free 434.2 MiB)
+2026-08-13 17:58:30,657 INFO storage.BlockManagerInfo: Added broadcast_0_piece0 in memory on 10.110.254.114:57578 (size: 55.6 KiB, free: 434.3 MiB)
+2026-08-13 17:58:30,658 INFO spark.SparkContext: Created broadcast 0 from broadcast at DAGScheduler.scala:1513
+2026-08-13 17:58:30,665 INFO scheduler.DAGScheduler: Submitting 1 missing tasks from ResultStage 0 (MapPartitionsRDD[1] at parquet at SequentialKNN.scala:533) (first 15 tasks are for partitions Vector(0))
+2026-08-13 17:58:30,666 INFO scheduler.TaskSchedulerImpl: Adding task set 0.0 with 1 tasks resource profile 0
+2026-08-13 17:58:30,698 INFO scheduler.TaskSetManager: Starting task 0.0 in stage 0.0 (TID 0) (10.110.254.114, executor driver, partition 0, PROCESS_LOCAL, 4629 bytes) taskResourceAssignments Map()
+2026-08-13 17:58:30,706 INFO executor.Executor: Running task 0.0 in stage 0.0 (TID 0)
+2026-08-13 17:58:30,926 INFO executor.Executor: Finished task 0.0 in stage 0.0 (TID 0). 1976 bytes result sent to driver
+2026-08-13 17:58:30,929 INFO scheduler.TaskSetManager: Finished task 0.0 in stage 0.0 (TID 0) in 244 ms on 10.110.254.114 (executor driver) (1/1)
+2026-08-13 17:58:30,930 INFO scheduler.TaskSchedulerImpl: Removed TaskSet 0.0, whose tasks have all completed, from pool 
+2026-08-13 17:58:30,933 INFO scheduler.DAGScheduler: ResultStage 0 (parquet at SequentialKNN.scala:533) finished in 0.496 s
+2026-08-13 17:58:30,934 INFO scheduler.DAGScheduler: Job 0 is finished. Cancelling potential speculative or zombie tasks for this job
+2026-08-13 17:58:30,934 INFO scheduler.TaskSchedulerImpl: Killing all running tasks in stage 0: Stage finished
+2026-08-13 17:58:30,935 INFO scheduler.DAGScheduler: Job 0 finished: parquet at SequentialKNN.scala:533, took 0.516891 s
+2026-08-13 17:58:31,077 INFO storage.BlockManagerInfo: Removed broadcast_0_piece0 on 10.110.254.114:57578 in memory (size: 55.6 KiB, free: 434.4 MiB)
+2026-08-13 17:58:31,789 INFO datasources.InMemoryFileIndex: It took 1 ms to list leaf files for 1 paths.
+2026-08-13 17:58:31,823 INFO spark.SparkContext: Starting job: parquet at SequentialKNN.scala:536
+2026-08-13 17:58:31,824 INFO scheduler.DAGScheduler: Got job 1 (parquet at SequentialKNN.scala:536) with 1 output partitions
+2026-08-13 17:58:31,824 INFO scheduler.DAGScheduler: Final stage: ResultStage 1 (parquet at SequentialKNN.scala:536)
+2026-08-13 17:58:31,824 INFO scheduler.DAGScheduler: Parents of final stage: List()
+2026-08-13 17:58:31,824 INFO scheduler.DAGScheduler: Missing parents: List()
+2026-08-13 17:58:31,825 INFO scheduler.DAGScheduler: Submitting ResultStage 1 (MapPartitionsRDD[3] at parquet at SequentialKNN.scala:536), which has no missing parents
+2026-08-13 17:58:31,844 INFO memory.MemoryStore: Block broadcast_1 stored as values in memory (estimated size 151.5 KiB, free 434.3 MiB)
+2026-08-13 17:58:31,846 INFO memory.MemoryStore: Block broadcast_1_piece0 stored as bytes in memory (estimated size 55.6 KiB, free 434.2 MiB)
+2026-08-13 17:58:31,846 INFO storage.BlockManagerInfo: Added broadcast_1_piece0 in memory on 10.110.254.114:57578 (size: 55.6 KiB, free: 434.3 MiB)
+2026-08-13 17:58:31,846 INFO spark.SparkContext: Created broadcast 1 from broadcast at DAGScheduler.scala:1513
+2026-08-13 17:58:31,847 INFO scheduler.DAGScheduler: Submitting 1 missing tasks from ResultStage 1 (MapPartitionsRDD[3] at parquet at SequentialKNN.scala:536) (first 15 tasks are for partitions Vector(0))
+2026-08-13 17:58:31,847 INFO scheduler.TaskSchedulerImpl: Adding task set 1.0 with 1 tasks resource profile 0
+2026-08-13 17:58:31,848 INFO scheduler.TaskSetManager: Starting task 0.0 in stage 1.0 (TID 1) (10.110.254.114, executor driver, partition 0, PROCESS_LOCAL, 4628 bytes) taskResourceAssignments Map()
+2026-08-13 17:58:31,848 INFO executor.Executor: Running task 0.0 in stage 1.0 (TID 1)
+2026-08-13 17:58:31,858 INFO executor.Executor: Finished task 0.0 in stage 1.0 (TID 1). 1890 bytes result sent to driver
+2026-08-13 17:58:31,859 INFO scheduler.TaskSetManager: Finished task 0.0 in stage 1.0 (TID 1) in 12 ms on 10.110.254.114 (executor driver) (1/1)
+2026-08-13 17:58:31,859 INFO scheduler.TaskSchedulerImpl: Removed TaskSet 1.0, whose tasks have all completed, from pool 
+2026-08-13 17:58:31,860 INFO scheduler.DAGScheduler: ResultStage 1 (parquet at SequentialKNN.scala:536) finished in 0.035 s
+2026-08-13 17:58:31,860 INFO scheduler.DAGScheduler: Job 1 is finished. Cancelling potential speculative or zombie tasks for this job
+2026-08-13 17:58:31,860 INFO scheduler.TaskSchedulerImpl: Killing all running tasks in stage 1: Stage finished
+2026-08-13 17:58:31,860 INFO scheduler.DAGScheduler: Job 1 finished: parquet at SequentialKNN.scala:536, took 0.036729 s
+Selecting training sample...
+Selecting testing sample...
+Collecting training sample to driver...
+2026-08-13 17:58:32,098 INFO datasources.FileSourceStrategy: Pushed Filters: 
+2026-08-13 17:58:32,098 INFO datasources.FileSourceStrategy: Post-Scan Filters: 
+2026-08-13 17:58:32,099 INFO datasources.FileSourceStrategy: Output Data Schema: struct<DepDelayMinutes: double, CRSElapsedTime: double, Distance: double, DepTimeSin: double, DepTimeCos: double ... 6 more fields>
+2026-08-13 17:58:32,174 INFO storage.BlockManagerInfo: Removed broadcast_1_piece0 on 10.110.254.114:57578 in memory (size: 55.6 KiB, free: 434.4 MiB)
+2026-08-13 17:58:32,246 INFO codegen.CodeGenerator: Code generated in 86.414708 ms
+2026-08-13 17:58:32,309 INFO codegen.CodeGenerator: Code generated in 27.231125 ms
+2026-08-13 17:58:32,326 INFO memory.MemoryStore: Block broadcast_2 stored as values in memory (estimated size 302.9 KiB, free 434.1 MiB)
+2026-08-13 17:58:32,336 INFO memory.MemoryStore: Block broadcast_2_piece0 stored as bytes in memory (estimated size 53.8 KiB, free 434.1 MiB)
+2026-08-13 17:58:32,337 INFO storage.BlockManagerInfo: Added broadcast_2_piece0 in memory on 10.110.254.114:57578 (size: 53.8 KiB, free: 434.3 MiB)
+2026-08-13 17:58:32,337 INFO spark.SparkContext: Created broadcast 2 from collect at SequentialKNN.scala:366
+2026-08-13 17:58:32,344 INFO execution.FileSourceScanExec: Planning scan with bin packing, max size: 4194304 bytes, open cost is considered as scanning 4194304 bytes.
+2026-08-13 17:58:32,384 INFO spark.SparkContext: Starting job: collect at SequentialKNN.scala:366
+2026-08-13 17:58:32,384 INFO scheduler.DAGScheduler: Got job 2 (collect at SequentialKNN.scala:366) with 1 output partitions
+2026-08-13 17:58:32,384 INFO scheduler.DAGScheduler: Final stage: ResultStage 2 (collect at SequentialKNN.scala:366)
+2026-08-13 17:58:32,384 INFO scheduler.DAGScheduler: Parents of final stage: List()
+2026-08-13 17:58:32,384 INFO scheduler.DAGScheduler: Missing parents: List()
+2026-08-13 17:58:32,385 INFO scheduler.DAGScheduler: Submitting ResultStage 2 (MapPartitionsRDD[8] at collect at SequentialKNN.scala:366), which has no missing parents
+2026-08-13 17:58:32,398 INFO memory.MemoryStore: Block broadcast_3 stored as values in memory (estimated size 22.5 KiB, free 434.0 MiB)
+2026-08-13 17:58:32,399 INFO memory.MemoryStore: Block broadcast_3_piece0 stored as bytes in memory (estimated size 7.9 KiB, free 434.0 MiB)
+2026-08-13 17:58:32,400 INFO storage.BlockManagerInfo: Added broadcast_3_piece0 in memory on 10.110.254.114:57578 (size: 7.9 KiB, free: 434.3 MiB)
+2026-08-13 17:58:32,400 INFO spark.SparkContext: Created broadcast 3 from broadcast at DAGScheduler.scala:1513
+2026-08-13 17:58:32,400 INFO scheduler.DAGScheduler: Submitting 1 missing tasks from ResultStage 2 (MapPartitionsRDD[8] at collect at SequentialKNN.scala:366) (first 15 tasks are for partitions Vector(0))
+2026-08-13 17:58:32,400 INFO scheduler.TaskSchedulerImpl: Adding task set 2.0 with 1 tasks resource profile 0
+2026-08-13 17:58:32,402 INFO scheduler.TaskSetManager: Starting task 0.0 in stage 2.0 (TID 2) (10.110.254.114, executor driver, partition 0, PROCESS_LOCAL, 4954 bytes) taskResourceAssignments Map()
+2026-08-13 17:58:32,402 INFO executor.Executor: Running task 0.0 in stage 2.0 (TID 2)
+2026-08-13 17:58:32,436 INFO datasources.FileScanRDD: Reading File path: file:///Users/prabeshnepal/Desktop/LSPDP/final_project/data/processed/train.parquet, range: 0-2626333, partition values: [empty row]
+2026-08-13 17:58:32,512 INFO compress.CodecPool: Got brand-new decompressor [.snappy]
+2026-08-13 17:58:32,886 INFO executor.Executor: Finished task 0.0 in stage 2.0 (TID 2). 978695 bytes result sent to driver
+2026-08-13 17:58:32,910 INFO scheduler.TaskSetManager: Finished task 0.0 in stage 2.0 (TID 2) in 508 ms on 10.110.254.114 (executor driver) (1/1)
+2026-08-13 17:58:32,910 INFO scheduler.TaskSchedulerImpl: Removed TaskSet 2.0, whose tasks have all completed, from pool 
+2026-08-13 17:58:32,911 INFO scheduler.DAGScheduler: ResultStage 2 (collect at SequentialKNN.scala:366) finished in 0.524 s
+2026-08-13 17:58:32,911 INFO scheduler.DAGScheduler: Job 2 is finished. Cancelling potential speculative or zombie tasks for this job
+2026-08-13 17:58:32,911 INFO scheduler.TaskSchedulerImpl: Killing all running tasks in stage 2: Stage finished
+2026-08-13 17:58:32,911 INFO scheduler.DAGScheduler: Job 2 finished: collect at SequentialKNN.scala:366, took 0.527147 s
+2026-08-13 17:58:32,935 INFO codegen.CodeGenerator: Code generated in 12.542666 ms
+2026-08-13 17:58:32,953 INFO codegen.CodeGenerator: Code generated in 8.466667 ms
+Collecting testing sample to driver...
+2026-08-13 17:58:32,975 INFO datasources.FileSourceStrategy: Pushed Filters: 
+2026-08-13 17:58:32,975 INFO datasources.FileSourceStrategy: Post-Scan Filters: 
+2026-08-13 17:58:32,975 INFO datasources.FileSourceStrategy: Output Data Schema: struct<DepDelayMinutes: double, CRSElapsedTime: double, Distance: double, DepTimeSin: double, DepTimeCos: double ... 6 more fields>
+2026-08-13 17:58:32,988 INFO memory.MemoryStore: Block broadcast_4 stored as values in memory (estimated size 302.9 KiB, free 433.7 MiB)
+2026-08-13 17:58:33,005 INFO memory.MemoryStore: Block broadcast_4_piece0 stored as bytes in memory (estimated size 53.8 KiB, free 433.7 MiB)
+2026-08-13 17:58:33,005 INFO storage.BlockManagerInfo: Added broadcast_4_piece0 in memory on 10.110.254.114:57578 (size: 53.8 KiB, free: 434.3 MiB)
+2026-08-13 17:58:33,006 INFO spark.SparkContext: Created broadcast 4 from collect at SequentialKNN.scala:366
+2026-08-13 17:58:33,006 INFO execution.FileSourceScanExec: Planning scan with bin packing, max size: 4194304 bytes, open cost is considered as scanning 4194304 bytes.
+2026-08-13 17:58:33,032 INFO storage.BlockManagerInfo: Removed broadcast_3_piece0 on 10.110.254.114:57578 in memory (size: 7.9 KiB, free: 434.3 MiB)
+2026-08-13 17:58:33,033 INFO spark.SparkContext: Starting job: collect at SequentialKNN.scala:366
+2026-08-13 17:58:33,034 INFO scheduler.DAGScheduler: Got job 3 (collect at SequentialKNN.scala:366) with 1 output partitions
+2026-08-13 17:58:33,034 INFO scheduler.DAGScheduler: Final stage: ResultStage 3 (collect at SequentialKNN.scala:366)
+2026-08-13 17:58:33,034 INFO scheduler.DAGScheduler: Parents of final stage: List()
+2026-08-13 17:58:33,034 INFO scheduler.DAGScheduler: Missing parents: List()
+2026-08-13 17:58:33,035 INFO storage.BlockManagerInfo: Removed broadcast_2_piece0 on 10.110.254.114:57578 in memory (size: 53.8 KiB, free: 434.3 MiB)
+2026-08-13 17:58:33,035 INFO scheduler.DAGScheduler: Submitting ResultStage 3 (MapPartitionsRDD[13] at collect at SequentialKNN.scala:366), which has no missing parents
+2026-08-13 17:58:33,040 INFO memory.MemoryStore: Block broadcast_5 stored as values in memory (estimated size 22.5 KiB, free 434.0 MiB)
+2026-08-13 17:58:33,041 INFO memory.MemoryStore: Block broadcast_5_piece0 stored as bytes in memory (estimated size 7.9 KiB, free 434.0 MiB)
+2026-08-13 17:58:33,042 INFO storage.BlockManagerInfo: Added broadcast_5_piece0 in memory on 10.110.254.114:57578 (size: 7.9 KiB, free: 434.3 MiB)
+2026-08-13 17:58:33,042 INFO spark.SparkContext: Created broadcast 5 from broadcast at DAGScheduler.scala:1513
+2026-08-13 17:58:33,043 INFO scheduler.DAGScheduler: Submitting 1 missing tasks from ResultStage 3 (MapPartitionsRDD[13] at collect at SequentialKNN.scala:366) (first 15 tasks are for partitions Vector(0))
+2026-08-13 17:58:33,043 INFO scheduler.TaskSchedulerImpl: Adding task set 3.0 with 1 tasks resource profile 0
+2026-08-13 17:58:33,044 INFO scheduler.TaskSetManager: Starting task 0.0 in stage 3.0 (TID 3) (10.110.254.114, executor driver, partition 0, PROCESS_LOCAL, 4953 bytes) taskResourceAssignments Map()
+2026-08-13 17:58:33,044 INFO executor.Executor: Running task 0.0 in stage 3.0 (TID 3)
+2026-08-13 17:58:33,049 INFO datasources.FileScanRDD: Reading File path: file:///Users/prabeshnepal/Desktop/LSPDP/final_project/data/processed/test.parquet, range: 0-791318, partition values: [empty row]
+2026-08-13 17:58:33,100 INFO executor.Executor: Finished task 0.0 in stage 3.0 (TID 3). 101389 bytes result sent to driver
+2026-08-13 17:58:33,102 INFO scheduler.TaskSetManager: Finished task 0.0 in stage 3.0 (TID 3) in 58 ms on 10.110.254.114 (executor driver) (1/1)
+2026-08-13 17:58:33,102 INFO scheduler.TaskSchedulerImpl: Removed TaskSet 3.0, whose tasks have all completed, from pool 
+2026-08-13 17:58:33,102 INFO scheduler.DAGScheduler: ResultStage 3 (collect at SequentialKNN.scala:366) finished in 0.066 s
+2026-08-13 17:58:33,102 INFO scheduler.DAGScheduler: Job 3 is finished. Cancelling potential speculative or zombie tasks for this job
+2026-08-13 17:58:33,102 INFO scheduler.TaskSchedulerImpl: Killing all running tasks in stage 3: Stage finished
+2026-08-13 17:58:33,103 INFO scheduler.DAGScheduler: Job 3 finished: collect at SequentialKNN.scala:366, took 0.069267 s
+
+Actual training sample: 10000
+Actual testing sample: 1000
+
+Distance comparisons: 10,000,000
+
+Starting sequential KNN...
+2026-08-13 17:58:33,128 INFO storage.BlockManagerInfo: Removed broadcast_5_piece0 on 10.110.254.114:57578 in memory (size: 7.9 KiB, free: 434.3 MiB)
+Predicted 100/1000
+Predicted 200/1000
+Predicted 300/1000
+Predicted 400/1000
+Predicted 500/1000
+Predicted 600/1000
+Predicted 700/1000
+Predicted 800/1000
+Predicted 900/1000
+Predicted 1000/1000
+
+============================
+RUNTIME
+============================
+KNN runtime: 0.1173 seconds
+
+============================
+CONFUSION MATRIX
+============================
+True Negative:  810
+False Positive: 45
+False Negative: 40
+True Positive:  105
+
+============================
+METRICS
+============================
+Accuracy:  0.9150
+Precision: 0.7000
+Recall:    0.7241
+F1 Score:  0.7119
+
+============================
+BASELINE
+============================
+Baseline model: always predict NOT delayed
+Baseline accuracy: 0.8550
+
+Sequential KNN completed successfully.
+2026-08-13 17:58:33,229 INFO server.AbstractConnector: Stopped Spark@7ecec90d{HTTP/1.1, (http/1.1)}{0.0.0.0:4040}
+2026-08-13 17:58:33,232 INFO ui.SparkUI: Stopped Spark web UI at http://10.110.254.114:4040
+2026-08-13 17:58:33,238 INFO spark.MapOutputTrackerMasterEndpoint: MapOutputTrackerMasterEndpoint stopped!
+2026-08-13 17:58:33,249 INFO memory.MemoryStore: MemoryStore cleared
+2026-08-13 17:58:33,249 INFO storage.BlockManager: BlockManager stopped
+2026-08-13 17:58:33,250 INFO storage.BlockManagerMaster: BlockManagerMaster stopped
+2026-08-13 17:58:33,251 INFO scheduler.OutputCommitCoordinator$OutputCommitCoordinatorEndpoint: OutputCommitCoordinator stopped!
+2026-08-13 17:58:33,256 INFO spark.SparkContext: Successfully stopped SparkContext
+2026-08-13 17:58:33,257 INFO util.ShutdownHookManager: Shutdown hook called
+2026-08-13 17:58:33,257 INFO util.ShutdownHookManager: Deleting directory /private/var/folders/7t/jsjm7cp539576dt_scs5w6c40000gn/T/spark-4cc07376-1b30-4835-a2ab-7ee2b4b8695a
+2026-08-13 17:58:33,261 INFO util.ShutdownHookManager: Deleting directory /private/var/folders/7t/jsjm7cp539576dt_scs5w6c40000gn/T/spark-1e4ea6d6-77e0-479e-a16a-2ebb5039a8fe
+
+========================================
+Sequential KNN Experiment
+Train Size = 10000
+Test Size  = 1000
+K          = 3
+========================================
+spark-submit \
+		--class knn.SequentialKNN \
+		--master local[4] \
+		--name "KNN Flight Delay" \
+		spark-demo.jar \
+		data/processed/train.parquet \
+		data/processed/test.parquet \
+		10000 \
+		1000 \
+		3
+2026-08-13 17:58:34,081 WARN util.Utils: Your hostname, Prabeshs-MacBook-Air.local resolves to a loopback address: 127.0.0.1; using 10.110.254.114 instead (on interface en0)
+2026-08-13 17:58:34,081 WARN util.Utils: Set SPARK_LOCAL_IP if you need to bind to another address
+2026-08-13 17:58:34,316 INFO spark.SparkContext: Running Spark version 3.3.2
+2026-08-13 17:58:34,379 WARN util.NativeCodeLoader: Unable to load native-hadoop library for your platform... using builtin-java classes where applicable
+2026-08-13 17:58:34,410 INFO resource.ResourceUtils: ==============================================================
+2026-08-13 17:58:34,410 INFO resource.ResourceUtils: No custom resources configured for spark.driver.
+2026-08-13 17:58:34,410 INFO resource.ResourceUtils: ==============================================================
+2026-08-13 17:58:34,410 INFO spark.SparkContext: Submitted application: Sequential KNN
+2026-08-13 17:58:34,420 INFO resource.ResourceProfile: Default ResourceProfile created, executor resources: Map(cores -> name: cores, amount: 1, script: , vendor: , memory -> name: memory, amount: 1024, script: , vendor: , offHeap -> name: offHeap, amount: 0, script: , vendor: ), task resources: Map(cpus -> name: cpus, amount: 1.0)
+2026-08-13 17:58:34,428 INFO resource.ResourceProfile: Limiting resource is cpu
+2026-08-13 17:58:34,429 INFO resource.ResourceProfileManager: Added ResourceProfile id: 0
+2026-08-13 17:58:34,459 INFO spark.SecurityManager: Changing view acls to: prabeshnepal
+2026-08-13 17:58:34,459 INFO spark.SecurityManager: Changing modify acls to: prabeshnepal
+2026-08-13 17:58:34,459 INFO spark.SecurityManager: Changing view acls groups to: 
+2026-08-13 17:58:34,459 INFO spark.SecurityManager: Changing modify acls groups to: 
+2026-08-13 17:58:34,459 INFO spark.SecurityManager: SecurityManager: authentication disabled; ui acls disabled; users  with view permissions: Set(prabeshnepal); groups with view permissions: Set(); users  with modify permissions: Set(prabeshnepal); groups with modify permissions: Set()
+2026-08-13 17:58:34,577 INFO util.Utils: Successfully started service 'sparkDriver' on port 57579.
+2026-08-13 17:58:34,589 INFO spark.SparkEnv: Registering MapOutputTracker
+2026-08-13 17:58:34,606 INFO spark.SparkEnv: Registering BlockManagerMaster
+2026-08-13 17:58:34,614 INFO storage.BlockManagerMasterEndpoint: Using org.apache.spark.storage.DefaultTopologyMapper for getting topology information
+2026-08-13 17:58:34,615 INFO storage.BlockManagerMasterEndpoint: BlockManagerMasterEndpoint up
+2026-08-13 17:58:34,617 INFO spark.SparkEnv: Registering BlockManagerMasterHeartbeat
+2026-08-13 17:58:34,627 INFO storage.DiskBlockManager: Created local directory at /private/var/folders/7t/jsjm7cp539576dt_scs5w6c40000gn/T/blockmgr-ab2f922c-2f0a-4468-b012-3f542d5ca0a2
+2026-08-13 17:58:34,636 INFO memory.MemoryStore: MemoryStore started with capacity 434.4 MiB
+2026-08-13 17:58:34,645 INFO spark.SparkEnv: Registering OutputCommitCoordinator
+2026-08-13 17:58:34,670 INFO util.log: Logging initialized @1259ms to org.sparkproject.jetty.util.log.Slf4jLog
+2026-08-13 17:58:34,745 INFO server.Server: jetty-9.4.48.v20220622; built: 2022-06-21T20:42:25.880Z; git: 6b67c5719d1f4371b33655ff2d047d24e171e49a; jvm 11.0.24+7-LTS-271
+2026-08-13 17:58:34,754 INFO server.Server: Started @1343ms
+2026-08-13 17:58:34,770 INFO server.AbstractConnector: Started ServerConnector@7ecec90d{HTTP/1.1, (http/1.1)}{0.0.0.0:4040}
+2026-08-13 17:58:34,770 INFO util.Utils: Successfully started service 'SparkUI' on port 4040.
+2026-08-13 17:58:34,780 INFO handler.ContextHandler: Started o.s.j.s.ServletContextHandler@5d2828c9{/,null,AVAILABLE,@Spark}
+2026-08-13 17:58:34,788 INFO spark.SparkContext: Added JAR file:/Users/prabeshnepal/Desktop/LSPDP/final_project/spark-demo.jar at spark://10.110.254.114:57579/jars/spark-demo.jar with timestamp 1786658314311
+2026-08-13 17:58:34,845 INFO executor.Executor: Starting executor ID driver on host 10.110.254.114
+2026-08-13 17:58:34,848 INFO executor.Executor: Starting executor with user classpath (userClassPathFirst = false): ''
+2026-08-13 17:58:34,853 INFO executor.Executor: Fetching spark://10.110.254.114:57579/jars/spark-demo.jar with timestamp 1786658314311
+2026-08-13 17:58:34,878 INFO client.TransportClientFactory: Successfully created connection to /10.110.254.114:57579 after 14 ms (0 ms spent in bootstraps)
+2026-08-13 17:58:34,885 INFO util.Utils: Fetching spark://10.110.254.114:57579/jars/spark-demo.jar to /private/var/folders/7t/jsjm7cp539576dt_scs5w6c40000gn/T/spark-77b25ed4-6c0c-4c96-bf9f-e4b0e64d5e3b/userFiles-3e62dccc-fa61-49ce-b597-a070be77a3bb/fetchFileTemp5484517760402422343.tmp
+2026-08-13 17:58:34,908 INFO executor.Executor: Adding file:/private/var/folders/7t/jsjm7cp539576dt_scs5w6c40000gn/T/spark-77b25ed4-6c0c-4c96-bf9f-e4b0e64d5e3b/userFiles-3e62dccc-fa61-49ce-b597-a070be77a3bb/spark-demo.jar to class loader
+2026-08-13 17:58:34,911 INFO util.Utils: Successfully started service 'org.apache.spark.network.netty.NettyBlockTransferService' on port 57581.
+2026-08-13 17:58:34,911 INFO netty.NettyBlockTransferService: Server created on 10.110.254.114:57581
+2026-08-13 17:58:34,913 INFO storage.BlockManager: Using org.apache.spark.storage.RandomBlockReplicationPolicy for block replication policy
+2026-08-13 17:58:34,917 INFO storage.BlockManagerMaster: Registering BlockManager BlockManagerId(driver, 10.110.254.114, 57581, None)
+2026-08-13 17:58:34,919 INFO storage.BlockManagerMasterEndpoint: Registering block manager 10.110.254.114:57581 with 434.4 MiB RAM, BlockManagerId(driver, 10.110.254.114, 57581, None)
+2026-08-13 17:58:34,921 INFO storage.BlockManagerMaster: Registered BlockManager BlockManagerId(driver, 10.110.254.114, 57581, None)
+2026-08-13 17:58:34,921 INFO storage.BlockManager: Initialized BlockManager: BlockManagerId(driver, 10.110.254.114, 57581, None)
+2026-08-13 17:58:35,023 INFO handler.ContextHandler: Stopped o.s.j.s.ServletContextHandler@5d2828c9{/,null,STOPPED,@Spark}
+2026-08-13 17:58:35,024 INFO handler.ContextHandler: Started o.s.j.s.ServletContextHandler@5b5b59{/jobs,null,AVAILABLE,@Spark}
+2026-08-13 17:58:35,024 INFO handler.ContextHandler: Started o.s.j.s.ServletContextHandler@b27b210{/jobs/json,null,AVAILABLE,@Spark}
+2026-08-13 17:58:35,025 INFO handler.ContextHandler: Started o.s.j.s.ServletContextHandler@3913f206{/jobs/job,null,AVAILABLE,@Spark}
+2026-08-13 17:58:35,025 INFO handler.ContextHandler: Started o.s.j.s.ServletContextHandler@3b353651{/jobs/job/json,null,AVAILABLE,@Spark}
+2026-08-13 17:58:35,026 INFO handler.ContextHandler: Started o.s.j.s.ServletContextHandler@1280682{/stages,null,AVAILABLE,@Spark}
+2026-08-13 17:58:35,026 INFO handler.ContextHandler: Started o.s.j.s.ServletContextHandler@53d9826f{/stages/json,null,AVAILABLE,@Spark}
+2026-08-13 17:58:35,027 INFO handler.ContextHandler: Started o.s.j.s.ServletContextHandler@4dc7cd1c{/stages/stage,null,AVAILABLE,@Spark}
+2026-08-13 17:58:35,028 INFO handler.ContextHandler: Started o.s.j.s.ServletContextHandler@7b5b5bfe{/stages/stage/json,null,AVAILABLE,@Spark}
+2026-08-13 17:58:35,028 INFO handler.ContextHandler: Started o.s.j.s.ServletContextHandler@75fd65c{/stages/pool,null,AVAILABLE,@Spark}
+2026-08-13 17:58:35,028 INFO handler.ContextHandler: Started o.s.j.s.ServletContextHandler@2ceca2ef{/stages/pool/json,null,AVAILABLE,@Spark}
+2026-08-13 17:58:35,029 INFO handler.ContextHandler: Started o.s.j.s.ServletContextHandler@3b42121d{/storage,null,AVAILABLE,@Spark}
+2026-08-13 17:58:35,029 INFO handler.ContextHandler: Started o.s.j.s.ServletContextHandler@33188612{/storage/json,null,AVAILABLE,@Spark}
+2026-08-13 17:58:35,029 INFO handler.ContextHandler: Started o.s.j.s.ServletContextHandler@6ccac6f4{/storage/rdd,null,AVAILABLE,@Spark}
+2026-08-13 17:58:35,030 INFO handler.ContextHandler: Started o.s.j.s.ServletContextHandler@3453acd2{/storage/rdd/json,null,AVAILABLE,@Spark}
+2026-08-13 17:58:35,030 INFO handler.ContextHandler: Started o.s.j.s.ServletContextHandler@56c8e6f0{/environment,null,AVAILABLE,@Spark}
+2026-08-13 17:58:35,030 INFO handler.ContextHandler: Started o.s.j.s.ServletContextHandler@58aa10f4{/environment/json,null,AVAILABLE,@Spark}
+2026-08-13 17:58:35,030 INFO handler.ContextHandler: Started o.s.j.s.ServletContextHandler@5e5beb8a{/executors,null,AVAILABLE,@Spark}
+2026-08-13 17:58:35,031 INFO handler.ContextHandler: Started o.s.j.s.ServletContextHandler@17b016ac{/executors/json,null,AVAILABLE,@Spark}
+2026-08-13 17:58:35,031 INFO handler.ContextHandler: Started o.s.j.s.ServletContextHandler@723877dd{/executors/threadDump,null,AVAILABLE,@Spark}
+2026-08-13 17:58:35,032 INFO handler.ContextHandler: Started o.s.j.s.ServletContextHandler@56cc9f29{/executors/threadDump/json,null,AVAILABLE,@Spark}
+2026-08-13 17:58:35,036 INFO handler.ContextHandler: Started o.s.j.s.ServletContextHandler@626c19cf{/static,null,AVAILABLE,@Spark}
+2026-08-13 17:58:35,037 INFO handler.ContextHandler: Started o.s.j.s.ServletContextHandler@ef718de{/,null,AVAILABLE,@Spark}
+2026-08-13 17:58:35,038 INFO handler.ContextHandler: Started o.s.j.s.ServletContextHandler@2e1b374c{/api,null,AVAILABLE,@Spark}
+2026-08-13 17:58:35,038 INFO handler.ContextHandler: Started o.s.j.s.ServletContextHandler@21c747a{/jobs/job/kill,null,AVAILABLE,@Spark}
+2026-08-13 17:58:35,038 INFO handler.ContextHandler: Started o.s.j.s.ServletContextHandler@29f38091{/stages/stage/kill,null,AVAILABLE,@Spark}
+2026-08-13 17:58:35,041 INFO handler.ContextHandler: Started o.s.j.s.ServletContextHandler@7c369270{/metrics/json,null,AVAILABLE,@Spark}
+
+============================
+SEQUENTIAL KNN
+============================
+Training path: data/processed/train.parquet
+Testing path:  data/processed/test.parquet
+Training sample size: 10000
+Testing sample size:  1000
+K: 3
+
+Reading Parquet data...
+2026-08-13 17:58:35,248 INFO internal.SharedState: Setting hive.metastore.warehouse.dir ('null') to the value of spark.sql.warehouse.dir.
+2026-08-13 17:58:35,253 INFO internal.SharedState: Warehouse path is 'file:/Users/prabeshnepal/Desktop/LSPDP/final_project/spark-warehouse'.
+2026-08-13 17:58:35,260 INFO handler.ContextHandler: Started o.s.j.s.ServletContextHandler@7ddcb0dc{/SQL,null,AVAILABLE,@Spark}
+2026-08-13 17:58:35,261 INFO handler.ContextHandler: Started o.s.j.s.ServletContextHandler@2c1d57bc{/SQL/json,null,AVAILABLE,@Spark}
+2026-08-13 17:58:35,261 INFO handler.ContextHandler: Started o.s.j.s.ServletContextHandler@355ce6a6{/SQL/execution,null,AVAILABLE,@Spark}
+2026-08-13 17:58:35,261 INFO handler.ContextHandler: Started o.s.j.s.ServletContextHandler@1e3f86d5{/SQL/execution/json,null,AVAILABLE,@Spark}
+2026-08-13 17:58:35,270 INFO handler.ContextHandler: Started o.s.j.s.ServletContextHandler@19fec3d6{/static/sql,null,AVAILABLE,@Spark}
+2026-08-13 17:58:35,681 INFO datasources.InMemoryFileIndex: It took 19 ms to list leaf files for 1 paths.
+2026-08-13 17:58:36,025 INFO spark.SparkContext: Starting job: parquet at SequentialKNN.scala:533
+2026-08-13 17:58:36,033 INFO scheduler.DAGScheduler: Got job 0 (parquet at SequentialKNN.scala:533) with 1 output partitions
+2026-08-13 17:58:36,033 INFO scheduler.DAGScheduler: Final stage: ResultStage 0 (parquet at SequentialKNN.scala:533)
+2026-08-13 17:58:36,033 INFO scheduler.DAGScheduler: Parents of final stage: List()
+2026-08-13 17:58:36,033 INFO scheduler.DAGScheduler: Missing parents: List()
+2026-08-13 17:58:36,035 INFO scheduler.DAGScheduler: Submitting ResultStage 0 (MapPartitionsRDD[1] at parquet at SequentialKNN.scala:533), which has no missing parents
+2026-08-13 17:58:36,088 INFO memory.MemoryStore: Block broadcast_0 stored as values in memory (estimated size 151.5 KiB, free 434.3 MiB)
+2026-08-13 17:58:36,301 INFO memory.MemoryStore: Block broadcast_0_piece0 stored as bytes in memory (estimated size 55.7 KiB, free 434.2 MiB)
+2026-08-13 17:58:36,304 INFO storage.BlockManagerInfo: Added broadcast_0_piece0 in memory on 10.110.254.114:57581 (size: 55.7 KiB, free: 434.3 MiB)
+2026-08-13 17:58:36,306 INFO spark.SparkContext: Created broadcast 0 from broadcast at DAGScheduler.scala:1513
+2026-08-13 17:58:36,315 INFO scheduler.DAGScheduler: Submitting 1 missing tasks from ResultStage 0 (MapPartitionsRDD[1] at parquet at SequentialKNN.scala:533) (first 15 tasks are for partitions Vector(0))
+2026-08-13 17:58:36,316 INFO scheduler.TaskSchedulerImpl: Adding task set 0.0 with 1 tasks resource profile 0
+2026-08-13 17:58:36,354 INFO scheduler.TaskSetManager: Starting task 0.0 in stage 0.0 (TID 0) (10.110.254.114, executor driver, partition 0, PROCESS_LOCAL, 4629 bytes) taskResourceAssignments Map()
+2026-08-13 17:58:36,361 INFO executor.Executor: Running task 0.0 in stage 0.0 (TID 0)
+2026-08-13 17:58:36,538 INFO executor.Executor: Finished task 0.0 in stage 0.0 (TID 0). 1976 bytes result sent to driver
+2026-08-13 17:58:36,541 INFO scheduler.TaskSetManager: Finished task 0.0 in stage 0.0 (TID 0) in 202 ms on 10.110.254.114 (executor driver) (1/1)
+2026-08-13 17:58:36,542 INFO scheduler.TaskSchedulerImpl: Removed TaskSet 0.0, whose tasks have all completed, from pool 
+2026-08-13 17:58:36,544 INFO scheduler.DAGScheduler: ResultStage 0 (parquet at SequentialKNN.scala:533) finished in 0.503 s
+2026-08-13 17:58:36,546 INFO scheduler.DAGScheduler: Job 0 is finished. Cancelling potential speculative or zombie tasks for this job
+2026-08-13 17:58:36,546 INFO scheduler.TaskSchedulerImpl: Killing all running tasks in stage 0: Stage finished
+2026-08-13 17:58:36,547 INFO scheduler.DAGScheduler: Job 0 finished: parquet at SequentialKNN.scala:533, took 0.521153 s
+2026-08-13 17:58:36,682 INFO storage.BlockManagerInfo: Removed broadcast_0_piece0 on 10.110.254.114:57581 in memory (size: 55.7 KiB, free: 434.4 MiB)
+2026-08-13 17:58:37,336 INFO datasources.InMemoryFileIndex: It took 1 ms to list leaf files for 1 paths.
+2026-08-13 17:58:37,384 INFO spark.SparkContext: Starting job: parquet at SequentialKNN.scala:536
+2026-08-13 17:58:37,385 INFO scheduler.DAGScheduler: Got job 1 (parquet at SequentialKNN.scala:536) with 1 output partitions
+2026-08-13 17:58:37,385 INFO scheduler.DAGScheduler: Final stage: ResultStage 1 (parquet at SequentialKNN.scala:536)
+2026-08-13 17:58:37,385 INFO scheduler.DAGScheduler: Parents of final stage: List()
+2026-08-13 17:58:37,385 INFO scheduler.DAGScheduler: Missing parents: List()
+2026-08-13 17:58:37,386 INFO scheduler.DAGScheduler: Submitting ResultStage 1 (MapPartitionsRDD[3] at parquet at SequentialKNN.scala:536), which has no missing parents
+2026-08-13 17:58:37,406 INFO memory.MemoryStore: Block broadcast_1 stored as values in memory (estimated size 151.5 KiB, free 434.3 MiB)
+2026-08-13 17:58:37,408 INFO memory.MemoryStore: Block broadcast_1_piece0 stored as bytes in memory (estimated size 55.7 KiB, free 434.2 MiB)
+2026-08-13 17:58:37,409 INFO storage.BlockManagerInfo: Added broadcast_1_piece0 in memory on 10.110.254.114:57581 (size: 55.7 KiB, free: 434.3 MiB)
+2026-08-13 17:58:37,410 INFO spark.SparkContext: Created broadcast 1 from broadcast at DAGScheduler.scala:1513
+2026-08-13 17:58:37,410 INFO scheduler.DAGScheduler: Submitting 1 missing tasks from ResultStage 1 (MapPartitionsRDD[3] at parquet at SequentialKNN.scala:536) (first 15 tasks are for partitions Vector(0))
+2026-08-13 17:58:37,410 INFO scheduler.TaskSchedulerImpl: Adding task set 1.0 with 1 tasks resource profile 0
+2026-08-13 17:58:37,411 INFO scheduler.TaskSetManager: Starting task 0.0 in stage 1.0 (TID 1) (10.110.254.114, executor driver, partition 0, PROCESS_LOCAL, 4628 bytes) taskResourceAssignments Map()
+2026-08-13 17:58:37,412 INFO executor.Executor: Running task 0.0 in stage 1.0 (TID 1)
+2026-08-13 17:58:37,423 INFO executor.Executor: Finished task 0.0 in stage 1.0 (TID 1). 1890 bytes result sent to driver
+2026-08-13 17:58:37,424 INFO scheduler.TaskSetManager: Finished task 0.0 in stage 1.0 (TID 1) in 13 ms on 10.110.254.114 (executor driver) (1/1)
+2026-08-13 17:58:37,424 INFO scheduler.TaskSchedulerImpl: Removed TaskSet 1.0, whose tasks have all completed, from pool 
+2026-08-13 17:58:37,424 INFO scheduler.DAGScheduler: ResultStage 1 (parquet at SequentialKNN.scala:536) finished in 0.038 s
+2026-08-13 17:58:37,424 INFO scheduler.DAGScheduler: Job 1 is finished. Cancelling potential speculative or zombie tasks for this job
+2026-08-13 17:58:37,424 INFO scheduler.TaskSchedulerImpl: Killing all running tasks in stage 1: Stage finished
+2026-08-13 17:58:37,424 INFO scheduler.DAGScheduler: Job 1 finished: parquet at SequentialKNN.scala:536, took 0.040484 s
+Selecting training sample...
+Selecting testing sample...
+Collecting training sample to driver...
+2026-08-13 17:58:37,657 INFO datasources.FileSourceStrategy: Pushed Filters: 
+2026-08-13 17:58:37,657 INFO datasources.FileSourceStrategy: Post-Scan Filters: 
+2026-08-13 17:58:37,658 INFO datasources.FileSourceStrategy: Output Data Schema: struct<DepDelayMinutes: double, CRSElapsedTime: double, Distance: double, DepTimeSin: double, DepTimeCos: double ... 6 more fields>
+2026-08-13 17:58:37,737 INFO storage.BlockManagerInfo: Removed broadcast_1_piece0 on 10.110.254.114:57581 in memory (size: 55.7 KiB, free: 434.4 MiB)
+2026-08-13 17:58:37,790 INFO codegen.CodeGenerator: Code generated in 72.437 ms
+2026-08-13 17:58:37,853 INFO codegen.CodeGenerator: Code generated in 34.391917 ms
+2026-08-13 17:58:37,867 INFO memory.MemoryStore: Block broadcast_2 stored as values in memory (estimated size 302.9 KiB, free 434.1 MiB)
+2026-08-13 17:58:37,874 INFO memory.MemoryStore: Block broadcast_2_piece0 stored as bytes in memory (estimated size 53.9 KiB, free 434.1 MiB)
+2026-08-13 17:58:37,875 INFO storage.BlockManagerInfo: Added broadcast_2_piece0 in memory on 10.110.254.114:57581 (size: 53.9 KiB, free: 434.3 MiB)
+2026-08-13 17:58:37,875 INFO spark.SparkContext: Created broadcast 2 from collect at SequentialKNN.scala:366
+2026-08-13 17:58:37,881 INFO execution.FileSourceScanExec: Planning scan with bin packing, max size: 4194304 bytes, open cost is considered as scanning 4194304 bytes.
+2026-08-13 17:58:37,918 INFO spark.SparkContext: Starting job: collect at SequentialKNN.scala:366
+2026-08-13 17:58:37,918 INFO scheduler.DAGScheduler: Got job 2 (collect at SequentialKNN.scala:366) with 1 output partitions
+2026-08-13 17:58:37,918 INFO scheduler.DAGScheduler: Final stage: ResultStage 2 (collect at SequentialKNN.scala:366)
+2026-08-13 17:58:37,918 INFO scheduler.DAGScheduler: Parents of final stage: List()
+2026-08-13 17:58:37,918 INFO scheduler.DAGScheduler: Missing parents: List()
+2026-08-13 17:58:37,919 INFO scheduler.DAGScheduler: Submitting ResultStage 2 (MapPartitionsRDD[8] at collect at SequentialKNN.scala:366), which has no missing parents
+2026-08-13 17:58:37,933 INFO memory.MemoryStore: Block broadcast_3 stored as values in memory (estimated size 22.5 KiB, free 434.0 MiB)
+2026-08-13 17:58:37,934 INFO memory.MemoryStore: Block broadcast_3_piece0 stored as bytes in memory (estimated size 7.9 KiB, free 434.0 MiB)
+2026-08-13 17:58:37,935 INFO storage.BlockManagerInfo: Added broadcast_3_piece0 in memory on 10.110.254.114:57581 (size: 7.9 KiB, free: 434.3 MiB)
+2026-08-13 17:58:37,935 INFO spark.SparkContext: Created broadcast 3 from broadcast at DAGScheduler.scala:1513
+2026-08-13 17:58:37,935 INFO scheduler.DAGScheduler: Submitting 1 missing tasks from ResultStage 2 (MapPartitionsRDD[8] at collect at SequentialKNN.scala:366) (first 15 tasks are for partitions Vector(0))
+2026-08-13 17:58:37,935 INFO scheduler.TaskSchedulerImpl: Adding task set 2.0 with 1 tasks resource profile 0
+2026-08-13 17:58:37,937 INFO scheduler.TaskSetManager: Starting task 0.0 in stage 2.0 (TID 2) (10.110.254.114, executor driver, partition 0, PROCESS_LOCAL, 4954 bytes) taskResourceAssignments Map()
+2026-08-13 17:58:37,937 INFO executor.Executor: Running task 0.0 in stage 2.0 (TID 2)
+2026-08-13 17:58:37,965 INFO datasources.FileScanRDD: Reading File path: file:///Users/prabeshnepal/Desktop/LSPDP/final_project/data/processed/train.parquet, range: 0-2626333, partition values: [empty row]
+2026-08-13 17:58:38,028 INFO compress.CodecPool: Got brand-new decompressor [.snappy]
+2026-08-13 17:58:38,417 INFO executor.Executor: Finished task 0.0 in stage 2.0 (TID 2). 978695 bytes result sent to driver
+2026-08-13 17:58:38,428 INFO scheduler.TaskSetManager: Finished task 0.0 in stage 2.0 (TID 2) in 492 ms on 10.110.254.114 (executor driver) (1/1)
+2026-08-13 17:58:38,429 INFO scheduler.TaskSchedulerImpl: Removed TaskSet 2.0, whose tasks have all completed, from pool 
+2026-08-13 17:58:38,429 INFO scheduler.DAGScheduler: ResultStage 2 (collect at SequentialKNN.scala:366) finished in 0.509 s
+2026-08-13 17:58:38,429 INFO scheduler.DAGScheduler: Job 2 is finished. Cancelling potential speculative or zombie tasks for this job
+2026-08-13 17:58:38,429 INFO scheduler.TaskSchedulerImpl: Killing all running tasks in stage 2: Stage finished
+2026-08-13 17:58:38,429 INFO scheduler.DAGScheduler: Job 2 finished: collect at SequentialKNN.scala:366, took 0.511711 s
+2026-08-13 17:58:38,464 INFO codegen.CodeGenerator: Code generated in 10.812625 ms
+2026-08-13 17:58:38,479 INFO codegen.CodeGenerator: Code generated in 7.416625 ms
+Collecting testing sample to driver...
+2026-08-13 17:58:38,498 INFO datasources.FileSourceStrategy: Pushed Filters: 
+2026-08-13 17:58:38,498 INFO datasources.FileSourceStrategy: Post-Scan Filters: 
+2026-08-13 17:58:38,498 INFO datasources.FileSourceStrategy: Output Data Schema: struct<DepDelayMinutes: double, CRSElapsedTime: double, Distance: double, DepTimeSin: double, DepTimeCos: double ... 6 more fields>
+2026-08-13 17:58:38,509 INFO memory.MemoryStore: Block broadcast_4 stored as values in memory (estimated size 302.9 KiB, free 433.7 MiB)
+2026-08-13 17:58:38,543 INFO storage.BlockManagerInfo: Removed broadcast_3_piece0 on 10.110.254.114:57581 in memory (size: 7.9 KiB, free: 434.3 MiB)
+2026-08-13 17:58:38,545 INFO storage.BlockManagerInfo: Removed broadcast_2_piece0 on 10.110.254.114:57581 in memory (size: 53.9 KiB, free: 434.4 MiB)
+2026-08-13 17:58:38,546 INFO memory.MemoryStore: Block broadcast_4_piece0 stored as bytes in memory (estimated size 53.9 KiB, free 434.1 MiB)
+2026-08-13 17:58:38,546 INFO storage.BlockManagerInfo: Added broadcast_4_piece0 in memory on 10.110.254.114:57581 (size: 53.9 KiB, free: 434.3 MiB)
+2026-08-13 17:58:38,547 INFO spark.SparkContext: Created broadcast 4 from collect at SequentialKNN.scala:366
+2026-08-13 17:58:38,547 INFO execution.FileSourceScanExec: Planning scan with bin packing, max size: 4194304 bytes, open cost is considered as scanning 4194304 bytes.
+2026-08-13 17:58:38,561 INFO spark.SparkContext: Starting job: collect at SequentialKNN.scala:366
+2026-08-13 17:58:38,561 INFO scheduler.DAGScheduler: Got job 3 (collect at SequentialKNN.scala:366) with 1 output partitions
+2026-08-13 17:58:38,561 INFO scheduler.DAGScheduler: Final stage: ResultStage 3 (collect at SequentialKNN.scala:366)
+2026-08-13 17:58:38,561 INFO scheduler.DAGScheduler: Parents of final stage: List()
+2026-08-13 17:58:38,561 INFO scheduler.DAGScheduler: Missing parents: List()
+2026-08-13 17:58:38,562 INFO scheduler.DAGScheduler: Submitting ResultStage 3 (MapPartitionsRDD[13] at collect at SequentialKNN.scala:366), which has no missing parents
+2026-08-13 17:58:38,564 INFO memory.MemoryStore: Block broadcast_5 stored as values in memory (estimated size 22.5 KiB, free 434.0 MiB)
+2026-08-13 17:58:38,566 INFO memory.MemoryStore: Block broadcast_5_piece0 stored as bytes in memory (estimated size 7.9 KiB, free 434.0 MiB)
+2026-08-13 17:58:38,567 INFO storage.BlockManagerInfo: Added broadcast_5_piece0 in memory on 10.110.254.114:57581 (size: 7.9 KiB, free: 434.3 MiB)
+2026-08-13 17:58:38,567 INFO spark.SparkContext: Created broadcast 5 from broadcast at DAGScheduler.scala:1513
+2026-08-13 17:58:38,568 INFO scheduler.DAGScheduler: Submitting 1 missing tasks from ResultStage 3 (MapPartitionsRDD[13] at collect at SequentialKNN.scala:366) (first 15 tasks are for partitions Vector(0))
+2026-08-13 17:58:38,568 INFO scheduler.TaskSchedulerImpl: Adding task set 3.0 with 1 tasks resource profile 0
+2026-08-13 17:58:38,568 INFO scheduler.TaskSetManager: Starting task 0.0 in stage 3.0 (TID 3) (10.110.254.114, executor driver, partition 0, PROCESS_LOCAL, 4953 bytes) taskResourceAssignments Map()
+2026-08-13 17:58:38,569 INFO executor.Executor: Running task 0.0 in stage 3.0 (TID 3)
+2026-08-13 17:58:38,572 INFO datasources.FileScanRDD: Reading File path: file:///Users/prabeshnepal/Desktop/LSPDP/final_project/data/processed/test.parquet, range: 0-791318, partition values: [empty row]
+2026-08-13 17:58:38,609 INFO executor.Executor: Finished task 0.0 in stage 3.0 (TID 3). 101346 bytes result sent to driver
+2026-08-13 17:58:38,611 INFO scheduler.TaskSetManager: Finished task 0.0 in stage 3.0 (TID 3) in 43 ms on 10.110.254.114 (executor driver) (1/1)
+2026-08-13 17:58:38,611 INFO scheduler.TaskSchedulerImpl: Removed TaskSet 3.0, whose tasks have all completed, from pool 
+2026-08-13 17:58:38,611 INFO scheduler.DAGScheduler: ResultStage 3 (collect at SequentialKNN.scala:366) finished in 0.049 s
+2026-08-13 17:58:38,611 INFO scheduler.DAGScheduler: Job 3 is finished. Cancelling potential speculative or zombie tasks for this job
+2026-08-13 17:58:38,611 INFO scheduler.TaskSchedulerImpl: Killing all running tasks in stage 3: Stage finished
+2026-08-13 17:58:38,612 INFO scheduler.DAGScheduler: Job 3 finished: collect at SequentialKNN.scala:366, took 0.050589 s
+
+Actual training sample: 10000
+Actual testing sample: 1000
+
+Distance comparisons: 10,000,000
+
+Starting sequential KNN...
+2026-08-13 17:58:38,640 INFO storage.BlockManagerInfo: Removed broadcast_5_piece0 on 10.110.254.114:57581 in memory (size: 7.9 KiB, free: 434.3 MiB)
+Predicted 100/1000
+Predicted 200/1000
+Predicted 300/1000
+Predicted 400/1000
+Predicted 500/1000
+Predicted 600/1000
+Predicted 700/1000
+Predicted 800/1000
+Predicted 900/1000
+Predicted 1000/1000
+
+============================
+RUNTIME
+============================
+KNN runtime: 0.2366 seconds
+
+============================
+CONFUSION MATRIX
+============================
+True Negative:  834
+False Positive: 21
+False Negative: 46
+True Positive:  99
+
+============================
+METRICS
+============================
+Accuracy:  0.9330
+Precision: 0.8250
+Recall:    0.6828
+F1 Score:  0.7472
+
+============================
+BASELINE
+============================
+Baseline model: always predict NOT delayed
+Baseline accuracy: 0.8550
+
+Sequential KNN completed successfully.
+2026-08-13 17:58:38,856 INFO server.AbstractConnector: Stopped Spark@7ecec90d{HTTP/1.1, (http/1.1)}{0.0.0.0:4040}
+2026-08-13 17:58:38,858 INFO ui.SparkUI: Stopped Spark web UI at http://10.110.254.114:4040
+2026-08-13 17:58:38,864 INFO spark.MapOutputTrackerMasterEndpoint: MapOutputTrackerMasterEndpoint stopped!
+2026-08-13 17:58:38,872 INFO memory.MemoryStore: MemoryStore cleared
+2026-08-13 17:58:38,872 INFO storage.BlockManager: BlockManager stopped
+2026-08-13 17:58:38,873 INFO storage.BlockManagerMaster: BlockManagerMaster stopped
+2026-08-13 17:58:38,874 INFO scheduler.OutputCommitCoordinator$OutputCommitCoordinatorEndpoint: OutputCommitCoordinator stopped!
+2026-08-13 17:58:38,878 INFO spark.SparkContext: Successfully stopped SparkContext
+2026-08-13 17:58:38,879 INFO util.ShutdownHookManager: Shutdown hook called
+2026-08-13 17:58:38,880 INFO util.ShutdownHookManager: Deleting directory /private/var/folders/7t/jsjm7cp539576dt_scs5w6c40000gn/T/spark-cbf916c0-c2a9-43c5-8692-40a612718c78
+2026-08-13 17:58:38,883 INFO util.ShutdownHookManager: Deleting directory /private/var/folders/7t/jsjm7cp539576dt_scs5w6c40000gn/T/spark-77b25ed4-6c0c-4c96-bf9f-e4b0e64d5e3b
+
+========================================
+Sequential KNN Experiment
+Train Size = 10000
+Test Size  = 1000
+K          = 5
+========================================
+spark-submit \
+		--class knn.SequentialKNN \
+		--master local[4] \
+		--name "KNN Flight Delay" \
+		spark-demo.jar \
+		data/processed/train.parquet \
+		data/processed/test.parquet \
+		10000 \
+		1000 \
+		5
+2026-08-13 17:58:39,552 WARN util.Utils: Your hostname, Prabeshs-MacBook-Air.local resolves to a loopback address: 127.0.0.1; using 10.110.254.114 instead (on interface en0)
+2026-08-13 17:58:39,553 WARN util.Utils: Set SPARK_LOCAL_IP if you need to bind to another address
+2026-08-13 17:58:39,753 INFO spark.SparkContext: Running Spark version 3.3.2
+2026-08-13 17:58:39,807 WARN util.NativeCodeLoader: Unable to load native-hadoop library for your platform... using builtin-java classes where applicable
+2026-08-13 17:58:39,840 INFO resource.ResourceUtils: ==============================================================
+2026-08-13 17:58:39,840 INFO resource.ResourceUtils: No custom resources configured for spark.driver.
+2026-08-13 17:58:39,840 INFO resource.ResourceUtils: ==============================================================
+2026-08-13 17:58:39,840 INFO spark.SparkContext: Submitted application: Sequential KNN
+2026-08-13 17:58:39,851 INFO resource.ResourceProfile: Default ResourceProfile created, executor resources: Map(cores -> name: cores, amount: 1, script: , vendor: , memory -> name: memory, amount: 1024, script: , vendor: , offHeap -> name: offHeap, amount: 0, script: , vendor: ), task resources: Map(cpus -> name: cpus, amount: 1.0)
+2026-08-13 17:58:39,860 INFO resource.ResourceProfile: Limiting resource is cpu
+2026-08-13 17:58:39,860 INFO resource.ResourceProfileManager: Added ResourceProfile id: 0
+2026-08-13 17:58:39,886 INFO spark.SecurityManager: Changing view acls to: prabeshnepal
+2026-08-13 17:58:39,886 INFO spark.SecurityManager: Changing modify acls to: prabeshnepal
+2026-08-13 17:58:39,886 INFO spark.SecurityManager: Changing view acls groups to: 
+2026-08-13 17:58:39,886 INFO spark.SecurityManager: Changing modify acls groups to: 
+2026-08-13 17:58:39,886 INFO spark.SecurityManager: SecurityManager: authentication disabled; ui acls disabled; users  with view permissions: Set(prabeshnepal); groups with view permissions: Set(); users  with modify permissions: Set(prabeshnepal); groups with modify permissions: Set()
+2026-08-13 17:58:40,014 INFO util.Utils: Successfully started service 'sparkDriver' on port 57582.
+2026-08-13 17:58:40,029 INFO spark.SparkEnv: Registering MapOutputTracker
+2026-08-13 17:58:40,045 INFO spark.SparkEnv: Registering BlockManagerMaster
+2026-08-13 17:58:40,054 INFO storage.BlockManagerMasterEndpoint: Using org.apache.spark.storage.DefaultTopologyMapper for getting topology information
+2026-08-13 17:58:40,054 INFO storage.BlockManagerMasterEndpoint: BlockManagerMasterEndpoint up
+2026-08-13 17:58:40,056 INFO spark.SparkEnv: Registering BlockManagerMasterHeartbeat
+2026-08-13 17:58:40,067 INFO storage.DiskBlockManager: Created local directory at /private/var/folders/7t/jsjm7cp539576dt_scs5w6c40000gn/T/blockmgr-dbd0ebc7-24bc-48fa-b9cc-32af957a9b35
+2026-08-13 17:58:40,074 INFO memory.MemoryStore: MemoryStore started with capacity 434.4 MiB
+2026-08-13 17:58:40,081 INFO spark.SparkEnv: Registering OutputCommitCoordinator
+2026-08-13 17:58:40,102 INFO util.log: Logging initialized @1071ms to org.sparkproject.jetty.util.log.Slf4jLog
+2026-08-13 17:58:40,159 INFO server.Server: jetty-9.4.48.v20220622; built: 2022-06-21T20:42:25.880Z; git: 6b67c5719d1f4371b33655ff2d047d24e171e49a; jvm 11.0.24+7-LTS-271
+2026-08-13 17:58:40,168 INFO server.Server: Started @1137ms
+2026-08-13 17:58:40,182 INFO server.AbstractConnector: Started ServerConnector@7ecec90d{HTTP/1.1, (http/1.1)}{0.0.0.0:4040}
+2026-08-13 17:58:40,182 INFO util.Utils: Successfully started service 'SparkUI' on port 4040.
+2026-08-13 17:58:40,192 INFO handler.ContextHandler: Started o.s.j.s.ServletContextHandler@5d2828c9{/,null,AVAILABLE,@Spark}
+2026-08-13 17:58:40,200 INFO spark.SparkContext: Added JAR file:/Users/prabeshnepal/Desktop/LSPDP/final_project/spark-demo.jar at spark://10.110.254.114:57582/jars/spark-demo.jar with timestamp 1786658319749
+2026-08-13 17:58:40,260 INFO executor.Executor: Starting executor ID driver on host 10.110.254.114
+2026-08-13 17:58:40,263 INFO executor.Executor: Starting executor with user classpath (userClassPathFirst = false): ''
+2026-08-13 17:58:40,272 INFO executor.Executor: Fetching spark://10.110.254.114:57582/jars/spark-demo.jar with timestamp 1786658319749
+2026-08-13 17:58:40,298 INFO client.TransportClientFactory: Successfully created connection to /10.110.254.114:57582 after 15 ms (0 ms spent in bootstraps)
+2026-08-13 17:58:40,303 INFO util.Utils: Fetching spark://10.110.254.114:57582/jars/spark-demo.jar to /private/var/folders/7t/jsjm7cp539576dt_scs5w6c40000gn/T/spark-5561d2bf-f31f-4aae-8c44-bd9583d02c13/userFiles-d0ba3f61-d06e-4d2f-a9ad-886cf8e2d4a8/fetchFileTemp12768771623308100358.tmp
+2026-08-13 17:58:40,325 INFO executor.Executor: Adding file:/private/var/folders/7t/jsjm7cp539576dt_scs5w6c40000gn/T/spark-5561d2bf-f31f-4aae-8c44-bd9583d02c13/userFiles-d0ba3f61-d06e-4d2f-a9ad-886cf8e2d4a8/spark-demo.jar to class loader
+2026-08-13 17:58:40,328 INFO util.Utils: Successfully started service 'org.apache.spark.network.netty.NettyBlockTransferService' on port 57584.
+2026-08-13 17:58:40,328 INFO netty.NettyBlockTransferService: Server created on 10.110.254.114:57584
+2026-08-13 17:58:40,329 INFO storage.BlockManager: Using org.apache.spark.storage.RandomBlockReplicationPolicy for block replication policy
+2026-08-13 17:58:40,331 INFO storage.BlockManagerMaster: Registering BlockManager BlockManagerId(driver, 10.110.254.114, 57584, None)
+2026-08-13 17:58:40,333 INFO storage.BlockManagerMasterEndpoint: Registering block manager 10.110.254.114:57584 with 434.4 MiB RAM, BlockManagerId(driver, 10.110.254.114, 57584, None)
+2026-08-13 17:58:40,335 INFO storage.BlockManagerMaster: Registered BlockManager BlockManagerId(driver, 10.110.254.114, 57584, None)
+2026-08-13 17:58:40,335 INFO storage.BlockManager: Initialized BlockManager: BlockManagerId(driver, 10.110.254.114, 57584, None)
+2026-08-13 17:58:40,418 INFO handler.ContextHandler: Stopped o.s.j.s.ServletContextHandler@5d2828c9{/,null,STOPPED,@Spark}
+2026-08-13 17:58:40,419 INFO handler.ContextHandler: Started o.s.j.s.ServletContextHandler@6f3f0ae{/jobs,null,AVAILABLE,@Spark}
+2026-08-13 17:58:40,419 INFO handler.ContextHandler: Started o.s.j.s.ServletContextHandler@57a6a933{/jobs/json,null,AVAILABLE,@Spark}
+2026-08-13 17:58:40,419 INFO handler.ContextHandler: Started o.s.j.s.ServletContextHandler@69aa7d76{/jobs/job,null,AVAILABLE,@Spark}
+2026-08-13 17:58:40,420 INFO handler.ContextHandler: Started o.s.j.s.ServletContextHandler@f1266c6{/jobs/job/json,null,AVAILABLE,@Spark}
+2026-08-13 17:58:40,420 INFO handler.ContextHandler: Started o.s.j.s.ServletContextHandler@3e8799f{/stages,null,AVAILABLE,@Spark}
+2026-08-13 17:58:40,421 INFO handler.ContextHandler: Started o.s.j.s.ServletContextHandler@270d43a7{/stages/json,null,AVAILABLE,@Spark}
+2026-08-13 17:58:40,421 INFO handler.ContextHandler: Started o.s.j.s.ServletContextHandler@7b2ccba5{/stages/stage,null,AVAILABLE,@Spark}
+2026-08-13 17:58:40,422 INFO handler.ContextHandler: Started o.s.j.s.ServletContextHandler@5d5a51b1{/stages/stage/json,null,AVAILABLE,@Spark}
+2026-08-13 17:58:40,422 INFO handler.ContextHandler: Started o.s.j.s.ServletContextHandler@50ab56e2{/stages/pool,null,AVAILABLE,@Spark}
+2026-08-13 17:58:40,422 INFO handler.ContextHandler: Started o.s.j.s.ServletContextHandler@74834afd{/stages/pool/json,null,AVAILABLE,@Spark}
+2026-08-13 17:58:40,423 INFO handler.ContextHandler: Started o.s.j.s.ServletContextHandler@d499c13{/storage,null,AVAILABLE,@Spark}
+2026-08-13 17:58:40,423 INFO handler.ContextHandler: Started o.s.j.s.ServletContextHandler@42d6c12d{/storage/json,null,AVAILABLE,@Spark}
+2026-08-13 17:58:40,423 INFO handler.ContextHandler: Started o.s.j.s.ServletContextHandler@7a2ab862{/storage/rdd,null,AVAILABLE,@Spark}
+2026-08-13 17:58:40,424 INFO handler.ContextHandler: Started o.s.j.s.ServletContextHandler@4733f6f5{/storage/rdd/json,null,AVAILABLE,@Spark}
+2026-08-13 17:58:40,424 INFO handler.ContextHandler: Started o.s.j.s.ServletContextHandler@438c9aa7{/environment,null,AVAILABLE,@Spark}
+2026-08-13 17:58:40,424 INFO handler.ContextHandler: Started o.s.j.s.ServletContextHandler@6c8f60f3{/environment/json,null,AVAILABLE,@Spark}
+2026-08-13 17:58:40,425 INFO handler.ContextHandler: Started o.s.j.s.ServletContextHandler@71b6172c{/executors,null,AVAILABLE,@Spark}
+2026-08-13 17:58:40,425 INFO handler.ContextHandler: Started o.s.j.s.ServletContextHandler@4fb56bea{/executors/json,null,AVAILABLE,@Spark}
+2026-08-13 17:58:40,425 INFO handler.ContextHandler: Started o.s.j.s.ServletContextHandler@1f95881a{/executors/threadDump,null,AVAILABLE,@Spark}
+2026-08-13 17:58:40,426 INFO handler.ContextHandler: Started o.s.j.s.ServletContextHandler@733ec58b{/executors/threadDump/json,null,AVAILABLE,@Spark}
+2026-08-13 17:58:40,430 INFO handler.ContextHandler: Started o.s.j.s.ServletContextHandler@415ef4d8{/static,null,AVAILABLE,@Spark}
+2026-08-13 17:58:40,430 INFO handler.ContextHandler: Started o.s.j.s.ServletContextHandler@9b5f3c7{/,null,AVAILABLE,@Spark}
+2026-08-13 17:58:40,431 INFO handler.ContextHandler: Started o.s.j.s.ServletContextHandler@61ae0d43{/api,null,AVAILABLE,@Spark}
+2026-08-13 17:58:40,431 INFO handler.ContextHandler: Started o.s.j.s.ServletContextHandler@5995851e{/jobs/job/kill,null,AVAILABLE,@Spark}
+2026-08-13 17:58:40,431 INFO handler.ContextHandler: Started o.s.j.s.ServletContextHandler@51bddd98{/stages/stage/kill,null,AVAILABLE,@Spark}
+2026-08-13 17:58:40,433 INFO handler.ContextHandler: Started o.s.j.s.ServletContextHandler@54e43bfe{/metrics/json,null,AVAILABLE,@Spark}
+
+============================
+SEQUENTIAL KNN
+============================
+Training path: data/processed/train.parquet
+Testing path:  data/processed/test.parquet
+Training sample size: 10000
+Testing sample size:  1000
+K: 5
+
+Reading Parquet data...
+2026-08-13 17:58:40,615 INFO internal.SharedState: Setting hive.metastore.warehouse.dir ('null') to the value of spark.sql.warehouse.dir.
+2026-08-13 17:58:40,619 INFO internal.SharedState: Warehouse path is 'file:/Users/prabeshnepal/Desktop/LSPDP/final_project/spark-warehouse'.
+2026-08-13 17:58:40,625 INFO handler.ContextHandler: Started o.s.j.s.ServletContextHandler@6af310c7{/SQL,null,AVAILABLE,@Spark}
+2026-08-13 17:58:40,626 INFO handler.ContextHandler: Started o.s.j.s.ServletContextHandler@4c38cd16{/SQL/json,null,AVAILABLE,@Spark}
+2026-08-13 17:58:40,626 INFO handler.ContextHandler: Started o.s.j.s.ServletContextHandler@3e856100{/SQL/execution,null,AVAILABLE,@Spark}
+2026-08-13 17:58:40,626 INFO handler.ContextHandler: Started o.s.j.s.ServletContextHandler@28fc1132{/SQL/execution/json,null,AVAILABLE,@Spark}
+2026-08-13 17:58:40,636 INFO handler.ContextHandler: Started o.s.j.s.ServletContextHandler@66f5b8fe{/static/sql,null,AVAILABLE,@Spark}
+2026-08-13 17:58:41,036 INFO datasources.InMemoryFileIndex: It took 19 ms to list leaf files for 1 paths.
+2026-08-13 17:58:41,473 INFO spark.SparkContext: Starting job: parquet at SequentialKNN.scala:533
+2026-08-13 17:58:41,484 INFO scheduler.DAGScheduler: Got job 0 (parquet at SequentialKNN.scala:533) with 1 output partitions
+2026-08-13 17:58:41,485 INFO scheduler.DAGScheduler: Final stage: ResultStage 0 (parquet at SequentialKNN.scala:533)
+2026-08-13 17:58:41,485 INFO scheduler.DAGScheduler: Parents of final stage: List()
+2026-08-13 17:58:41,486 INFO scheduler.DAGScheduler: Missing parents: List()
+2026-08-13 17:58:41,488 INFO scheduler.DAGScheduler: Submitting ResultStage 0 (MapPartitionsRDD[1] at parquet at SequentialKNN.scala:533), which has no missing parents
+2026-08-13 17:58:41,571 INFO memory.MemoryStore: Block broadcast_0 stored as values in memory (estimated size 151.5 KiB, free 434.3 MiB)
+2026-08-13 17:58:41,800 INFO memory.MemoryStore: Block broadcast_0_piece0 stored as bytes in memory (estimated size 55.6 KiB, free 434.2 MiB)
+2026-08-13 17:58:41,802 INFO storage.BlockManagerInfo: Added broadcast_0_piece0 in memory on 10.110.254.114:57584 (size: 55.6 KiB, free: 434.3 MiB)
+2026-08-13 17:58:41,804 INFO spark.SparkContext: Created broadcast 0 from broadcast at DAGScheduler.scala:1513
+2026-08-13 17:58:41,816 INFO scheduler.DAGScheduler: Submitting 1 missing tasks from ResultStage 0 (MapPartitionsRDD[1] at parquet at SequentialKNN.scala:533) (first 15 tasks are for partitions Vector(0))
+2026-08-13 17:58:41,816 INFO scheduler.TaskSchedulerImpl: Adding task set 0.0 with 1 tasks resource profile 0
+2026-08-13 17:58:41,884 INFO scheduler.TaskSetManager: Starting task 0.0 in stage 0.0 (TID 0) (10.110.254.114, executor driver, partition 0, PROCESS_LOCAL, 4629 bytes) taskResourceAssignments Map()
+2026-08-13 17:58:41,893 INFO executor.Executor: Running task 0.0 in stage 0.0 (TID 0)
+2026-08-13 17:58:42,171 INFO executor.Executor: Finished task 0.0 in stage 0.0 (TID 0). 1976 bytes result sent to driver
+2026-08-13 17:58:42,175 INFO scheduler.TaskSetManager: Finished task 0.0 in stage 0.0 (TID 0) in 314 ms on 10.110.254.114 (executor driver) (1/1)
+2026-08-13 17:58:42,176 INFO scheduler.TaskSchedulerImpl: Removed TaskSet 0.0, whose tasks have all completed, from pool 
+2026-08-13 17:58:42,186 INFO scheduler.DAGScheduler: ResultStage 0 (parquet at SequentialKNN.scala:533) finished in 0.691 s
+2026-08-13 17:58:42,188 INFO scheduler.DAGScheduler: Job 0 is finished. Cancelling potential speculative or zombie tasks for this job
+2026-08-13 17:58:42,188 INFO scheduler.TaskSchedulerImpl: Killing all running tasks in stage 0: Stage finished
+2026-08-13 17:58:42,189 INFO scheduler.DAGScheduler: Job 0 finished: parquet at SequentialKNN.scala:533, took 0.715482 s
+2026-08-13 17:58:42,694 INFO storage.BlockManagerInfo: Removed broadcast_0_piece0 on 10.110.254.114:57584 in memory (size: 55.6 KiB, free: 434.4 MiB)
+2026-08-13 17:58:43,183 INFO datasources.InMemoryFileIndex: It took 1 ms to list leaf files for 1 paths.
+2026-08-13 17:58:43,229 INFO spark.SparkContext: Starting job: parquet at SequentialKNN.scala:536
+2026-08-13 17:58:43,230 INFO scheduler.DAGScheduler: Got job 1 (parquet at SequentialKNN.scala:536) with 1 output partitions
+2026-08-13 17:58:43,230 INFO scheduler.DAGScheduler: Final stage: ResultStage 1 (parquet at SequentialKNN.scala:536)
+2026-08-13 17:58:43,230 INFO scheduler.DAGScheduler: Parents of final stage: List()
+2026-08-13 17:58:43,230 INFO scheduler.DAGScheduler: Missing parents: List()
+2026-08-13 17:58:43,230 INFO scheduler.DAGScheduler: Submitting ResultStage 1 (MapPartitionsRDD[3] at parquet at SequentialKNN.scala:536), which has no missing parents
+2026-08-13 17:58:43,237 INFO memory.MemoryStore: Block broadcast_1 stored as values in memory (estimated size 151.5 KiB, free 434.3 MiB)
+2026-08-13 17:58:43,239 INFO memory.MemoryStore: Block broadcast_1_piece0 stored as bytes in memory (estimated size 55.6 KiB, free 434.2 MiB)
+2026-08-13 17:58:43,239 INFO storage.BlockManagerInfo: Added broadcast_1_piece0 in memory on 10.110.254.114:57584 (size: 55.6 KiB, free: 434.3 MiB)
+2026-08-13 17:58:43,240 INFO spark.SparkContext: Created broadcast 1 from broadcast at DAGScheduler.scala:1513
+2026-08-13 17:58:43,240 INFO scheduler.DAGScheduler: Submitting 1 missing tasks from ResultStage 1 (MapPartitionsRDD[3] at parquet at SequentialKNN.scala:536) (first 15 tasks are for partitions Vector(0))
+2026-08-13 17:58:43,240 INFO scheduler.TaskSchedulerImpl: Adding task set 1.0 with 1 tasks resource profile 0
+2026-08-13 17:58:43,241 INFO scheduler.TaskSetManager: Starting task 0.0 in stage 1.0 (TID 1) (10.110.254.114, executor driver, partition 0, PROCESS_LOCAL, 4628 bytes) taskResourceAssignments Map()
+2026-08-13 17:58:43,241 INFO executor.Executor: Running task 0.0 in stage 1.0 (TID 1)
+2026-08-13 17:58:43,252 INFO executor.Executor: Finished task 0.0 in stage 1.0 (TID 1). 1890 bytes result sent to driver
+2026-08-13 17:58:43,253 INFO scheduler.TaskSetManager: Finished task 0.0 in stage 1.0 (TID 1) in 12 ms on 10.110.254.114 (executor driver) (1/1)
+2026-08-13 17:58:43,253 INFO scheduler.TaskSchedulerImpl: Removed TaskSet 1.0, whose tasks have all completed, from pool 
+2026-08-13 17:58:43,254 INFO scheduler.DAGScheduler: ResultStage 1 (parquet at SequentialKNN.scala:536) finished in 0.023 s
+2026-08-13 17:58:43,254 INFO scheduler.DAGScheduler: Job 1 is finished. Cancelling potential speculative or zombie tasks for this job
+2026-08-13 17:58:43,254 INFO scheduler.TaskSchedulerImpl: Killing all running tasks in stage 1: Stage finished
+2026-08-13 17:58:43,254 INFO scheduler.DAGScheduler: Job 1 finished: parquet at SequentialKNN.scala:536, took 0.025051 s
+Selecting training sample...
+Selecting testing sample...
+Collecting training sample to driver...
+2026-08-13 17:58:43,468 INFO storage.BlockManagerInfo: Removed broadcast_1_piece0 on 10.110.254.114:57584 in memory (size: 55.6 KiB, free: 434.4 MiB)
+2026-08-13 17:58:43,571 INFO datasources.FileSourceStrategy: Pushed Filters: 
+2026-08-13 17:58:43,571 INFO datasources.FileSourceStrategy: Post-Scan Filters: 
+2026-08-13 17:58:43,572 INFO datasources.FileSourceStrategy: Output Data Schema: struct<DepDelayMinutes: double, CRSElapsedTime: double, Distance: double, DepTimeSin: double, DepTimeCos: double ... 6 more fields>
+2026-08-13 17:58:43,717 INFO codegen.CodeGenerator: Code generated in 75.778208 ms
+2026-08-13 17:58:43,791 INFO codegen.CodeGenerator: Code generated in 39.170959 ms
+2026-08-13 17:58:43,807 INFO memory.MemoryStore: Block broadcast_2 stored as values in memory (estimated size 302.9 KiB, free 434.1 MiB)
+2026-08-13 17:58:43,826 INFO memory.MemoryStore: Block broadcast_2_piece0 stored as bytes in memory (estimated size 53.8 KiB, free 434.1 MiB)
+2026-08-13 17:58:43,827 INFO storage.BlockManagerInfo: Added broadcast_2_piece0 in memory on 10.110.254.114:57584 (size: 53.8 KiB, free: 434.3 MiB)
+2026-08-13 17:58:43,827 INFO spark.SparkContext: Created broadcast 2 from collect at SequentialKNN.scala:366
+2026-08-13 17:58:43,834 INFO execution.FileSourceScanExec: Planning scan with bin packing, max size: 4194304 bytes, open cost is considered as scanning 4194304 bytes.
+2026-08-13 17:58:43,872 INFO spark.SparkContext: Starting job: collect at SequentialKNN.scala:366
+2026-08-13 17:58:43,873 INFO scheduler.DAGScheduler: Got job 2 (collect at SequentialKNN.scala:366) with 1 output partitions
+2026-08-13 17:58:43,873 INFO scheduler.DAGScheduler: Final stage: ResultStage 2 (collect at SequentialKNN.scala:366)
+2026-08-13 17:58:43,873 INFO scheduler.DAGScheduler: Parents of final stage: List()
+2026-08-13 17:58:43,873 INFO scheduler.DAGScheduler: Missing parents: List()
+2026-08-13 17:58:43,873 INFO scheduler.DAGScheduler: Submitting ResultStage 2 (MapPartitionsRDD[8] at collect at SequentialKNN.scala:366), which has no missing parents
+2026-08-13 17:58:43,886 INFO memory.MemoryStore: Block broadcast_3 stored as values in memory (estimated size 22.5 KiB, free 434.0 MiB)
+2026-08-13 17:58:43,887 INFO memory.MemoryStore: Block broadcast_3_piece0 stored as bytes in memory (estimated size 7.9 KiB, free 434.0 MiB)
+2026-08-13 17:58:43,887 INFO storage.BlockManagerInfo: Added broadcast_3_piece0 in memory on 10.110.254.114:57584 (size: 7.9 KiB, free: 434.3 MiB)
+2026-08-13 17:58:43,887 INFO spark.SparkContext: Created broadcast 3 from broadcast at DAGScheduler.scala:1513
+2026-08-13 17:58:43,888 INFO scheduler.DAGScheduler: Submitting 1 missing tasks from ResultStage 2 (MapPartitionsRDD[8] at collect at SequentialKNN.scala:366) (first 15 tasks are for partitions Vector(0))
+2026-08-13 17:58:43,888 INFO scheduler.TaskSchedulerImpl: Adding task set 2.0 with 1 tasks resource profile 0
+2026-08-13 17:58:43,890 INFO scheduler.TaskSetManager: Starting task 0.0 in stage 2.0 (TID 2) (10.110.254.114, executor driver, partition 0, PROCESS_LOCAL, 4954 bytes) taskResourceAssignments Map()
+2026-08-13 17:58:43,890 INFO executor.Executor: Running task 0.0 in stage 2.0 (TID 2)
+2026-08-13 17:58:43,921 INFO datasources.FileScanRDD: Reading File path: file:///Users/prabeshnepal/Desktop/LSPDP/final_project/data/processed/train.parquet, range: 0-2626333, partition values: [empty row]
+2026-08-13 17:58:44,005 INFO compress.CodecPool: Got brand-new decompressor [.snappy]
+2026-08-13 17:58:44,399 INFO executor.Executor: Finished task 0.0 in stage 2.0 (TID 2). 978695 bytes result sent to driver
+2026-08-13 17:58:44,408 INFO scheduler.TaskSetManager: Finished task 0.0 in stage 2.0 (TID 2) in 520 ms on 10.110.254.114 (executor driver) (1/1)
+2026-08-13 17:58:44,408 INFO scheduler.TaskSchedulerImpl: Removed TaskSet 2.0, whose tasks have all completed, from pool 
+2026-08-13 17:58:44,408 INFO scheduler.DAGScheduler: ResultStage 2 (collect at SequentialKNN.scala:366) finished in 0.533 s
+2026-08-13 17:58:44,408 INFO scheduler.DAGScheduler: Job 2 is finished. Cancelling potential speculative or zombie tasks for this job
+2026-08-13 17:58:44,408 INFO scheduler.TaskSchedulerImpl: Killing all running tasks in stage 2: Stage finished
+2026-08-13 17:58:44,409 INFO scheduler.DAGScheduler: Job 2 finished: collect at SequentialKNN.scala:366, took 0.536512 s
+2026-08-13 17:58:44,430 INFO codegen.CodeGenerator: Code generated in 13.218208 ms
+2026-08-13 17:58:44,447 INFO codegen.CodeGenerator: Code generated in 7.123375 ms
+Collecting testing sample to driver...
+2026-08-13 17:58:44,472 INFO datasources.FileSourceStrategy: Pushed Filters: 
+2026-08-13 17:58:44,472 INFO datasources.FileSourceStrategy: Post-Scan Filters: 
+2026-08-13 17:58:44,472 INFO datasources.FileSourceStrategy: Output Data Schema: struct<DepDelayMinutes: double, CRSElapsedTime: double, Distance: double, DepTimeSin: double, DepTimeCos: double ... 6 more fields>
+2026-08-13 17:58:44,484 INFO memory.MemoryStore: Block broadcast_4 stored as values in memory (estimated size 302.9 KiB, free 433.7 MiB)
+2026-08-13 17:58:44,491 INFO memory.MemoryStore: Block broadcast_4_piece0 stored as bytes in memory (estimated size 53.8 KiB, free 433.7 MiB)
+2026-08-13 17:58:44,491 INFO storage.BlockManagerInfo: Added broadcast_4_piece0 in memory on 10.110.254.114:57584 (size: 53.8 KiB, free: 434.3 MiB)
+2026-08-13 17:58:44,492 INFO spark.SparkContext: Created broadcast 4 from collect at SequentialKNN.scala:366
+2026-08-13 17:58:44,492 INFO execution.FileSourceScanExec: Planning scan with bin packing, max size: 4194304 bytes, open cost is considered as scanning 4194304 bytes.
+2026-08-13 17:58:44,506 INFO spark.SparkContext: Starting job: collect at SequentialKNN.scala:366
+2026-08-13 17:58:44,506 INFO scheduler.DAGScheduler: Got job 3 (collect at SequentialKNN.scala:366) with 1 output partitions
+2026-08-13 17:58:44,506 INFO scheduler.DAGScheduler: Final stage: ResultStage 3 (collect at SequentialKNN.scala:366)
+2026-08-13 17:58:44,506 INFO scheduler.DAGScheduler: Parents of final stage: List()
+2026-08-13 17:58:44,507 INFO scheduler.DAGScheduler: Missing parents: List()
+2026-08-13 17:58:44,507 INFO scheduler.DAGScheduler: Submitting ResultStage 3 (MapPartitionsRDD[13] at collect at SequentialKNN.scala:366), which has no missing parents
+2026-08-13 17:58:44,509 INFO memory.MemoryStore: Block broadcast_5 stored as values in memory (estimated size 22.5 KiB, free 433.7 MiB)
+2026-08-13 17:58:44,510 INFO memory.MemoryStore: Block broadcast_5_piece0 stored as bytes in memory (estimated size 7.9 KiB, free 433.6 MiB)
+2026-08-13 17:58:44,511 INFO storage.BlockManagerInfo: Added broadcast_5_piece0 in memory on 10.110.254.114:57584 (size: 7.9 KiB, free: 434.3 MiB)
+2026-08-13 17:58:44,511 INFO spark.SparkContext: Created broadcast 5 from broadcast at DAGScheduler.scala:1513
+2026-08-13 17:58:44,511 INFO scheduler.DAGScheduler: Submitting 1 missing tasks from ResultStage 3 (MapPartitionsRDD[13] at collect at SequentialKNN.scala:366) (first 15 tasks are for partitions Vector(0))
+2026-08-13 17:58:44,512 INFO scheduler.TaskSchedulerImpl: Adding task set 3.0 with 1 tasks resource profile 0
+2026-08-13 17:58:44,513 INFO scheduler.TaskSetManager: Starting task 0.0 in stage 3.0 (TID 3) (10.110.254.114, executor driver, partition 0, PROCESS_LOCAL, 4953 bytes) taskResourceAssignments Map()
+2026-08-13 17:58:44,513 INFO executor.Executor: Running task 0.0 in stage 3.0 (TID 3)
+2026-08-13 17:58:44,516 INFO datasources.FileScanRDD: Reading File path: file:///Users/prabeshnepal/Desktop/LSPDP/final_project/data/processed/test.parquet, range: 0-791318, partition values: [empty row]
+2026-08-13 17:58:44,547 INFO executor.Executor: Finished task 0.0 in stage 3.0 (TID 3). 101346 bytes result sent to driver
+2026-08-13 17:58:44,549 INFO scheduler.TaskSetManager: Finished task 0.0 in stage 3.0 (TID 3) in 37 ms on 10.110.254.114 (executor driver) (1/1)
+2026-08-13 17:58:44,550 INFO scheduler.TaskSchedulerImpl: Removed TaskSet 3.0, whose tasks have all completed, from pool 
+2026-08-13 17:58:44,550 INFO scheduler.DAGScheduler: ResultStage 3 (collect at SequentialKNN.scala:366) finished in 0.043 s
+2026-08-13 17:58:44,550 INFO scheduler.DAGScheduler: Job 3 is finished. Cancelling potential speculative or zombie tasks for this job
+2026-08-13 17:58:44,550 INFO scheduler.TaskSchedulerImpl: Killing all running tasks in stage 3: Stage finished
+2026-08-13 17:58:44,551 INFO scheduler.DAGScheduler: Job 3 finished: collect at SequentialKNN.scala:366, took 0.044567 s
+
+Actual training sample: 10000
+Actual testing sample: 1000
+
+Distance comparisons: 10,000,000
+
+Starting sequential KNN...
+2026-08-13 17:58:44,588 INFO storage.BlockManagerInfo: Removed broadcast_5_piece0 on 10.110.254.114:57584 in memory (size: 7.9 KiB, free: 434.3 MiB)
+Predicted 100/1000
+Predicted 200/1000
+Predicted 300/1000
+2026-08-13 17:58:44,660 INFO storage.BlockManagerInfo: Removed broadcast_4_piece0 on 10.110.254.114:57584 in memory (size: 53.8 KiB, free: 434.3 MiB)
+Predicted 400/1000
+Predicted 500/1000
+Predicted 600/1000
+Predicted 700/1000
+Predicted 800/1000
+Predicted 900/1000
+Predicted 1000/1000
+
+============================
+RUNTIME
+============================
+KNN runtime: 0.1635 seconds
+
+============================
+CONFUSION MATRIX
+============================
+True Negative:  841
+False Positive: 14
+False Negative: 51
+True Positive:  94
+
+============================
+METRICS
+============================
+Accuracy:  0.9350
+Precision: 0.8704
+Recall:    0.6483
+F1 Score:  0.7431
+
+============================
+BASELINE
+============================
+Baseline model: always predict NOT delayed
+Baseline accuracy: 0.8550
+
+Sequential KNN completed successfully.
+2026-08-13 17:58:44,728 INFO server.AbstractConnector: Stopped Spark@7ecec90d{HTTP/1.1, (http/1.1)}{0.0.0.0:4040}
+2026-08-13 17:58:44,730 INFO ui.SparkUI: Stopped Spark web UI at http://10.110.254.114:4040
+2026-08-13 17:58:44,735 INFO spark.MapOutputTrackerMasterEndpoint: MapOutputTrackerMasterEndpoint stopped!
+2026-08-13 17:58:44,746 INFO memory.MemoryStore: MemoryStore cleared
+2026-08-13 17:58:44,746 INFO storage.BlockManager: BlockManager stopped
+2026-08-13 17:58:44,747 INFO storage.BlockManagerMaster: BlockManagerMaster stopped
+2026-08-13 17:58:44,748 INFO scheduler.OutputCommitCoordinator$OutputCommitCoordinatorEndpoint: OutputCommitCoordinator stopped!
+2026-08-13 17:58:44,753 INFO spark.SparkContext: Successfully stopped SparkContext
+2026-08-13 17:58:44,754 INFO util.ShutdownHookManager: Shutdown hook called
+2026-08-13 17:58:44,754 INFO util.ShutdownHookManager: Deleting directory /private/var/folders/7t/jsjm7cp539576dt_scs5w6c40000gn/T/spark-5561d2bf-f31f-4aae-8c44-bd9583d02c13
+2026-08-13 17:58:44,757 INFO util.ShutdownHookManager: Deleting directory /private/var/folders/7t/jsjm7cp539576dt_scs5w6c40000gn/T/spark-9f5720a1-23f4-4874-8c6c-c9cf0cb31bd0
+
+========================================
+Sequential KNN Experiment
+Train Size = 10000
+Test Size  = 1000
+K          = 7
+========================================
+spark-submit \
+		--class knn.SequentialKNN \
+		--master local[4] \
+		--name "KNN Flight Delay" \
+		spark-demo.jar \
+		data/processed/train.parquet \
+		data/processed/test.parquet \
+		10000 \
+		1000 \
+		7
+2026-08-13 17:58:45,499 WARN util.Utils: Your hostname, Prabeshs-MacBook-Air.local resolves to a loopback address: 127.0.0.1; using 10.110.254.114 instead (on interface en0)
+2026-08-13 17:58:45,500 WARN util.Utils: Set SPARK_LOCAL_IP if you need to bind to another address
+2026-08-13 17:58:45,711 INFO spark.SparkContext: Running Spark version 3.3.2
+2026-08-13 17:58:45,777 WARN util.NativeCodeLoader: Unable to load native-hadoop library for your platform... using builtin-java classes where applicable
+2026-08-13 17:58:45,824 INFO resource.ResourceUtils: ==============================================================
+2026-08-13 17:58:45,824 INFO resource.ResourceUtils: No custom resources configured for spark.driver.
+2026-08-13 17:58:45,824 INFO resource.ResourceUtils: ==============================================================
+2026-08-13 17:58:45,824 INFO spark.SparkContext: Submitted application: Sequential KNN
+2026-08-13 17:58:45,839 INFO resource.ResourceProfile: Default ResourceProfile created, executor resources: Map(cores -> name: cores, amount: 1, script: , vendor: , memory -> name: memory, amount: 1024, script: , vendor: , offHeap -> name: offHeap, amount: 0, script: , vendor: ), task resources: Map(cpus -> name: cpus, amount: 1.0)
+2026-08-13 17:58:45,848 INFO resource.ResourceProfile: Limiting resource is cpu
+2026-08-13 17:58:45,849 INFO resource.ResourceProfileManager: Added ResourceProfile id: 0
+2026-08-13 17:58:45,879 INFO spark.SecurityManager: Changing view acls to: prabeshnepal
+2026-08-13 17:58:45,879 INFO spark.SecurityManager: Changing modify acls to: prabeshnepal
+2026-08-13 17:58:45,879 INFO spark.SecurityManager: Changing view acls groups to: 
+2026-08-13 17:58:45,879 INFO spark.SecurityManager: Changing modify acls groups to: 
+2026-08-13 17:58:45,880 INFO spark.SecurityManager: SecurityManager: authentication disabled; ui acls disabled; users  with view permissions: Set(prabeshnepal); groups with view permissions: Set(); users  with modify permissions: Set(prabeshnepal); groups with modify permissions: Set()
+2026-08-13 17:58:46,044 INFO util.Utils: Successfully started service 'sparkDriver' on port 57585.
+2026-08-13 17:58:46,059 INFO spark.SparkEnv: Registering MapOutputTracker
+2026-08-13 17:58:46,080 INFO spark.SparkEnv: Registering BlockManagerMaster
+2026-08-13 17:58:46,090 INFO storage.BlockManagerMasterEndpoint: Using org.apache.spark.storage.DefaultTopologyMapper for getting topology information
+2026-08-13 17:58:46,090 INFO storage.BlockManagerMasterEndpoint: BlockManagerMasterEndpoint up
+2026-08-13 17:58:46,092 INFO spark.SparkEnv: Registering BlockManagerMasterHeartbeat
+2026-08-13 17:58:46,103 INFO storage.DiskBlockManager: Created local directory at /private/var/folders/7t/jsjm7cp539576dt_scs5w6c40000gn/T/blockmgr-2e681698-c1c8-43d7-8bf2-8daa14ec3321
+2026-08-13 17:58:46,111 INFO memory.MemoryStore: MemoryStore started with capacity 434.4 MiB
+2026-08-13 17:58:46,120 INFO spark.SparkEnv: Registering OutputCommitCoordinator
+2026-08-13 17:58:46,144 INFO util.log: Logging initialized @1241ms to org.sparkproject.jetty.util.log.Slf4jLog
+2026-08-13 17:58:46,235 INFO server.Server: jetty-9.4.48.v20220622; built: 2022-06-21T20:42:25.880Z; git: 6b67c5719d1f4371b33655ff2d047d24e171e49a; jvm 11.0.24+7-LTS-271
+2026-08-13 17:58:46,252 INFO server.Server: Started @1350ms
+2026-08-13 17:58:46,273 INFO server.AbstractConnector: Started ServerConnector@7ecec90d{HTTP/1.1, (http/1.1)}{0.0.0.0:4040}
+2026-08-13 17:58:46,274 INFO util.Utils: Successfully started service 'SparkUI' on port 4040.
+2026-08-13 17:58:46,290 INFO handler.ContextHandler: Started o.s.j.s.ServletContextHandler@39a87e72{/,null,AVAILABLE,@Spark}
+2026-08-13 17:58:46,301 INFO spark.SparkContext: Added JAR file:/Users/prabeshnepal/Desktop/LSPDP/final_project/spark-demo.jar at spark://10.110.254.114:57585/jars/spark-demo.jar with timestamp 1786658325707
+2026-08-13 17:58:46,367 INFO executor.Executor: Starting executor ID driver on host 10.110.254.114
+2026-08-13 17:58:46,370 INFO executor.Executor: Starting executor with user classpath (userClassPathFirst = false): ''
+2026-08-13 17:58:46,381 INFO executor.Executor: Fetching spark://10.110.254.114:57585/jars/spark-demo.jar with timestamp 1786658325707
+2026-08-13 17:58:46,408 INFO client.TransportClientFactory: Successfully created connection to /10.110.254.114:57585 after 16 ms (0 ms spent in bootstraps)
+2026-08-13 17:58:46,412 INFO util.Utils: Fetching spark://10.110.254.114:57585/jars/spark-demo.jar to /private/var/folders/7t/jsjm7cp539576dt_scs5w6c40000gn/T/spark-d17f81fd-26e1-4c1d-863f-765061fa2799/userFiles-0b725880-8e1a-40ce-b5b3-76b0f23f0e18/fetchFileTemp16722666313562635986.tmp
+2026-08-13 17:58:46,439 INFO executor.Executor: Adding file:/private/var/folders/7t/jsjm7cp539576dt_scs5w6c40000gn/T/spark-d17f81fd-26e1-4c1d-863f-765061fa2799/userFiles-0b725880-8e1a-40ce-b5b3-76b0f23f0e18/spark-demo.jar to class loader
+2026-08-13 17:58:46,442 INFO util.Utils: Successfully started service 'org.apache.spark.network.netty.NettyBlockTransferService' on port 57587.
+2026-08-13 17:58:46,442 INFO netty.NettyBlockTransferService: Server created on 10.110.254.114:57587
+2026-08-13 17:58:46,443 INFO storage.BlockManager: Using org.apache.spark.storage.RandomBlockReplicationPolicy for block replication policy
+2026-08-13 17:58:46,446 INFO storage.BlockManagerMaster: Registering BlockManager BlockManagerId(driver, 10.110.254.114, 57587, None)
+2026-08-13 17:58:46,448 INFO storage.BlockManagerMasterEndpoint: Registering block manager 10.110.254.114:57587 with 434.4 MiB RAM, BlockManagerId(driver, 10.110.254.114, 57587, None)
+2026-08-13 17:58:46,449 INFO storage.BlockManagerMaster: Registered BlockManager BlockManagerId(driver, 10.110.254.114, 57587, None)
+2026-08-13 17:58:46,450 INFO storage.BlockManager: Initialized BlockManager: BlockManagerId(driver, 10.110.254.114, 57587, None)
+2026-08-13 17:58:46,535 INFO handler.ContextHandler: Stopped o.s.j.s.ServletContextHandler@39a87e72{/,null,STOPPED,@Spark}
+2026-08-13 17:58:46,536 INFO handler.ContextHandler: Started o.s.j.s.ServletContextHandler@57a6a933{/jobs,null,AVAILABLE,@Spark}
+2026-08-13 17:58:46,536 INFO handler.ContextHandler: Started o.s.j.s.ServletContextHandler@1934ad7c{/jobs/json,null,AVAILABLE,@Spark}
+2026-08-13 17:58:46,536 INFO handler.ContextHandler: Started o.s.j.s.ServletContextHandler@f1266c6{/jobs/job,null,AVAILABLE,@Spark}
+2026-08-13 17:58:46,537 INFO handler.ContextHandler: Started o.s.j.s.ServletContextHandler@3e8799f{/jobs/job/json,null,AVAILABLE,@Spark}
+2026-08-13 17:58:46,537 INFO handler.ContextHandler: Started o.s.j.s.ServletContextHandler@270d43a7{/stages,null,AVAILABLE,@Spark}
+2026-08-13 17:58:46,538 INFO handler.ContextHandler: Started o.s.j.s.ServletContextHandler@41ccb3b9{/stages/json,null,AVAILABLE,@Spark}
+2026-08-13 17:58:46,538 INFO handler.ContextHandler: Started o.s.j.s.ServletContextHandler@5d5a51b1{/stages/stage,null,AVAILABLE,@Spark}
+2026-08-13 17:58:46,539 INFO handler.ContextHandler: Started o.s.j.s.ServletContextHandler@50ab56e2{/stages/stage/json,null,AVAILABLE,@Spark}
+2026-08-13 17:58:46,539 INFO handler.ContextHandler: Started o.s.j.s.ServletContextHandler@74834afd{/stages/pool,null,AVAILABLE,@Spark}
+2026-08-13 17:58:46,539 INFO handler.ContextHandler: Started o.s.j.s.ServletContextHandler@d499c13{/stages/pool/json,null,AVAILABLE,@Spark}
+2026-08-13 17:58:46,540 INFO handler.ContextHandler: Started o.s.j.s.ServletContextHandler@42d6c12d{/storage,null,AVAILABLE,@Spark}
+2026-08-13 17:58:46,540 INFO handler.ContextHandler: Started o.s.j.s.ServletContextHandler@7a2ab862{/storage/json,null,AVAILABLE,@Spark}
+2026-08-13 17:58:46,540 INFO handler.ContextHandler: Started o.s.j.s.ServletContextHandler@4733f6f5{/storage/rdd,null,AVAILABLE,@Spark}
+2026-08-13 17:58:46,541 INFO handler.ContextHandler: Started o.s.j.s.ServletContextHandler@438c9aa7{/storage/rdd/json,null,AVAILABLE,@Spark}
+2026-08-13 17:58:46,541 INFO handler.ContextHandler: Started o.s.j.s.ServletContextHandler@6c8f60f3{/environment,null,AVAILABLE,@Spark}
+2026-08-13 17:58:46,541 INFO handler.ContextHandler: Started o.s.j.s.ServletContextHandler@71b6172c{/environment/json,null,AVAILABLE,@Spark}
+2026-08-13 17:58:46,541 INFO handler.ContextHandler: Started o.s.j.s.ServletContextHandler@4fb56bea{/executors,null,AVAILABLE,@Spark}
+2026-08-13 17:58:46,542 INFO handler.ContextHandler: Started o.s.j.s.ServletContextHandler@1f95881a{/executors/json,null,AVAILABLE,@Spark}
+2026-08-13 17:58:46,542 INFO handler.ContextHandler: Started o.s.j.s.ServletContextHandler@733ec58b{/executors/threadDump,null,AVAILABLE,@Spark}
+2026-08-13 17:58:46,543 INFO handler.ContextHandler: Started o.s.j.s.ServletContextHandler@415ef4d8{/executors/threadDump/json,null,AVAILABLE,@Spark}
+2026-08-13 17:58:46,546 INFO handler.ContextHandler: Started o.s.j.s.ServletContextHandler@535b1ae6{/static,null,AVAILABLE,@Spark}
+2026-08-13 17:58:46,547 INFO handler.ContextHandler: Started o.s.j.s.ServletContextHandler@61ae0d43{/,null,AVAILABLE,@Spark}
+2026-08-13 17:58:46,548 INFO handler.ContextHandler: Started o.s.j.s.ServletContextHandler@287ae90c{/api,null,AVAILABLE,@Spark}
+2026-08-13 17:58:46,548 INFO handler.ContextHandler: Started o.s.j.s.ServletContextHandler@51bddd98{/jobs/job/kill,null,AVAILABLE,@Spark}
+2026-08-13 17:58:46,548 INFO handler.ContextHandler: Started o.s.j.s.ServletContextHandler@77d4ac52{/stages/stage/kill,null,AVAILABLE,@Spark}
+2026-08-13 17:58:46,550 INFO handler.ContextHandler: Started o.s.j.s.ServletContextHandler@64387c17{/metrics/json,null,AVAILABLE,@Spark}
+
+============================
+SEQUENTIAL KNN
+============================
+Training path: data/processed/train.parquet
+Testing path:  data/processed/test.parquet
+Training sample size: 10000
+Testing sample size:  1000
+K: 7
+
+Reading Parquet data...
+2026-08-13 17:58:46,760 INFO internal.SharedState: Setting hive.metastore.warehouse.dir ('null') to the value of spark.sql.warehouse.dir.
+2026-08-13 17:58:46,766 INFO internal.SharedState: Warehouse path is 'file:/Users/prabeshnepal/Desktop/LSPDP/final_project/spark-warehouse'.
+2026-08-13 17:58:46,773 INFO handler.ContextHandler: Started o.s.j.s.ServletContextHandler@4c38cd16{/SQL,null,AVAILABLE,@Spark}
+2026-08-13 17:58:46,774 INFO handler.ContextHandler: Started o.s.j.s.ServletContextHandler@f5bf288{/SQL/json,null,AVAILABLE,@Spark}
+2026-08-13 17:58:46,774 INFO handler.ContextHandler: Started o.s.j.s.ServletContextHandler@28fc1132{/SQL/execution,null,AVAILABLE,@Spark}
+2026-08-13 17:58:46,774 INFO handler.ContextHandler: Started o.s.j.s.ServletContextHandler@20440c6c{/SQL/execution/json,null,AVAILABLE,@Spark}
+2026-08-13 17:58:46,788 INFO handler.ContextHandler: Started o.s.j.s.ServletContextHandler@69ec93c2{/static/sql,null,AVAILABLE,@Spark}
+2026-08-13 17:58:47,238 INFO datasources.InMemoryFileIndex: It took 20 ms to list leaf files for 1 paths.
+2026-08-13 17:58:47,544 INFO spark.SparkContext: Starting job: parquet at SequentialKNN.scala:533
+2026-08-13 17:58:47,553 INFO scheduler.DAGScheduler: Got job 0 (parquet at SequentialKNN.scala:533) with 1 output partitions
+2026-08-13 17:58:47,553 INFO scheduler.DAGScheduler: Final stage: ResultStage 0 (parquet at SequentialKNN.scala:533)
+2026-08-13 17:58:47,553 INFO scheduler.DAGScheduler: Parents of final stage: List()
+2026-08-13 17:58:47,554 INFO scheduler.DAGScheduler: Missing parents: List()
+2026-08-13 17:58:47,556 INFO scheduler.DAGScheduler: Submitting ResultStage 0 (MapPartitionsRDD[1] at parquet at SequentialKNN.scala:533), which has no missing parents
+2026-08-13 17:58:47,605 INFO memory.MemoryStore: Block broadcast_0 stored as values in memory (estimated size 151.5 KiB, free 434.3 MiB)
+2026-08-13 17:58:47,790 INFO memory.MemoryStore: Block broadcast_0_piece0 stored as bytes in memory (estimated size 55.6 KiB, free 434.2 MiB)
+2026-08-13 17:58:47,792 INFO storage.BlockManagerInfo: Added broadcast_0_piece0 in memory on 10.110.254.114:57587 (size: 55.6 KiB, free: 434.3 MiB)
+2026-08-13 17:58:47,795 INFO spark.SparkContext: Created broadcast 0 from broadcast at DAGScheduler.scala:1513
+2026-08-13 17:58:47,808 INFO scheduler.DAGScheduler: Submitting 1 missing tasks from ResultStage 0 (MapPartitionsRDD[1] at parquet at SequentialKNN.scala:533) (first 15 tasks are for partitions Vector(0))
+2026-08-13 17:58:47,809 INFO scheduler.TaskSchedulerImpl: Adding task set 0.0 with 1 tasks resource profile 0
+2026-08-13 17:58:47,851 INFO scheduler.TaskSetManager: Starting task 0.0 in stage 0.0 (TID 0) (10.110.254.114, executor driver, partition 0, PROCESS_LOCAL, 4629 bytes) taskResourceAssignments Map()
+2026-08-13 17:58:47,859 INFO executor.Executor: Running task 0.0 in stage 0.0 (TID 0)
+2026-08-13 17:58:48,050 INFO executor.Executor: Finished task 0.0 in stage 0.0 (TID 0). 1976 bytes result sent to driver
+2026-08-13 17:58:48,053 INFO scheduler.TaskSetManager: Finished task 0.0 in stage 0.0 (TID 0) in 214 ms on 10.110.254.114 (executor driver) (1/1)
+2026-08-13 17:58:48,054 INFO scheduler.TaskSchedulerImpl: Removed TaskSet 0.0, whose tasks have all completed, from pool 
+2026-08-13 17:58:48,057 INFO scheduler.DAGScheduler: ResultStage 0 (parquet at SequentialKNN.scala:533) finished in 0.490 s
+2026-08-13 17:58:48,059 INFO scheduler.DAGScheduler: Job 0 is finished. Cancelling potential speculative or zombie tasks for this job
+2026-08-13 17:58:48,059 INFO scheduler.TaskSchedulerImpl: Killing all running tasks in stage 0: Stage finished
+2026-08-13 17:58:48,059 INFO scheduler.DAGScheduler: Job 0 finished: parquet at SequentialKNN.scala:533, took 0.515561 s
+2026-08-13 17:58:48,399 INFO storage.BlockManagerInfo: Removed broadcast_0_piece0 on 10.110.254.114:57587 in memory (size: 55.6 KiB, free: 434.4 MiB)
+2026-08-13 17:58:48,826 INFO datasources.InMemoryFileIndex: It took 1 ms to list leaf files for 1 paths.
+2026-08-13 17:58:48,877 INFO spark.SparkContext: Starting job: parquet at SequentialKNN.scala:536
+2026-08-13 17:58:48,877 INFO scheduler.DAGScheduler: Got job 1 (parquet at SequentialKNN.scala:536) with 1 output partitions
+2026-08-13 17:58:48,877 INFO scheduler.DAGScheduler: Final stage: ResultStage 1 (parquet at SequentialKNN.scala:536)
+2026-08-13 17:58:48,877 INFO scheduler.DAGScheduler: Parents of final stage: List()
+2026-08-13 17:58:48,878 INFO scheduler.DAGScheduler: Missing parents: List()
+2026-08-13 17:58:48,878 INFO scheduler.DAGScheduler: Submitting ResultStage 1 (MapPartitionsRDD[3] at parquet at SequentialKNN.scala:536), which has no missing parents
+2026-08-13 17:58:48,886 INFO memory.MemoryStore: Block broadcast_1 stored as values in memory (estimated size 151.5 KiB, free 434.3 MiB)
+2026-08-13 17:58:48,888 INFO memory.MemoryStore: Block broadcast_1_piece0 stored as bytes in memory (estimated size 55.6 KiB, free 434.2 MiB)
+2026-08-13 17:58:48,888 INFO storage.BlockManagerInfo: Added broadcast_1_piece0 in memory on 10.110.254.114:57587 (size: 55.6 KiB, free: 434.3 MiB)
+2026-08-13 17:58:48,889 INFO spark.SparkContext: Created broadcast 1 from broadcast at DAGScheduler.scala:1513
+2026-08-13 17:58:48,889 INFO scheduler.DAGScheduler: Submitting 1 missing tasks from ResultStage 1 (MapPartitionsRDD[3] at parquet at SequentialKNN.scala:536) (first 15 tasks are for partitions Vector(0))
+2026-08-13 17:58:48,889 INFO scheduler.TaskSchedulerImpl: Adding task set 1.0 with 1 tasks resource profile 0
+2026-08-13 17:58:48,890 INFO scheduler.TaskSetManager: Starting task 0.0 in stage 1.0 (TID 1) (10.110.254.114, executor driver, partition 0, PROCESS_LOCAL, 4628 bytes) taskResourceAssignments Map()
+2026-08-13 17:58:48,890 INFO executor.Executor: Running task 0.0 in stage 1.0 (TID 1)
+2026-08-13 17:58:48,903 INFO executor.Executor: Finished task 0.0 in stage 1.0 (TID 1). 1890 bytes result sent to driver
+2026-08-13 17:58:48,904 INFO scheduler.TaskSetManager: Finished task 0.0 in stage 1.0 (TID 1) in 14 ms on 10.110.254.114 (executor driver) (1/1)
+2026-08-13 17:58:48,904 INFO scheduler.TaskSchedulerImpl: Removed TaskSet 1.0, whose tasks have all completed, from pool 
+2026-08-13 17:58:48,904 INFO scheduler.DAGScheduler: ResultStage 1 (parquet at SequentialKNN.scala:536) finished in 0.025 s
+2026-08-13 17:58:48,905 INFO scheduler.DAGScheduler: Job 1 is finished. Cancelling potential speculative or zombie tasks for this job
+2026-08-13 17:58:48,905 INFO scheduler.TaskSchedulerImpl: Killing all running tasks in stage 1: Stage finished
+2026-08-13 17:58:48,905 INFO scheduler.DAGScheduler: Job 1 finished: parquet at SequentialKNN.scala:536, took 0.027927 s
+Selecting training sample...
+Selecting testing sample...
+Collecting training sample to driver...
+2026-08-13 17:58:49,072 INFO storage.BlockManagerInfo: Removed broadcast_1_piece0 on 10.110.254.114:57587 in memory (size: 55.6 KiB, free: 434.4 MiB)
+2026-08-13 17:58:49,171 INFO datasources.FileSourceStrategy: Pushed Filters: 
+2026-08-13 17:58:49,171 INFO datasources.FileSourceStrategy: Post-Scan Filters: 
+2026-08-13 17:58:49,172 INFO datasources.FileSourceStrategy: Output Data Schema: struct<DepDelayMinutes: double, CRSElapsedTime: double, Distance: double, DepTimeSin: double, DepTimeCos: double ... 6 more fields>
+2026-08-13 17:58:49,297 INFO codegen.CodeGenerator: Code generated in 67.441042 ms
+2026-08-13 17:58:49,351 INFO codegen.CodeGenerator: Code generated in 24.502583 ms
+2026-08-13 17:58:49,367 INFO memory.MemoryStore: Block broadcast_2 stored as values in memory (estimated size 302.9 KiB, free 434.1 MiB)
+2026-08-13 17:58:49,392 INFO memory.MemoryStore: Block broadcast_2_piece0 stored as bytes in memory (estimated size 53.9 KiB, free 434.1 MiB)
+2026-08-13 17:58:49,392 INFO storage.BlockManagerInfo: Added broadcast_2_piece0 in memory on 10.110.254.114:57587 (size: 53.9 KiB, free: 434.3 MiB)
+2026-08-13 17:58:49,393 INFO spark.SparkContext: Created broadcast 2 from collect at SequentialKNN.scala:366
+2026-08-13 17:58:49,400 INFO execution.FileSourceScanExec: Planning scan with bin packing, max size: 4194304 bytes, open cost is considered as scanning 4194304 bytes.
+2026-08-13 17:58:49,440 INFO spark.SparkContext: Starting job: collect at SequentialKNN.scala:366
+2026-08-13 17:58:49,441 INFO scheduler.DAGScheduler: Got job 2 (collect at SequentialKNN.scala:366) with 1 output partitions
+2026-08-13 17:58:49,441 INFO scheduler.DAGScheduler: Final stage: ResultStage 2 (collect at SequentialKNN.scala:366)
+2026-08-13 17:58:49,441 INFO scheduler.DAGScheduler: Parents of final stage: List()
+2026-08-13 17:58:49,441 INFO scheduler.DAGScheduler: Missing parents: List()
+2026-08-13 17:58:49,441 INFO scheduler.DAGScheduler: Submitting ResultStage 2 (MapPartitionsRDD[8] at collect at SequentialKNN.scala:366), which has no missing parents
+2026-08-13 17:58:49,454 INFO memory.MemoryStore: Block broadcast_3 stored as values in memory (estimated size 22.5 KiB, free 434.0 MiB)
+2026-08-13 17:58:49,455 INFO memory.MemoryStore: Block broadcast_3_piece0 stored as bytes in memory (estimated size 7.9 KiB, free 434.0 MiB)
+2026-08-13 17:58:49,455 INFO storage.BlockManagerInfo: Added broadcast_3_piece0 in memory on 10.110.254.114:57587 (size: 7.9 KiB, free: 434.3 MiB)
+2026-08-13 17:58:49,456 INFO spark.SparkContext: Created broadcast 3 from broadcast at DAGScheduler.scala:1513
+2026-08-13 17:58:49,456 INFO scheduler.DAGScheduler: Submitting 1 missing tasks from ResultStage 2 (MapPartitionsRDD[8] at collect at SequentialKNN.scala:366) (first 15 tasks are for partitions Vector(0))
+2026-08-13 17:58:49,456 INFO scheduler.TaskSchedulerImpl: Adding task set 2.0 with 1 tasks resource profile 0
+2026-08-13 17:58:49,458 INFO scheduler.TaskSetManager: Starting task 0.0 in stage 2.0 (TID 2) (10.110.254.114, executor driver, partition 0, PROCESS_LOCAL, 4954 bytes) taskResourceAssignments Map()
+2026-08-13 17:58:49,458 INFO executor.Executor: Running task 0.0 in stage 2.0 (TID 2)
+2026-08-13 17:58:49,486 INFO datasources.FileScanRDD: Reading File path: file:///Users/prabeshnepal/Desktop/LSPDP/final_project/data/processed/train.parquet, range: 0-2626333, partition values: [empty row]
+2026-08-13 17:58:49,560 INFO compress.CodecPool: Got brand-new decompressor [.snappy]
+2026-08-13 17:58:49,996 INFO executor.Executor: Finished task 0.0 in stage 2.0 (TID 2). 978695 bytes result sent to driver
+2026-08-13 17:58:50,006 INFO scheduler.TaskSetManager: Finished task 0.0 in stage 2.0 (TID 2) in 549 ms on 10.110.254.114 (executor driver) (1/1)
+2026-08-13 17:58:50,006 INFO scheduler.TaskSchedulerImpl: Removed TaskSet 2.0, whose tasks have all completed, from pool 
+2026-08-13 17:58:50,007 INFO scheduler.DAGScheduler: ResultStage 2 (collect at SequentialKNN.scala:366) finished in 0.564 s
+2026-08-13 17:58:50,007 INFO scheduler.DAGScheduler: Job 2 is finished. Cancelling potential speculative or zombie tasks for this job
+2026-08-13 17:58:50,007 INFO scheduler.TaskSchedulerImpl: Killing all running tasks in stage 2: Stage finished
+2026-08-13 17:58:50,007 INFO scheduler.DAGScheduler: Job 2 finished: collect at SequentialKNN.scala:366, took 0.566929 s
+2026-08-13 17:58:50,026 INFO codegen.CodeGenerator: Code generated in 8.508875 ms
+2026-08-13 17:58:50,050 INFO codegen.CodeGenerator: Code generated in 9.912 ms
+Collecting testing sample to driver...
+2026-08-13 17:58:50,080 INFO datasources.FileSourceStrategy: Pushed Filters: 
+2026-08-13 17:58:50,080 INFO datasources.FileSourceStrategy: Post-Scan Filters: 
+2026-08-13 17:58:50,081 INFO datasources.FileSourceStrategy: Output Data Schema: struct<DepDelayMinutes: double, CRSElapsedTime: double, Distance: double, DepTimeSin: double, DepTimeCos: double ... 6 more fields>
+2026-08-13 17:58:50,096 INFO memory.MemoryStore: Block broadcast_4 stored as values in memory (estimated size 302.9 KiB, free 433.7 MiB)
+2026-08-13 17:58:50,123 INFO memory.MemoryStore: Block broadcast_4_piece0 stored as bytes in memory (estimated size 53.9 KiB, free 433.7 MiB)
+2026-08-13 17:58:50,123 INFO storage.BlockManagerInfo: Added broadcast_4_piece0 in memory on 10.110.254.114:57587 (size: 53.9 KiB, free: 434.3 MiB)
+2026-08-13 17:58:50,124 INFO spark.SparkContext: Created broadcast 4 from collect at SequentialKNN.scala:366
+2026-08-13 17:58:50,124 INFO execution.FileSourceScanExec: Planning scan with bin packing, max size: 4194304 bytes, open cost is considered as scanning 4194304 bytes.
+2026-08-13 17:58:50,138 INFO spark.SparkContext: Starting job: collect at SequentialKNN.scala:366
+2026-08-13 17:58:50,139 INFO scheduler.DAGScheduler: Got job 3 (collect at SequentialKNN.scala:366) with 1 output partitions
+2026-08-13 17:58:50,139 INFO scheduler.DAGScheduler: Final stage: ResultStage 3 (collect at SequentialKNN.scala:366)
+2026-08-13 17:58:50,139 INFO scheduler.DAGScheduler: Parents of final stage: List()
+2026-08-13 17:58:50,139 INFO scheduler.DAGScheduler: Missing parents: List()
+2026-08-13 17:58:50,139 INFO scheduler.DAGScheduler: Submitting ResultStage 3 (MapPartitionsRDD[13] at collect at SequentialKNN.scala:366), which has no missing parents
+2026-08-13 17:58:50,141 INFO memory.MemoryStore: Block broadcast_5 stored as values in memory (estimated size 22.5 KiB, free 433.7 MiB)
+2026-08-13 17:58:50,142 INFO memory.MemoryStore: Block broadcast_5_piece0 stored as bytes in memory (estimated size 7.9 KiB, free 433.6 MiB)
+2026-08-13 17:58:50,143 INFO storage.BlockManagerInfo: Added broadcast_5_piece0 in memory on 10.110.254.114:57587 (size: 7.9 KiB, free: 434.3 MiB)
+2026-08-13 17:58:50,143 INFO spark.SparkContext: Created broadcast 5 from broadcast at DAGScheduler.scala:1513
+2026-08-13 17:58:50,143 INFO scheduler.DAGScheduler: Submitting 1 missing tasks from ResultStage 3 (MapPartitionsRDD[13] at collect at SequentialKNN.scala:366) (first 15 tasks are for partitions Vector(0))
+2026-08-13 17:58:50,143 INFO scheduler.TaskSchedulerImpl: Adding task set 3.0 with 1 tasks resource profile 0
+2026-08-13 17:58:50,144 INFO scheduler.TaskSetManager: Starting task 0.0 in stage 3.0 (TID 3) (10.110.254.114, executor driver, partition 0, PROCESS_LOCAL, 4953 bytes) taskResourceAssignments Map()
+2026-08-13 17:58:50,144 INFO executor.Executor: Running task 0.0 in stage 3.0 (TID 3)
+2026-08-13 17:58:50,149 INFO datasources.FileScanRDD: Reading File path: file:///Users/prabeshnepal/Desktop/LSPDP/final_project/data/processed/test.parquet, range: 0-791318, partition values: [empty row]
+2026-08-13 17:58:50,190 INFO executor.Executor: Finished task 0.0 in stage 3.0 (TID 3). 101346 bytes result sent to driver
+2026-08-13 17:58:50,192 INFO scheduler.TaskSetManager: Finished task 0.0 in stage 3.0 (TID 3) in 48 ms on 10.110.254.114 (executor driver) (1/1)
+2026-08-13 17:58:50,192 INFO scheduler.TaskSchedulerImpl: Removed TaskSet 3.0, whose tasks have all completed, from pool 
+2026-08-13 17:58:50,193 INFO scheduler.DAGScheduler: ResultStage 3 (collect at SequentialKNN.scala:366) finished in 0.053 s
+2026-08-13 17:58:50,193 INFO scheduler.DAGScheduler: Job 3 is finished. Cancelling potential speculative or zombie tasks for this job
+2026-08-13 17:58:50,193 INFO scheduler.TaskSchedulerImpl: Killing all running tasks in stage 3: Stage finished
+2026-08-13 17:58:50,193 INFO scheduler.DAGScheduler: Job 3 finished: collect at SequentialKNN.scala:366, took 0.054908 s
+
+Actual training sample: 10000
+Actual testing sample: 1000
+
+Distance comparisons: 10,000,000
+
+Starting sequential KNN...
+2026-08-13 17:58:50,240 INFO storage.BlockManagerInfo: Removed broadcast_5_piece0 on 10.110.254.114:57587 in memory (size: 7.9 KiB, free: 434.3 MiB)
+Predicted 100/1000
+Predicted 200/1000
+Predicted 300/1000
+2026-08-13 17:58:50,491 INFO storage.BlockManagerInfo: Removed broadcast_4_piece0 on 10.110.254.114:57587 in memory (size: 53.9 KiB, free: 434.3 MiB)
+Predicted 400/1000
+Predicted 500/1000
+Predicted 600/1000
+Predicted 700/1000
+Predicted 800/1000
+Predicted 900/1000
+Predicted 1000/1000
+
+============================
+RUNTIME
+============================
+KNN runtime: 0.4007 seconds
+
+============================
+CONFUSION MATRIX
+============================
+True Negative:  847
+False Positive: 8
+False Negative: 56
+True Positive:  89
+
+============================
+METRICS
+============================
+Accuracy:  0.9360
+Precision: 0.9175
+Recall:    0.6138
+F1 Score:  0.7355
+
+============================
+BASELINE
+============================
+Baseline model: always predict NOT delayed
+Baseline accuracy: 0.8550
+
+Sequential KNN completed successfully.
+2026-08-13 17:58:50,606 INFO server.AbstractConnector: Stopped Spark@7ecec90d{HTTP/1.1, (http/1.1)}{0.0.0.0:4040}
+2026-08-13 17:58:50,608 INFO ui.SparkUI: Stopped Spark web UI at http://10.110.254.114:4040
+2026-08-13 17:58:50,614 INFO spark.MapOutputTrackerMasterEndpoint: MapOutputTrackerMasterEndpoint stopped!
+2026-08-13 17:58:50,637 INFO memory.MemoryStore: MemoryStore cleared
+2026-08-13 17:58:50,638 INFO storage.BlockManager: BlockManager stopped
+2026-08-13 17:58:50,640 INFO storage.BlockManagerMaster: BlockManagerMaster stopped
+2026-08-13 17:58:50,642 INFO scheduler.OutputCommitCoordinator$OutputCommitCoordinatorEndpoint: OutputCommitCoordinator stopped!
+2026-08-13 17:58:50,648 INFO spark.SparkContext: Successfully stopped SparkContext
+2026-08-13 17:58:50,649 INFO util.ShutdownHookManager: Shutdown hook called
+2026-08-13 17:58:50,650 INFO util.ShutdownHookManager: Deleting directory /private/var/folders/7t/jsjm7cp539576dt_scs5w6c40000gn/T/spark-8d26da60-a9f1-45de-864b-a50573446b33
+2026-08-13 17:58:50,653 INFO util.ShutdownHookManager: Deleting directory /private/var/folders/7t/jsjm7cp539576dt_scs5w6c40000gn/T/spark-d17f81fd-26e1-4c1d-863f-765061fa2799
+
+========================================
+Sequential KNN Experiment
+Train Size = 10000
+Test Size  = 1000
+K          = 11
+========================================
+spark-submit \
+		--class knn.SequentialKNN \
+		--master local[4] \
+		--name "KNN Flight Delay" \
+		spark-demo.jar \
+		data/processed/train.parquet \
+		data/processed/test.parquet \
+		10000 \
+		1000 \
+		11
+2026-08-13 17:58:51,395 WARN util.Utils: Your hostname, Prabeshs-MacBook-Air.local resolves to a loopback address: 127.0.0.1; using 10.110.254.114 instead (on interface en0)
+2026-08-13 17:58:51,396 WARN util.Utils: Set SPARK_LOCAL_IP if you need to bind to another address
+2026-08-13 17:58:51,597 INFO spark.SparkContext: Running Spark version 3.3.2
+2026-08-13 17:58:51,654 WARN util.NativeCodeLoader: Unable to load native-hadoop library for your platform... using builtin-java classes where applicable
+2026-08-13 17:58:51,684 INFO resource.ResourceUtils: ==============================================================
+2026-08-13 17:58:51,685 INFO resource.ResourceUtils: No custom resources configured for spark.driver.
+2026-08-13 17:58:51,685 INFO resource.ResourceUtils: ==============================================================
+2026-08-13 17:58:51,685 INFO spark.SparkContext: Submitted application: Sequential KNN
+2026-08-13 17:58:51,696 INFO resource.ResourceProfile: Default ResourceProfile created, executor resources: Map(cores -> name: cores, amount: 1, script: , vendor: , memory -> name: memory, amount: 1024, script: , vendor: , offHeap -> name: offHeap, amount: 0, script: , vendor: ), task resources: Map(cpus -> name: cpus, amount: 1.0)
+2026-08-13 17:58:51,704 INFO resource.ResourceProfile: Limiting resource is cpu
+2026-08-13 17:58:51,704 INFO resource.ResourceProfileManager: Added ResourceProfile id: 0
+2026-08-13 17:58:51,731 INFO spark.SecurityManager: Changing view acls to: prabeshnepal
+2026-08-13 17:58:51,731 INFO spark.SecurityManager: Changing modify acls to: prabeshnepal
+2026-08-13 17:58:51,732 INFO spark.SecurityManager: Changing view acls groups to: 
+2026-08-13 17:58:51,732 INFO spark.SecurityManager: Changing modify acls groups to: 
+2026-08-13 17:58:51,732 INFO spark.SecurityManager: SecurityManager: authentication disabled; ui acls disabled; users  with view permissions: Set(prabeshnepal); groups with view permissions: Set(); users  with modify permissions: Set(prabeshnepal); groups with modify permissions: Set()
+2026-08-13 17:58:51,854 INFO util.Utils: Successfully started service 'sparkDriver' on port 57591.
+2026-08-13 17:58:51,868 INFO spark.SparkEnv: Registering MapOutputTracker
+2026-08-13 17:58:51,884 INFO spark.SparkEnv: Registering BlockManagerMaster
+2026-08-13 17:58:51,893 INFO storage.BlockManagerMasterEndpoint: Using org.apache.spark.storage.DefaultTopologyMapper for getting topology information
+2026-08-13 17:58:51,893 INFO storage.BlockManagerMasterEndpoint: BlockManagerMasterEndpoint up
+2026-08-13 17:58:51,895 INFO spark.SparkEnv: Registering BlockManagerMasterHeartbeat
+2026-08-13 17:58:51,905 INFO storage.DiskBlockManager: Created local directory at /private/var/folders/7t/jsjm7cp539576dt_scs5w6c40000gn/T/blockmgr-eb0afc56-b42c-4f04-98de-300552a7bd58
+2026-08-13 17:58:51,913 INFO memory.MemoryStore: MemoryStore started with capacity 434.4 MiB
+2026-08-13 17:58:51,923 INFO spark.SparkEnv: Registering OutputCommitCoordinator
+2026-08-13 17:58:51,946 INFO util.log: Logging initialized @1145ms to org.sparkproject.jetty.util.log.Slf4jLog
+2026-08-13 17:58:52,012 INFO server.Server: jetty-9.4.48.v20220622; built: 2022-06-21T20:42:25.880Z; git: 6b67c5719d1f4371b33655ff2d047d24e171e49a; jvm 11.0.24+7-LTS-271
+2026-08-13 17:58:52,019 INFO server.Server: Started @1218ms
+2026-08-13 17:58:52,032 INFO server.AbstractConnector: Started ServerConnector@7ecec90d{HTTP/1.1, (http/1.1)}{0.0.0.0:4040}
+2026-08-13 17:58:52,032 INFO util.Utils: Successfully started service 'SparkUI' on port 4040.
+2026-08-13 17:58:52,041 INFO handler.ContextHandler: Started o.s.j.s.ServletContextHandler@5d2828c9{/,null,AVAILABLE,@Spark}
+2026-08-13 17:58:52,049 INFO spark.SparkContext: Added JAR file:/Users/prabeshnepal/Desktop/LSPDP/final_project/spark-demo.jar at spark://10.110.254.114:57591/jars/spark-demo.jar with timestamp 1786658331593
+2026-08-13 17:58:52,102 INFO executor.Executor: Starting executor ID driver on host 10.110.254.114
+2026-08-13 17:58:52,105 INFO executor.Executor: Starting executor with user classpath (userClassPathFirst = false): ''
+2026-08-13 17:58:52,110 INFO executor.Executor: Fetching spark://10.110.254.114:57591/jars/spark-demo.jar with timestamp 1786658331593
+2026-08-13 17:58:52,135 INFO client.TransportClientFactory: Successfully created connection to /10.110.254.114:57591 after 14 ms (0 ms spent in bootstraps)
+2026-08-13 17:58:52,139 INFO util.Utils: Fetching spark://10.110.254.114:57591/jars/spark-demo.jar to /private/var/folders/7t/jsjm7cp539576dt_scs5w6c40000gn/T/spark-03ea7dc9-692b-4c43-bfdb-d627f68d7d86/userFiles-32f2dd6f-f4d3-4804-8a56-455697be65c7/fetchFileTemp12933450569050842675.tmp
+2026-08-13 17:58:52,161 INFO executor.Executor: Adding file:/private/var/folders/7t/jsjm7cp539576dt_scs5w6c40000gn/T/spark-03ea7dc9-692b-4c43-bfdb-d627f68d7d86/userFiles-32f2dd6f-f4d3-4804-8a56-455697be65c7/spark-demo.jar to class loader
+2026-08-13 17:58:52,164 INFO util.Utils: Successfully started service 'org.apache.spark.network.netty.NettyBlockTransferService' on port 57593.
+2026-08-13 17:58:52,164 INFO netty.NettyBlockTransferService: Server created on 10.110.254.114:57593
+2026-08-13 17:58:52,165 INFO storage.BlockManager: Using org.apache.spark.storage.RandomBlockReplicationPolicy for block replication policy
+2026-08-13 17:58:52,169 INFO storage.BlockManagerMaster: Registering BlockManager BlockManagerId(driver, 10.110.254.114, 57593, None)
+2026-08-13 17:58:52,171 INFO storage.BlockManagerMasterEndpoint: Registering block manager 10.110.254.114:57593 with 434.4 MiB RAM, BlockManagerId(driver, 10.110.254.114, 57593, None)
+2026-08-13 17:58:52,172 INFO storage.BlockManagerMaster: Registered BlockManager BlockManagerId(driver, 10.110.254.114, 57593, None)
+2026-08-13 17:58:52,173 INFO storage.BlockManager: Initialized BlockManager: BlockManagerId(driver, 10.110.254.114, 57593, None)
+2026-08-13 17:58:52,262 INFO handler.ContextHandler: Stopped o.s.j.s.ServletContextHandler@5d2828c9{/,null,STOPPED,@Spark}
+2026-08-13 17:58:52,262 INFO handler.ContextHandler: Started o.s.j.s.ServletContextHandler@5b5b59{/jobs,null,AVAILABLE,@Spark}
+2026-08-13 17:58:52,263 INFO handler.ContextHandler: Started o.s.j.s.ServletContextHandler@b27b210{/jobs/json,null,AVAILABLE,@Spark}
+2026-08-13 17:58:52,263 INFO handler.ContextHandler: Started o.s.j.s.ServletContextHandler@3913f206{/jobs/job,null,AVAILABLE,@Spark}
+2026-08-13 17:58:52,264 INFO handler.ContextHandler: Started o.s.j.s.ServletContextHandler@3b353651{/jobs/job/json,null,AVAILABLE,@Spark}
+2026-08-13 17:58:52,264 INFO handler.ContextHandler: Started o.s.j.s.ServletContextHandler@1280682{/stages,null,AVAILABLE,@Spark}
+2026-08-13 17:58:52,264 INFO handler.ContextHandler: Started o.s.j.s.ServletContextHandler@53d9826f{/stages/json,null,AVAILABLE,@Spark}
+2026-08-13 17:58:52,265 INFO handler.ContextHandler: Started o.s.j.s.ServletContextHandler@4dc7cd1c{/stages/stage,null,AVAILABLE,@Spark}
+2026-08-13 17:58:52,265 INFO handler.ContextHandler: Started o.s.j.s.ServletContextHandler@7b5b5bfe{/stages/stage/json,null,AVAILABLE,@Spark}
+2026-08-13 17:58:52,265 INFO handler.ContextHandler: Started o.s.j.s.ServletContextHandler@75fd65c{/stages/pool,null,AVAILABLE,@Spark}
+2026-08-13 17:58:52,266 INFO handler.ContextHandler: Started o.s.j.s.ServletContextHandler@2ceca2ef{/stages/pool/json,null,AVAILABLE,@Spark}
+2026-08-13 17:58:52,266 INFO handler.ContextHandler: Started o.s.j.s.ServletContextHandler@3b42121d{/storage,null,AVAILABLE,@Spark}
+2026-08-13 17:58:52,266 INFO handler.ContextHandler: Started o.s.j.s.ServletContextHandler@33188612{/storage/json,null,AVAILABLE,@Spark}
+2026-08-13 17:58:52,267 INFO handler.ContextHandler: Started o.s.j.s.ServletContextHandler@6ccac6f4{/storage/rdd,null,AVAILABLE,@Spark}
+2026-08-13 17:58:52,267 INFO handler.ContextHandler: Started o.s.j.s.ServletContextHandler@3453acd2{/storage/rdd/json,null,AVAILABLE,@Spark}
+2026-08-13 17:58:52,267 INFO handler.ContextHandler: Started o.s.j.s.ServletContextHandler@56c8e6f0{/environment,null,AVAILABLE,@Spark}
+2026-08-13 17:58:52,268 INFO handler.ContextHandler: Started o.s.j.s.ServletContextHandler@58aa10f4{/environment/json,null,AVAILABLE,@Spark}
+2026-08-13 17:58:52,268 INFO handler.ContextHandler: Started o.s.j.s.ServletContextHandler@5e5beb8a{/executors,null,AVAILABLE,@Spark}
+2026-08-13 17:58:52,268 INFO handler.ContextHandler: Started o.s.j.s.ServletContextHandler@17b016ac{/executors/json,null,AVAILABLE,@Spark}
+2026-08-13 17:58:52,269 INFO handler.ContextHandler: Started o.s.j.s.ServletContextHandler@723877dd{/executors/threadDump,null,AVAILABLE,@Spark}
+2026-08-13 17:58:52,269 INFO handler.ContextHandler: Started o.s.j.s.ServletContextHandler@56cc9f29{/executors/threadDump/json,null,AVAILABLE,@Spark}
+2026-08-13 17:58:52,273 INFO handler.ContextHandler: Started o.s.j.s.ServletContextHandler@626c19cf{/static,null,AVAILABLE,@Spark}
+2026-08-13 17:58:52,274 INFO handler.ContextHandler: Started o.s.j.s.ServletContextHandler@ef718de{/,null,AVAILABLE,@Spark}
+2026-08-13 17:58:52,275 INFO handler.ContextHandler: Started o.s.j.s.ServletContextHandler@2e1b374c{/api,null,AVAILABLE,@Spark}
+2026-08-13 17:58:52,275 INFO handler.ContextHandler: Started o.s.j.s.ServletContextHandler@21c747a{/jobs/job/kill,null,AVAILABLE,@Spark}
+2026-08-13 17:58:52,275 INFO handler.ContextHandler: Started o.s.j.s.ServletContextHandler@29f38091{/stages/stage/kill,null,AVAILABLE,@Spark}
+2026-08-13 17:58:52,278 INFO handler.ContextHandler: Started o.s.j.s.ServletContextHandler@7c369270{/metrics/json,null,AVAILABLE,@Spark}
+
+============================
+SEQUENTIAL KNN
+============================
+Training path: data/processed/train.parquet
+Testing path:  data/processed/test.parquet
+Training sample size: 10000
+Testing sample size:  1000
+K: 11
+
+Reading Parquet data...
+2026-08-13 17:58:52,482 INFO internal.SharedState: Setting hive.metastore.warehouse.dir ('null') to the value of spark.sql.warehouse.dir.
+2026-08-13 17:58:52,486 INFO internal.SharedState: Warehouse path is 'file:/Users/prabeshnepal/Desktop/LSPDP/final_project/spark-warehouse'.
+2026-08-13 17:58:52,493 INFO handler.ContextHandler: Started o.s.j.s.ServletContextHandler@7ddcb0dc{/SQL,null,AVAILABLE,@Spark}
+2026-08-13 17:58:52,494 INFO handler.ContextHandler: Started o.s.j.s.ServletContextHandler@2c1d57bc{/SQL/json,null,AVAILABLE,@Spark}
+2026-08-13 17:58:52,494 INFO handler.ContextHandler: Started o.s.j.s.ServletContextHandler@355ce6a6{/SQL/execution,null,AVAILABLE,@Spark}
+2026-08-13 17:58:52,494 INFO handler.ContextHandler: Started o.s.j.s.ServletContextHandler@1e3f86d5{/SQL/execution/json,null,AVAILABLE,@Spark}
+2026-08-13 17:58:52,503 INFO handler.ContextHandler: Started o.s.j.s.ServletContextHandler@19fec3d6{/static/sql,null,AVAILABLE,@Spark}
+2026-08-13 17:58:52,911 INFO datasources.InMemoryFileIndex: It took 20 ms to list leaf files for 1 paths.
+2026-08-13 17:58:53,200 INFO spark.SparkContext: Starting job: parquet at SequentialKNN.scala:533
+2026-08-13 17:58:53,206 INFO scheduler.DAGScheduler: Got job 0 (parquet at SequentialKNN.scala:533) with 1 output partitions
+2026-08-13 17:58:53,207 INFO scheduler.DAGScheduler: Final stage: ResultStage 0 (parquet at SequentialKNN.scala:533)
+2026-08-13 17:58:53,207 INFO scheduler.DAGScheduler: Parents of final stage: List()
+2026-08-13 17:58:53,207 INFO scheduler.DAGScheduler: Missing parents: List()
+2026-08-13 17:58:53,209 INFO scheduler.DAGScheduler: Submitting ResultStage 0 (MapPartitionsRDD[1] at parquet at SequentialKNN.scala:533), which has no missing parents
+2026-08-13 17:58:53,249 INFO memory.MemoryStore: Block broadcast_0 stored as values in memory (estimated size 151.5 KiB, free 434.3 MiB)
+2026-08-13 17:58:53,568 INFO memory.MemoryStore: Block broadcast_0_piece0 stored as bytes in memory (estimated size 55.6 KiB, free 434.2 MiB)
+2026-08-13 17:58:53,569 INFO storage.BlockManagerInfo: Added broadcast_0_piece0 in memory on 10.110.254.114:57593 (size: 55.6 KiB, free: 434.3 MiB)
+2026-08-13 17:58:53,571 INFO spark.SparkContext: Created broadcast 0 from broadcast at DAGScheduler.scala:1513
+2026-08-13 17:58:53,583 INFO scheduler.DAGScheduler: Submitting 1 missing tasks from ResultStage 0 (MapPartitionsRDD[1] at parquet at SequentialKNN.scala:533) (first 15 tasks are for partitions Vector(0))
+2026-08-13 17:58:53,584 INFO scheduler.TaskSchedulerImpl: Adding task set 0.0 with 1 tasks resource profile 0
+2026-08-13 17:58:53,627 INFO scheduler.TaskSetManager: Starting task 0.0 in stage 0.0 (TID 0) (10.110.254.114, executor driver, partition 0, PROCESS_LOCAL, 4629 bytes) taskResourceAssignments Map()
+2026-08-13 17:58:53,636 INFO executor.Executor: Running task 0.0 in stage 0.0 (TID 0)
+2026-08-13 17:58:53,832 INFO executor.Executor: Finished task 0.0 in stage 0.0 (TID 0). 1976 bytes result sent to driver
+2026-08-13 17:58:53,837 INFO scheduler.TaskSetManager: Finished task 0.0 in stage 0.0 (TID 0) in 225 ms on 10.110.254.114 (executor driver) (1/1)
+2026-08-13 17:58:53,838 INFO scheduler.TaskSchedulerImpl: Removed TaskSet 0.0, whose tasks have all completed, from pool 
+2026-08-13 17:58:53,841 INFO scheduler.DAGScheduler: ResultStage 0 (parquet at SequentialKNN.scala:533) finished in 0.626 s
+2026-08-13 17:58:53,843 INFO scheduler.DAGScheduler: Job 0 is finished. Cancelling potential speculative or zombie tasks for this job
+2026-08-13 17:58:53,843 INFO scheduler.TaskSchedulerImpl: Killing all running tasks in stage 0: Stage finished
+2026-08-13 17:58:53,844 INFO scheduler.DAGScheduler: Job 0 finished: parquet at SequentialKNN.scala:533, took 0.644156 s
+2026-08-13 17:58:54,421 INFO storage.BlockManagerInfo: Removed broadcast_0_piece0 on 10.110.254.114:57593 in memory (size: 55.6 KiB, free: 434.4 MiB)
+2026-08-13 17:58:54,724 INFO datasources.InMemoryFileIndex: It took 1 ms to list leaf files for 1 paths.
+2026-08-13 17:58:54,777 INFO spark.SparkContext: Starting job: parquet at SequentialKNN.scala:536
+2026-08-13 17:58:54,778 INFO scheduler.DAGScheduler: Got job 1 (parquet at SequentialKNN.scala:536) with 1 output partitions
+2026-08-13 17:58:54,778 INFO scheduler.DAGScheduler: Final stage: ResultStage 1 (parquet at SequentialKNN.scala:536)
+2026-08-13 17:58:54,778 INFO scheduler.DAGScheduler: Parents of final stage: List()
+2026-08-13 17:58:54,778 INFO scheduler.DAGScheduler: Missing parents: List()
+2026-08-13 17:58:54,779 INFO scheduler.DAGScheduler: Submitting ResultStage 1 (MapPartitionsRDD[3] at parquet at SequentialKNN.scala:536), which has no missing parents
+2026-08-13 17:58:54,786 INFO memory.MemoryStore: Block broadcast_1 stored as values in memory (estimated size 151.5 KiB, free 434.3 MiB)
+2026-08-13 17:58:54,788 INFO memory.MemoryStore: Block broadcast_1_piece0 stored as bytes in memory (estimated size 55.7 KiB, free 434.2 MiB)
+2026-08-13 17:58:54,788 INFO storage.BlockManagerInfo: Added broadcast_1_piece0 in memory on 10.110.254.114:57593 (size: 55.7 KiB, free: 434.3 MiB)
+2026-08-13 17:58:54,789 INFO spark.SparkContext: Created broadcast 1 from broadcast at DAGScheduler.scala:1513
+2026-08-13 17:58:54,789 INFO scheduler.DAGScheduler: Submitting 1 missing tasks from ResultStage 1 (MapPartitionsRDD[3] at parquet at SequentialKNN.scala:536) (first 15 tasks are for partitions Vector(0))
+2026-08-13 17:58:54,789 INFO scheduler.TaskSchedulerImpl: Adding task set 1.0 with 1 tasks resource profile 0
+2026-08-13 17:58:54,790 INFO scheduler.TaskSetManager: Starting task 0.0 in stage 1.0 (TID 1) (10.110.254.114, executor driver, partition 0, PROCESS_LOCAL, 4628 bytes) taskResourceAssignments Map()
+2026-08-13 17:58:54,795 INFO executor.Executor: Running task 0.0 in stage 1.0 (TID 1)
+2026-08-13 17:58:54,806 INFO executor.Executor: Finished task 0.0 in stage 1.0 (TID 1). 1890 bytes result sent to driver
+2026-08-13 17:58:54,807 INFO scheduler.TaskSetManager: Finished task 0.0 in stage 1.0 (TID 1) in 17 ms on 10.110.254.114 (executor driver) (1/1)
+2026-08-13 17:58:54,807 INFO scheduler.TaskSchedulerImpl: Removed TaskSet 1.0, whose tasks have all completed, from pool 
+2026-08-13 17:58:54,807 INFO scheduler.DAGScheduler: ResultStage 1 (parquet at SequentialKNN.scala:536) finished in 0.028 s
+2026-08-13 17:58:54,807 INFO scheduler.DAGScheduler: Job 1 is finished. Cancelling potential speculative or zombie tasks for this job
+2026-08-13 17:58:54,807 INFO scheduler.TaskSchedulerImpl: Killing all running tasks in stage 1: Stage finished
+2026-08-13 17:58:54,807 INFO scheduler.DAGScheduler: Job 1 finished: parquet at SequentialKNN.scala:536, took 0.030174 s
+Selecting training sample...
+Selecting testing sample...
+Collecting training sample to driver...
+2026-08-13 17:58:55,053 INFO datasources.FileSourceStrategy: Pushed Filters: 
+2026-08-13 17:58:55,054 INFO datasources.FileSourceStrategy: Post-Scan Filters: 
+2026-08-13 17:58:55,054 INFO datasources.FileSourceStrategy: Output Data Schema: struct<DepDelayMinutes: double, CRSElapsedTime: double, Distance: double, DepTimeSin: double, DepTimeCos: double ... 6 more fields>
+2026-08-13 17:58:55,177 INFO storage.BlockManagerInfo: Removed broadcast_1_piece0 on 10.110.254.114:57593 in memory (size: 55.7 KiB, free: 434.4 MiB)
+2026-08-13 17:58:55,203 INFO codegen.CodeGenerator: Code generated in 78.121583 ms
+2026-08-13 17:58:55,276 INFO codegen.CodeGenerator: Code generated in 38.086416 ms
+2026-08-13 17:58:55,292 INFO memory.MemoryStore: Block broadcast_2 stored as values in memory (estimated size 302.9 KiB, free 434.1 MiB)
+2026-08-13 17:58:55,302 INFO memory.MemoryStore: Block broadcast_2_piece0 stored as bytes in memory (estimated size 53.9 KiB, free 434.1 MiB)
+2026-08-13 17:58:55,302 INFO storage.BlockManagerInfo: Added broadcast_2_piece0 in memory on 10.110.254.114:57593 (size: 53.9 KiB, free: 434.3 MiB)
+2026-08-13 17:58:55,302 INFO spark.SparkContext: Created broadcast 2 from collect at SequentialKNN.scala:366
+2026-08-13 17:58:55,308 INFO execution.FileSourceScanExec: Planning scan with bin packing, max size: 4194304 bytes, open cost is considered as scanning 4194304 bytes.
+2026-08-13 17:58:55,354 INFO spark.SparkContext: Starting job: collect at SequentialKNN.scala:366
+2026-08-13 17:58:55,355 INFO scheduler.DAGScheduler: Got job 2 (collect at SequentialKNN.scala:366) with 1 output partitions
+2026-08-13 17:58:55,355 INFO scheduler.DAGScheduler: Final stage: ResultStage 2 (collect at SequentialKNN.scala:366)
+2026-08-13 17:58:55,355 INFO scheduler.DAGScheduler: Parents of final stage: List()
+2026-08-13 17:58:55,355 INFO scheduler.DAGScheduler: Missing parents: List()
+2026-08-13 17:58:55,355 INFO scheduler.DAGScheduler: Submitting ResultStage 2 (MapPartitionsRDD[8] at collect at SequentialKNN.scala:366), which has no missing parents
+2026-08-13 17:58:55,369 INFO memory.MemoryStore: Block broadcast_3 stored as values in memory (estimated size 22.5 KiB, free 434.0 MiB)
+2026-08-13 17:58:55,370 INFO memory.MemoryStore: Block broadcast_3_piece0 stored as bytes in memory (estimated size 7.9 KiB, free 434.0 MiB)
+2026-08-13 17:58:55,371 INFO storage.BlockManagerInfo: Added broadcast_3_piece0 in memory on 10.110.254.114:57593 (size: 7.9 KiB, free: 434.3 MiB)
+2026-08-13 17:58:55,371 INFO spark.SparkContext: Created broadcast 3 from broadcast at DAGScheduler.scala:1513
+2026-08-13 17:58:55,372 INFO scheduler.DAGScheduler: Submitting 1 missing tasks from ResultStage 2 (MapPartitionsRDD[8] at collect at SequentialKNN.scala:366) (first 15 tasks are for partitions Vector(0))
+2026-08-13 17:58:55,372 INFO scheduler.TaskSchedulerImpl: Adding task set 2.0 with 1 tasks resource profile 0
+2026-08-13 17:58:55,374 INFO scheduler.TaskSetManager: Starting task 0.0 in stage 2.0 (TID 2) (10.110.254.114, executor driver, partition 0, PROCESS_LOCAL, 4954 bytes) taskResourceAssignments Map()
+2026-08-13 17:58:55,374 INFO executor.Executor: Running task 0.0 in stage 2.0 (TID 2)
+2026-08-13 17:58:55,404 INFO datasources.FileScanRDD: Reading File path: file:///Users/prabeshnepal/Desktop/LSPDP/final_project/data/processed/train.parquet, range: 0-2626333, partition values: [empty row]
+2026-08-13 17:58:55,467 INFO compress.CodecPool: Got brand-new decompressor [.snappy]
+2026-08-13 17:58:55,855 INFO executor.Executor: Finished task 0.0 in stage 2.0 (TID 2). 978695 bytes result sent to driver
+2026-08-13 17:58:55,864 INFO scheduler.TaskSetManager: Finished task 0.0 in stage 2.0 (TID 2) in 492 ms on 10.110.254.114 (executor driver) (1/1)
+2026-08-13 17:58:55,864 INFO scheduler.TaskSchedulerImpl: Removed TaskSet 2.0, whose tasks have all completed, from pool 
+2026-08-13 17:58:55,864 INFO scheduler.DAGScheduler: ResultStage 2 (collect at SequentialKNN.scala:366) finished in 0.507 s
+2026-08-13 17:58:55,864 INFO scheduler.DAGScheduler: Job 2 is finished. Cancelling potential speculative or zombie tasks for this job
+2026-08-13 17:58:55,864 INFO scheduler.TaskSchedulerImpl: Killing all running tasks in stage 2: Stage finished
+2026-08-13 17:58:55,865 INFO scheduler.DAGScheduler: Job 2 finished: collect at SequentialKNN.scala:366, took 0.510238 s
+2026-08-13 17:58:55,894 INFO codegen.CodeGenerator: Code generated in 11.404583 ms
+2026-08-13 17:58:55,911 INFO codegen.CodeGenerator: Code generated in 7.381666 ms
+Collecting testing sample to driver...
+2026-08-13 17:58:55,932 INFO datasources.FileSourceStrategy: Pushed Filters: 
+2026-08-13 17:58:55,932 INFO datasources.FileSourceStrategy: Post-Scan Filters: 
+2026-08-13 17:58:55,932 INFO datasources.FileSourceStrategy: Output Data Schema: struct<DepDelayMinutes: double, CRSElapsedTime: double, Distance: double, DepTimeSin: double, DepTimeCos: double ... 6 more fields>
+2026-08-13 17:58:55,944 INFO memory.MemoryStore: Block broadcast_4 stored as values in memory (estimated size 302.9 KiB, free 433.7 MiB)
+2026-08-13 17:58:55,966 INFO memory.MemoryStore: Block broadcast_4_piece0 stored as bytes in memory (estimated size 53.9 KiB, free 433.7 MiB)
+2026-08-13 17:58:55,967 INFO storage.BlockManagerInfo: Added broadcast_4_piece0 in memory on 10.110.254.114:57593 (size: 53.9 KiB, free: 434.3 MiB)
+2026-08-13 17:58:55,967 INFO spark.SparkContext: Created broadcast 4 from collect at SequentialKNN.scala:366
+2026-08-13 17:58:55,968 INFO execution.FileSourceScanExec: Planning scan with bin packing, max size: 4194304 bytes, open cost is considered as scanning 4194304 bytes.
+2026-08-13 17:58:55,980 INFO spark.SparkContext: Starting job: collect at SequentialKNN.scala:366
+2026-08-13 17:58:55,981 INFO scheduler.DAGScheduler: Got job 3 (collect at SequentialKNN.scala:366) with 1 output partitions
+2026-08-13 17:58:55,981 INFO scheduler.DAGScheduler: Final stage: ResultStage 3 (collect at SequentialKNN.scala:366)
+2026-08-13 17:58:55,981 INFO scheduler.DAGScheduler: Parents of final stage: List()
+2026-08-13 17:58:55,981 INFO scheduler.DAGScheduler: Missing parents: List()
+2026-08-13 17:58:55,981 INFO scheduler.DAGScheduler: Submitting ResultStage 3 (MapPartitionsRDD[13] at collect at SequentialKNN.scala:366), which has no missing parents
+2026-08-13 17:58:55,983 INFO memory.MemoryStore: Block broadcast_5 stored as values in memory (estimated size 22.5 KiB, free 433.7 MiB)
+2026-08-13 17:58:55,987 INFO memory.MemoryStore: Block broadcast_5_piece0 stored as bytes in memory (estimated size 7.9 KiB, free 433.6 MiB)
+2026-08-13 17:58:55,988 INFO storage.BlockManagerInfo: Added broadcast_5_piece0 in memory on 10.110.254.114:57593 (size: 7.9 KiB, free: 434.3 MiB)
+2026-08-13 17:58:55,988 INFO spark.SparkContext: Created broadcast 5 from broadcast at DAGScheduler.scala:1513
+2026-08-13 17:58:55,989 INFO scheduler.DAGScheduler: Submitting 1 missing tasks from ResultStage 3 (MapPartitionsRDD[13] at collect at SequentialKNN.scala:366) (first 15 tasks are for partitions Vector(0))
+2026-08-13 17:58:55,989 INFO scheduler.TaskSchedulerImpl: Adding task set 3.0 with 1 tasks resource profile 0
+2026-08-13 17:58:55,990 INFO scheduler.TaskSetManager: Starting task 0.0 in stage 3.0 (TID 3) (10.110.254.114, executor driver, partition 0, PROCESS_LOCAL, 4953 bytes) taskResourceAssignments Map()
+2026-08-13 17:58:55,990 INFO executor.Executor: Running task 0.0 in stage 3.0 (TID 3)
+2026-08-13 17:58:55,996 INFO datasources.FileScanRDD: Reading File path: file:///Users/prabeshnepal/Desktop/LSPDP/final_project/data/processed/test.parquet, range: 0-791318, partition values: [empty row]
+2026-08-13 17:58:56,010 INFO storage.BlockManagerInfo: Removed broadcast_3_piece0 on 10.110.254.114:57593 in memory (size: 7.9 KiB, free: 434.3 MiB)
+2026-08-13 17:58:56,013 INFO storage.BlockManagerInfo: Removed broadcast_2_piece0 on 10.110.254.114:57593 in memory (size: 53.9 KiB, free: 434.3 MiB)
+2026-08-13 17:58:56,037 INFO executor.Executor: Finished task 0.0 in stage 3.0 (TID 3). 101346 bytes result sent to driver
+2026-08-13 17:58:56,039 INFO scheduler.TaskSetManager: Finished task 0.0 in stage 3.0 (TID 3) in 50 ms on 10.110.254.114 (executor driver) (1/1)
+2026-08-13 17:58:56,039 INFO scheduler.TaskSchedulerImpl: Removed TaskSet 3.0, whose tasks have all completed, from pool 
+2026-08-13 17:58:56,039 INFO scheduler.DAGScheduler: ResultStage 3 (collect at SequentialKNN.scala:366) finished in 0.058 s
+2026-08-13 17:58:56,039 INFO scheduler.DAGScheduler: Job 3 is finished. Cancelling potential speculative or zombie tasks for this job
+2026-08-13 17:58:56,039 INFO scheduler.TaskSchedulerImpl: Killing all running tasks in stage 3: Stage finished
+2026-08-13 17:58:56,039 INFO scheduler.DAGScheduler: Job 3 finished: collect at SequentialKNN.scala:366, took 0.059358 s
+
+Actual training sample: 10000
+Actual testing sample: 1000
+
+Distance comparisons: 10,000,000
+
+Starting sequential KNN...
+2026-08-13 17:58:56,077 INFO storage.BlockManagerInfo: Removed broadcast_5_piece0 on 10.110.254.114:57593 in memory (size: 7.9 KiB, free: 434.3 MiB)
+Predicted 100/1000
+Predicted 200/1000
+Predicted 300/1000
+Predicted 400/1000
+Predicted 500/1000
+Predicted 600/1000
+Predicted 700/1000
+Predicted 800/1000
+Predicted 900/1000
+Predicted 1000/1000
+
+============================
+RUNTIME
+============================
+KNN runtime: 0.1775 seconds
+
+============================
+CONFUSION MATRIX
+============================
+True Negative:  849
+False Positive: 6
+False Negative: 54
+True Positive:  91
+
+============================
+METRICS
+============================
+Accuracy:  0.9400
+Precision: 0.9381
+Recall:    0.6276
+F1 Score:  0.7521
+
+============================
+BASELINE
+============================
+Baseline model: always predict NOT delayed
+Baseline accuracy: 0.8550
+
+Sequential KNN completed successfully.
+2026-08-13 17:58:56,227 INFO server.AbstractConnector: Stopped Spark@7ecec90d{HTTP/1.1, (http/1.1)}{0.0.0.0:4040}
+2026-08-13 17:58:56,231 INFO ui.SparkUI: Stopped Spark web UI at http://10.110.254.114:4040
+2026-08-13 17:58:56,241 INFO spark.MapOutputTrackerMasterEndpoint: MapOutputTrackerMasterEndpoint stopped!
+2026-08-13 17:58:56,252 INFO memory.MemoryStore: MemoryStore cleared
+2026-08-13 17:58:56,252 INFO storage.BlockManager: BlockManager stopped
+2026-08-13 17:58:56,254 INFO storage.BlockManagerMaster: BlockManagerMaster stopped
+2026-08-13 17:58:56,256 INFO scheduler.OutputCommitCoordinator$OutputCommitCoordinatorEndpoint: OutputCommitCoordinator stopped!
+2026-08-13 17:58:56,262 INFO spark.SparkContext: Successfully stopped SparkContext
+2026-08-13 17:58:56,263 INFO util.ShutdownHookManager: Shutdown hook called
+2026-08-13 17:58:56,264 INFO util.ShutdownHookManager: Deleting directory /private/var/folders/7t/jsjm7cp539576dt_scs5w6c40000gn/T/spark-03ea7dc9-692b-4c43-bfdb-d627f68d7d86
+2026-08-13 17:58:56,267 INFO util.ShutdownHookManager: Deleting directory /private/var/folders/7t/jsjm7cp539576dt_scs5w6c40000gn/T/spark-e56ffff1-55d3-4392-b17e-0f6ee0e899c6
+
+========================================
+Sequential KNN Experiment
+Train Size = 10000
+Test Size  = 1000
+K          = 15
+========================================
+spark-submit \
+		--class knn.SequentialKNN \
+		--master local[4] \
+		--name "KNN Flight Delay" \
+		spark-demo.jar \
+		data/processed/train.parquet \
+		data/processed/test.parquet \
+		10000 \
+		1000 \
+		15
+2026-08-13 17:58:57,026 WARN util.Utils: Your hostname, Prabeshs-MacBook-Air.local resolves to a loopback address: 127.0.0.1; using 10.110.254.114 instead (on interface en0)
+2026-08-13 17:58:57,026 WARN util.Utils: Set SPARK_LOCAL_IP if you need to bind to another address
+2026-08-13 17:58:57,257 INFO spark.SparkContext: Running Spark version 3.3.2
+2026-08-13 17:58:57,327 WARN util.NativeCodeLoader: Unable to load native-hadoop library for your platform... using builtin-java classes where applicable
+2026-08-13 17:58:57,366 INFO resource.ResourceUtils: ==============================================================
+2026-08-13 17:58:57,366 INFO resource.ResourceUtils: No custom resources configured for spark.driver.
+2026-08-13 17:58:57,366 INFO resource.ResourceUtils: ==============================================================
+2026-08-13 17:58:57,366 INFO spark.SparkContext: Submitted application: Sequential KNN
+2026-08-13 17:58:57,381 INFO resource.ResourceProfile: Default ResourceProfile created, executor resources: Map(cores -> name: cores, amount: 1, script: , vendor: , memory -> name: memory, amount: 1024, script: , vendor: , offHeap -> name: offHeap, amount: 0, script: , vendor: ), task resources: Map(cpus -> name: cpus, amount: 1.0)
+2026-08-13 17:58:57,390 INFO resource.ResourceProfile: Limiting resource is cpu
+2026-08-13 17:58:57,390 INFO resource.ResourceProfileManager: Added ResourceProfile id: 0
+2026-08-13 17:58:57,419 INFO spark.SecurityManager: Changing view acls to: prabeshnepal
+2026-08-13 17:58:57,420 INFO spark.SecurityManager: Changing modify acls to: prabeshnepal
+2026-08-13 17:58:57,420 INFO spark.SecurityManager: Changing view acls groups to: 
+2026-08-13 17:58:57,420 INFO spark.SecurityManager: Changing modify acls groups to: 
+2026-08-13 17:58:57,420 INFO spark.SecurityManager: SecurityManager: authentication disabled; ui acls disabled; users  with view permissions: Set(prabeshnepal); groups with view permissions: Set(); users  with modify permissions: Set(prabeshnepal); groups with modify permissions: Set()
+2026-08-13 17:58:57,578 INFO util.Utils: Successfully started service 'sparkDriver' on port 57594.
+2026-08-13 17:58:57,592 INFO spark.SparkEnv: Registering MapOutputTracker
+2026-08-13 17:58:57,609 INFO spark.SparkEnv: Registering BlockManagerMaster
+2026-08-13 17:58:57,618 INFO storage.BlockManagerMasterEndpoint: Using org.apache.spark.storage.DefaultTopologyMapper for getting topology information
+2026-08-13 17:58:57,619 INFO storage.BlockManagerMasterEndpoint: BlockManagerMasterEndpoint up
+2026-08-13 17:58:57,620 INFO spark.SparkEnv: Registering BlockManagerMasterHeartbeat
+2026-08-13 17:58:57,633 INFO storage.DiskBlockManager: Created local directory at /private/var/folders/7t/jsjm7cp539576dt_scs5w6c40000gn/T/blockmgr-8a39e93d-678e-4400-aba2-34ef3a9aea68
+2026-08-13 17:58:57,642 INFO memory.MemoryStore: MemoryStore started with capacity 434.4 MiB
+2026-08-13 17:58:57,650 INFO spark.SparkEnv: Registering OutputCommitCoordinator
+2026-08-13 17:58:57,673 INFO util.log: Logging initialized @1244ms to org.sparkproject.jetty.util.log.Slf4jLog
+2026-08-13 17:58:57,760 INFO server.Server: jetty-9.4.48.v20220622; built: 2022-06-21T20:42:25.880Z; git: 6b67c5719d1f4371b33655ff2d047d24e171e49a; jvm 11.0.24+7-LTS-271
+2026-08-13 17:58:57,770 INFO server.Server: Started @1342ms
+2026-08-13 17:58:57,784 INFO server.AbstractConnector: Started ServerConnector@7ecec90d{HTTP/1.1, (http/1.1)}{0.0.0.0:4040}
+2026-08-13 17:58:57,785 INFO util.Utils: Successfully started service 'SparkUI' on port 4040.
+2026-08-13 17:58:57,795 INFO handler.ContextHandler: Started o.s.j.s.ServletContextHandler@5d2828c9{/,null,AVAILABLE,@Spark}
+2026-08-13 17:58:57,803 INFO spark.SparkContext: Added JAR file:/Users/prabeshnepal/Desktop/LSPDP/final_project/spark-demo.jar at spark://10.110.254.114:57594/jars/spark-demo.jar with timestamp 1786658337253
+2026-08-13 17:58:57,862 INFO executor.Executor: Starting executor ID driver on host 10.110.254.114
+2026-08-13 17:58:57,865 INFO executor.Executor: Starting executor with user classpath (userClassPathFirst = false): ''
+2026-08-13 17:58:57,871 INFO executor.Executor: Fetching spark://10.110.254.114:57594/jars/spark-demo.jar with timestamp 1786658337253
+2026-08-13 17:58:57,939 INFO client.TransportClientFactory: Successfully created connection to /10.110.254.114:57594 after 56 ms (0 ms spent in bootstraps)
+2026-08-13 17:58:57,949 INFO util.Utils: Fetching spark://10.110.254.114:57594/jars/spark-demo.jar to /private/var/folders/7t/jsjm7cp539576dt_scs5w6c40000gn/T/spark-ddf19444-b468-4261-93b0-016ce471a1dc/userFiles-e570ed5f-2561-4e2e-a0b6-35fba102844a/fetchFileTemp2358487401208357490.tmp
+2026-08-13 17:58:58,024 INFO executor.Executor: Adding file:/private/var/folders/7t/jsjm7cp539576dt_scs5w6c40000gn/T/spark-ddf19444-b468-4261-93b0-016ce471a1dc/userFiles-e570ed5f-2561-4e2e-a0b6-35fba102844a/spark-demo.jar to class loader
+2026-08-13 17:58:58,028 INFO util.Utils: Successfully started service 'org.apache.spark.network.netty.NettyBlockTransferService' on port 57596.
+2026-08-13 17:58:58,028 INFO netty.NettyBlockTransferService: Server created on 10.110.254.114:57596
+2026-08-13 17:58:58,029 INFO storage.BlockManager: Using org.apache.spark.storage.RandomBlockReplicationPolicy for block replication policy
+2026-08-13 17:58:58,033 INFO storage.BlockManagerMaster: Registering BlockManager BlockManagerId(driver, 10.110.254.114, 57596, None)
+2026-08-13 17:58:58,035 INFO storage.BlockManagerMasterEndpoint: Registering block manager 10.110.254.114:57596 with 434.4 MiB RAM, BlockManagerId(driver, 10.110.254.114, 57596, None)
+2026-08-13 17:58:58,036 INFO storage.BlockManagerMaster: Registered BlockManager BlockManagerId(driver, 10.110.254.114, 57596, None)
+2026-08-13 17:58:58,037 INFO storage.BlockManager: Initialized BlockManager: BlockManagerId(driver, 10.110.254.114, 57596, None)
+2026-08-13 17:58:58,132 INFO handler.ContextHandler: Stopped o.s.j.s.ServletContextHandler@5d2828c9{/,null,STOPPED,@Spark}
+2026-08-13 17:58:58,133 INFO handler.ContextHandler: Started o.s.j.s.ServletContextHandler@5b5b59{/jobs,null,AVAILABLE,@Spark}
+2026-08-13 17:58:58,133 INFO handler.ContextHandler: Started o.s.j.s.ServletContextHandler@b27b210{/jobs/json,null,AVAILABLE,@Spark}
+2026-08-13 17:58:58,133 INFO handler.ContextHandler: Started o.s.j.s.ServletContextHandler@3913f206{/jobs/job,null,AVAILABLE,@Spark}
+2026-08-13 17:58:58,134 INFO handler.ContextHandler: Started o.s.j.s.ServletContextHandler@3b353651{/jobs/job/json,null,AVAILABLE,@Spark}
+2026-08-13 17:58:58,134 INFO handler.ContextHandler: Started o.s.j.s.ServletContextHandler@1280682{/stages,null,AVAILABLE,@Spark}
+2026-08-13 17:58:58,134 INFO handler.ContextHandler: Started o.s.j.s.ServletContextHandler@53d9826f{/stages/json,null,AVAILABLE,@Spark}
+2026-08-13 17:58:58,135 INFO handler.ContextHandler: Started o.s.j.s.ServletContextHandler@4dc7cd1c{/stages/stage,null,AVAILABLE,@Spark}
+2026-08-13 17:58:58,135 INFO handler.ContextHandler: Started o.s.j.s.ServletContextHandler@7b5b5bfe{/stages/stage/json,null,AVAILABLE,@Spark}
+2026-08-13 17:58:58,136 INFO handler.ContextHandler: Started o.s.j.s.ServletContextHandler@75fd65c{/stages/pool,null,AVAILABLE,@Spark}
+2026-08-13 17:58:58,136 INFO handler.ContextHandler: Started o.s.j.s.ServletContextHandler@2ceca2ef{/stages/pool/json,null,AVAILABLE,@Spark}
+2026-08-13 17:58:58,136 INFO handler.ContextHandler: Started o.s.j.s.ServletContextHandler@3b42121d{/storage,null,AVAILABLE,@Spark}
+2026-08-13 17:58:58,137 INFO handler.ContextHandler: Started o.s.j.s.ServletContextHandler@33188612{/storage/json,null,AVAILABLE,@Spark}
+2026-08-13 17:58:58,137 INFO handler.ContextHandler: Started o.s.j.s.ServletContextHandler@6ccac6f4{/storage/rdd,null,AVAILABLE,@Spark}
+2026-08-13 17:58:58,137 INFO handler.ContextHandler: Started o.s.j.s.ServletContextHandler@3453acd2{/storage/rdd/json,null,AVAILABLE,@Spark}
+2026-08-13 17:58:58,138 INFO handler.ContextHandler: Started o.s.j.s.ServletContextHandler@56c8e6f0{/environment,null,AVAILABLE,@Spark}
+2026-08-13 17:58:58,138 INFO handler.ContextHandler: Started o.s.j.s.ServletContextHandler@58aa10f4{/environment/json,null,AVAILABLE,@Spark}
+2026-08-13 17:58:58,138 INFO handler.ContextHandler: Started o.s.j.s.ServletContextHandler@5e5beb8a{/executors,null,AVAILABLE,@Spark}
+2026-08-13 17:58:58,138 INFO handler.ContextHandler: Started o.s.j.s.ServletContextHandler@17b016ac{/executors/json,null,AVAILABLE,@Spark}
+2026-08-13 17:58:58,139 INFO handler.ContextHandler: Started o.s.j.s.ServletContextHandler@723877dd{/executors/threadDump,null,AVAILABLE,@Spark}
+2026-08-13 17:58:58,139 INFO handler.ContextHandler: Started o.s.j.s.ServletContextHandler@56cc9f29{/executors/threadDump/json,null,AVAILABLE,@Spark}
+2026-08-13 17:58:58,144 INFO handler.ContextHandler: Started o.s.j.s.ServletContextHandler@626c19cf{/static,null,AVAILABLE,@Spark}
+2026-08-13 17:58:58,144 INFO handler.ContextHandler: Started o.s.j.s.ServletContextHandler@ef718de{/,null,AVAILABLE,@Spark}
+2026-08-13 17:58:58,145 INFO handler.ContextHandler: Started o.s.j.s.ServletContextHandler@2e1b374c{/api,null,AVAILABLE,@Spark}
+2026-08-13 17:58:58,146 INFO handler.ContextHandler: Started o.s.j.s.ServletContextHandler@21c747a{/jobs/job/kill,null,AVAILABLE,@Spark}
+2026-08-13 17:58:58,146 INFO handler.ContextHandler: Started o.s.j.s.ServletContextHandler@29f38091{/stages/stage/kill,null,AVAILABLE,@Spark}
+2026-08-13 17:58:58,149 INFO handler.ContextHandler: Started o.s.j.s.ServletContextHandler@7c369270{/metrics/json,null,AVAILABLE,@Spark}
+
+============================
+SEQUENTIAL KNN
+============================
+Training path: data/processed/train.parquet
+Testing path:  data/processed/test.parquet
+Training sample size: 10000
+Testing sample size:  1000
+K: 15
+
+Reading Parquet data...
+2026-08-13 17:58:58,353 INFO internal.SharedState: Setting hive.metastore.warehouse.dir ('null') to the value of spark.sql.warehouse.dir.
+2026-08-13 17:58:58,358 INFO internal.SharedState: Warehouse path is 'file:/Users/prabeshnepal/Desktop/LSPDP/final_project/spark-warehouse'.
+2026-08-13 17:58:58,364 INFO handler.ContextHandler: Started o.s.j.s.ServletContextHandler@7ddcb0dc{/SQL,null,AVAILABLE,@Spark}
+2026-08-13 17:58:58,365 INFO handler.ContextHandler: Started o.s.j.s.ServletContextHandler@2c1d57bc{/SQL/json,null,AVAILABLE,@Spark}
+2026-08-13 17:58:58,365 INFO handler.ContextHandler: Started o.s.j.s.ServletContextHandler@355ce6a6{/SQL/execution,null,AVAILABLE,@Spark}
+2026-08-13 17:58:58,365 INFO handler.ContextHandler: Started o.s.j.s.ServletContextHandler@1e3f86d5{/SQL/execution/json,null,AVAILABLE,@Spark}
+2026-08-13 17:58:58,374 INFO handler.ContextHandler: Started o.s.j.s.ServletContextHandler@19fec3d6{/static/sql,null,AVAILABLE,@Spark}
+2026-08-13 17:58:58,772 INFO datasources.InMemoryFileIndex: It took 18 ms to list leaf files for 1 paths.
+2026-08-13 17:58:59,040 INFO spark.SparkContext: Starting job: parquet at SequentialKNN.scala:533
+2026-08-13 17:58:59,046 INFO scheduler.DAGScheduler: Got job 0 (parquet at SequentialKNN.scala:533) with 1 output partitions
+2026-08-13 17:58:59,046 INFO scheduler.DAGScheduler: Final stage: ResultStage 0 (parquet at SequentialKNN.scala:533)
+2026-08-13 17:58:59,046 INFO scheduler.DAGScheduler: Parents of final stage: List()
+2026-08-13 17:58:59,047 INFO scheduler.DAGScheduler: Missing parents: List()
+2026-08-13 17:58:59,049 INFO scheduler.DAGScheduler: Submitting ResultStage 0 (MapPartitionsRDD[1] at parquet at SequentialKNN.scala:533), which has no missing parents
+2026-08-13 17:58:59,089 INFO memory.MemoryStore: Block broadcast_0 stored as values in memory (estimated size 151.5 KiB, free 434.3 MiB)
+2026-08-13 17:58:59,286 INFO memory.MemoryStore: Block broadcast_0_piece0 stored as bytes in memory (estimated size 55.6 KiB, free 434.2 MiB)
+2026-08-13 17:58:59,287 INFO storage.BlockManagerInfo: Added broadcast_0_piece0 in memory on 10.110.254.114:57596 (size: 55.6 KiB, free: 434.3 MiB)
+2026-08-13 17:58:59,289 INFO spark.SparkContext: Created broadcast 0 from broadcast at DAGScheduler.scala:1513
+2026-08-13 17:58:59,296 INFO scheduler.DAGScheduler: Submitting 1 missing tasks from ResultStage 0 (MapPartitionsRDD[1] at parquet at SequentialKNN.scala:533) (first 15 tasks are for partitions Vector(0))
+2026-08-13 17:58:59,296 INFO scheduler.TaskSchedulerImpl: Adding task set 0.0 with 1 tasks resource profile 0
+2026-08-13 17:58:59,334 INFO scheduler.TaskSetManager: Starting task 0.0 in stage 0.0 (TID 0) (10.110.254.114, executor driver, partition 0, PROCESS_LOCAL, 4629 bytes) taskResourceAssignments Map()
+2026-08-13 17:58:59,343 INFO executor.Executor: Running task 0.0 in stage 0.0 (TID 0)
+2026-08-13 17:58:59,548 INFO executor.Executor: Finished task 0.0 in stage 0.0 (TID 0). 1976 bytes result sent to driver
+2026-08-13 17:58:59,551 INFO scheduler.TaskSetManager: Finished task 0.0 in stage 0.0 (TID 0) in 232 ms on 10.110.254.114 (executor driver) (1/1)
+2026-08-13 17:58:59,552 INFO scheduler.TaskSchedulerImpl: Removed TaskSet 0.0, whose tasks have all completed, from pool 
+2026-08-13 17:58:59,555 INFO scheduler.DAGScheduler: ResultStage 0 (parquet at SequentialKNN.scala:533) finished in 0.500 s
+2026-08-13 17:58:59,557 INFO scheduler.DAGScheduler: Job 0 is finished. Cancelling potential speculative or zombie tasks for this job
+2026-08-13 17:58:59,557 INFO scheduler.TaskSchedulerImpl: Killing all running tasks in stage 0: Stage finished
+2026-08-13 17:58:59,558 INFO scheduler.DAGScheduler: Job 0 finished: parquet at SequentialKNN.scala:533, took 0.517813 s
+2026-08-13 17:58:59,788 INFO storage.BlockManagerInfo: Removed broadcast_0_piece0 on 10.110.254.114:57596 in memory (size: 55.6 KiB, free: 434.4 MiB)
+2026-08-13 17:59:00,318 INFO datasources.InMemoryFileIndex: It took 1 ms to list leaf files for 1 paths.
+2026-08-13 17:59:00,345 INFO spark.SparkContext: Starting job: parquet at SequentialKNN.scala:536
+2026-08-13 17:59:00,345 INFO scheduler.DAGScheduler: Got job 1 (parquet at SequentialKNN.scala:536) with 1 output partitions
+2026-08-13 17:59:00,345 INFO scheduler.DAGScheduler: Final stage: ResultStage 1 (parquet at SequentialKNN.scala:536)
+2026-08-13 17:59:00,345 INFO scheduler.DAGScheduler: Parents of final stage: List()
+2026-08-13 17:59:00,345 INFO scheduler.DAGScheduler: Missing parents: List()
+2026-08-13 17:59:00,346 INFO scheduler.DAGScheduler: Submitting ResultStage 1 (MapPartitionsRDD[3] at parquet at SequentialKNN.scala:536), which has no missing parents
+2026-08-13 17:59:00,353 INFO memory.MemoryStore: Block broadcast_1 stored as values in memory (estimated size 151.5 KiB, free 434.3 MiB)
+2026-08-13 17:59:00,355 INFO memory.MemoryStore: Block broadcast_1_piece0 stored as bytes in memory (estimated size 55.6 KiB, free 434.2 MiB)
+2026-08-13 17:59:00,355 INFO storage.BlockManagerInfo: Added broadcast_1_piece0 in memory on 10.110.254.114:57596 (size: 55.6 KiB, free: 434.3 MiB)
+2026-08-13 17:59:00,355 INFO spark.SparkContext: Created broadcast 1 from broadcast at DAGScheduler.scala:1513
+2026-08-13 17:59:00,356 INFO scheduler.DAGScheduler: Submitting 1 missing tasks from ResultStage 1 (MapPartitionsRDD[3] at parquet at SequentialKNN.scala:536) (first 15 tasks are for partitions Vector(0))
+2026-08-13 17:59:00,356 INFO scheduler.TaskSchedulerImpl: Adding task set 1.0 with 1 tasks resource profile 0
+2026-08-13 17:59:00,357 INFO scheduler.TaskSetManager: Starting task 0.0 in stage 1.0 (TID 1) (10.110.254.114, executor driver, partition 0, PROCESS_LOCAL, 4628 bytes) taskResourceAssignments Map()
+2026-08-13 17:59:00,357 INFO executor.Executor: Running task 0.0 in stage 1.0 (TID 1)
+2026-08-13 17:59:00,367 INFO executor.Executor: Finished task 0.0 in stage 1.0 (TID 1). 1890 bytes result sent to driver
+2026-08-13 17:59:00,368 INFO scheduler.TaskSetManager: Finished task 0.0 in stage 1.0 (TID 1) in 12 ms on 10.110.254.114 (executor driver) (1/1)
+2026-08-13 17:59:00,368 INFO scheduler.TaskSchedulerImpl: Removed TaskSet 1.0, whose tasks have all completed, from pool 
+2026-08-13 17:59:00,368 INFO scheduler.DAGScheduler: ResultStage 1 (parquet at SequentialKNN.scala:536) finished in 0.022 s
+2026-08-13 17:59:00,368 INFO scheduler.DAGScheduler: Job 1 is finished. Cancelling potential speculative or zombie tasks for this job
+2026-08-13 17:59:00,368 INFO scheduler.TaskSchedulerImpl: Killing all running tasks in stage 1: Stage finished
+2026-08-13 17:59:00,368 INFO scheduler.DAGScheduler: Job 1 finished: parquet at SequentialKNN.scala:536, took 0.023524 s
+Selecting training sample...
+2026-08-13 17:59:00,430 INFO storage.BlockManagerInfo: Removed broadcast_1_piece0 on 10.110.254.114:57596 in memory (size: 55.6 KiB, free: 434.4 MiB)
+Selecting testing sample...
+Collecting training sample to driver...
+2026-08-13 17:59:00,674 INFO datasources.FileSourceStrategy: Pushed Filters: 
+2026-08-13 17:59:00,675 INFO datasources.FileSourceStrategy: Post-Scan Filters: 
+2026-08-13 17:59:00,676 INFO datasources.FileSourceStrategy: Output Data Schema: struct<DepDelayMinutes: double, CRSElapsedTime: double, Distance: double, DepTimeSin: double, DepTimeCos: double ... 6 more fields>
+2026-08-13 17:59:00,809 INFO codegen.CodeGenerator: Code generated in 70.270875 ms
+2026-08-13 17:59:00,870 INFO codegen.CodeGenerator: Code generated in 25.607083 ms
+2026-08-13 17:59:00,884 INFO memory.MemoryStore: Block broadcast_2 stored as values in memory (estimated size 302.9 KiB, free 434.1 MiB)
+2026-08-13 17:59:00,892 INFO memory.MemoryStore: Block broadcast_2_piece0 stored as bytes in memory (estimated size 53.8 KiB, free 434.1 MiB)
+2026-08-13 17:59:00,892 INFO storage.BlockManagerInfo: Added broadcast_2_piece0 in memory on 10.110.254.114:57596 (size: 53.8 KiB, free: 434.3 MiB)
+2026-08-13 17:59:00,893 INFO spark.SparkContext: Created broadcast 2 from collect at SequentialKNN.scala:366
+2026-08-13 17:59:00,898 INFO execution.FileSourceScanExec: Planning scan with bin packing, max size: 4194304 bytes, open cost is considered as scanning 4194304 bytes.
+2026-08-13 17:59:00,936 INFO spark.SparkContext: Starting job: collect at SequentialKNN.scala:366
+2026-08-13 17:59:00,936 INFO scheduler.DAGScheduler: Got job 2 (collect at SequentialKNN.scala:366) with 1 output partitions
+2026-08-13 17:59:00,936 INFO scheduler.DAGScheduler: Final stage: ResultStage 2 (collect at SequentialKNN.scala:366)
+2026-08-13 17:59:00,936 INFO scheduler.DAGScheduler: Parents of final stage: List()
+2026-08-13 17:59:00,936 INFO scheduler.DAGScheduler: Missing parents: List()
+2026-08-13 17:59:00,937 INFO scheduler.DAGScheduler: Submitting ResultStage 2 (MapPartitionsRDD[8] at collect at SequentialKNN.scala:366), which has no missing parents
+2026-08-13 17:59:00,948 INFO memory.MemoryStore: Block broadcast_3 stored as values in memory (estimated size 22.5 KiB, free 434.0 MiB)
+2026-08-13 17:59:00,949 INFO memory.MemoryStore: Block broadcast_3_piece0 stored as bytes in memory (estimated size 7.9 KiB, free 434.0 MiB)
+2026-08-13 17:59:00,950 INFO storage.BlockManagerInfo: Added broadcast_3_piece0 in memory on 10.110.254.114:57596 (size: 7.9 KiB, free: 434.3 MiB)
+2026-08-13 17:59:00,950 INFO spark.SparkContext: Created broadcast 3 from broadcast at DAGScheduler.scala:1513
+2026-08-13 17:59:00,950 INFO scheduler.DAGScheduler: Submitting 1 missing tasks from ResultStage 2 (MapPartitionsRDD[8] at collect at SequentialKNN.scala:366) (first 15 tasks are for partitions Vector(0))
+2026-08-13 17:59:00,950 INFO scheduler.TaskSchedulerImpl: Adding task set 2.0 with 1 tasks resource profile 0
+2026-08-13 17:59:00,952 INFO scheduler.TaskSetManager: Starting task 0.0 in stage 2.0 (TID 2) (10.110.254.114, executor driver, partition 0, PROCESS_LOCAL, 4954 bytes) taskResourceAssignments Map()
+2026-08-13 17:59:00,952 INFO executor.Executor: Running task 0.0 in stage 2.0 (TID 2)
+2026-08-13 17:59:00,975 INFO datasources.FileScanRDD: Reading File path: file:///Users/prabeshnepal/Desktop/LSPDP/final_project/data/processed/train.parquet, range: 0-2626333, partition values: [empty row]
+2026-08-13 17:59:01,029 INFO compress.CodecPool: Got brand-new decompressor [.snappy]
+2026-08-13 17:59:01,452 INFO executor.Executor: Finished task 0.0 in stage 2.0 (TID 2). 978695 bytes result sent to driver
+2026-08-13 17:59:01,461 INFO scheduler.TaskSetManager: Finished task 0.0 in stage 2.0 (TID 2) in 510 ms on 10.110.254.114 (executor driver) (1/1)
+2026-08-13 17:59:01,461 INFO scheduler.TaskSchedulerImpl: Removed TaskSet 2.0, whose tasks have all completed, from pool 
+2026-08-13 17:59:01,462 INFO scheduler.DAGScheduler: ResultStage 2 (collect at SequentialKNN.scala:366) finished in 0.524 s
+2026-08-13 17:59:01,462 INFO scheduler.DAGScheduler: Job 2 is finished. Cancelling potential speculative or zombie tasks for this job
+2026-08-13 17:59:01,462 INFO scheduler.TaskSchedulerImpl: Killing all running tasks in stage 2: Stage finished
+2026-08-13 17:59:01,462 INFO scheduler.DAGScheduler: Job 2 finished: collect at SequentialKNN.scala:366, took 0.526066 s
+2026-08-13 17:59:01,487 INFO codegen.CodeGenerator: Code generated in 8.104541 ms
+2026-08-13 17:59:01,508 INFO codegen.CodeGenerator: Code generated in 7.229375 ms
+Collecting testing sample to driver...
+2026-08-13 17:59:01,525 INFO datasources.FileSourceStrategy: Pushed Filters: 
+2026-08-13 17:59:01,525 INFO datasources.FileSourceStrategy: Post-Scan Filters: 
+2026-08-13 17:59:01,525 INFO datasources.FileSourceStrategy: Output Data Schema: struct<DepDelayMinutes: double, CRSElapsedTime: double, Distance: double, DepTimeSin: double, DepTimeCos: double ... 6 more fields>
+2026-08-13 17:59:01,536 INFO memory.MemoryStore: Block broadcast_4 stored as values in memory (estimated size 302.9 KiB, free 433.7 MiB)
+2026-08-13 17:59:01,561 INFO memory.MemoryStore: Block broadcast_4_piece0 stored as bytes in memory (estimated size 53.8 KiB, free 433.7 MiB)
+2026-08-13 17:59:01,561 INFO storage.BlockManagerInfo: Added broadcast_4_piece0 in memory on 10.110.254.114:57596 (size: 53.8 KiB, free: 434.3 MiB)
+2026-08-13 17:59:01,562 INFO storage.BlockManagerInfo: Removed broadcast_3_piece0 on 10.110.254.114:57596 in memory (size: 7.9 KiB, free: 434.3 MiB)
+2026-08-13 17:59:01,562 INFO spark.SparkContext: Created broadcast 4 from collect at SequentialKNN.scala:366
+2026-08-13 17:59:01,562 INFO execution.FileSourceScanExec: Planning scan with bin packing, max size: 4194304 bytes, open cost is considered as scanning 4194304 bytes.
+2026-08-13 17:59:01,565 INFO storage.BlockManagerInfo: Removed broadcast_2_piece0 on 10.110.254.114:57596 in memory (size: 53.8 KiB, free: 434.3 MiB)
+2026-08-13 17:59:01,579 INFO spark.SparkContext: Starting job: collect at SequentialKNN.scala:366
+2026-08-13 17:59:01,579 INFO scheduler.DAGScheduler: Got job 3 (collect at SequentialKNN.scala:366) with 1 output partitions
+2026-08-13 17:59:01,579 INFO scheduler.DAGScheduler: Final stage: ResultStage 3 (collect at SequentialKNN.scala:366)
+2026-08-13 17:59:01,579 INFO scheduler.DAGScheduler: Parents of final stage: List()
+2026-08-13 17:59:01,579 INFO scheduler.DAGScheduler: Missing parents: List()
+2026-08-13 17:59:01,580 INFO scheduler.DAGScheduler: Submitting ResultStage 3 (MapPartitionsRDD[13] at collect at SequentialKNN.scala:366), which has no missing parents
+2026-08-13 17:59:01,581 INFO memory.MemoryStore: Block broadcast_5 stored as values in memory (estimated size 22.5 KiB, free 434.0 MiB)
+2026-08-13 17:59:01,584 INFO memory.MemoryStore: Block broadcast_5_piece0 stored as bytes in memory (estimated size 7.9 KiB, free 434.0 MiB)
+2026-08-13 17:59:01,586 INFO storage.BlockManagerInfo: Added broadcast_5_piece0 in memory on 10.110.254.114:57596 (size: 7.9 KiB, free: 434.3 MiB)
+2026-08-13 17:59:01,586 INFO spark.SparkContext: Created broadcast 5 from broadcast at DAGScheduler.scala:1513
+2026-08-13 17:59:01,587 INFO scheduler.DAGScheduler: Submitting 1 missing tasks from ResultStage 3 (MapPartitionsRDD[13] at collect at SequentialKNN.scala:366) (first 15 tasks are for partitions Vector(0))
+2026-08-13 17:59:01,587 INFO scheduler.TaskSchedulerImpl: Adding task set 3.0 with 1 tasks resource profile 0
+2026-08-13 17:59:01,588 INFO scheduler.TaskSetManager: Starting task 0.0 in stage 3.0 (TID 3) (10.110.254.114, executor driver, partition 0, PROCESS_LOCAL, 4953 bytes) taskResourceAssignments Map()
+2026-08-13 17:59:01,588 INFO executor.Executor: Running task 0.0 in stage 3.0 (TID 3)
+2026-08-13 17:59:01,591 INFO datasources.FileScanRDD: Reading File path: file:///Users/prabeshnepal/Desktop/LSPDP/final_project/data/processed/test.parquet, range: 0-791318, partition values: [empty row]
+2026-08-13 17:59:01,630 INFO executor.Executor: Finished task 0.0 in stage 3.0 (TID 3). 101346 bytes result sent to driver
+2026-08-13 17:59:01,632 INFO scheduler.TaskSetManager: Finished task 0.0 in stage 3.0 (TID 3) in 45 ms on 10.110.254.114 (executor driver) (1/1)
+2026-08-13 17:59:01,632 INFO scheduler.TaskSchedulerImpl: Removed TaskSet 3.0, whose tasks have all completed, from pool 
+2026-08-13 17:59:01,632 INFO scheduler.DAGScheduler: ResultStage 3 (collect at SequentialKNN.scala:366) finished in 0.052 s
+2026-08-13 17:59:01,632 INFO scheduler.DAGScheduler: Job 3 is finished. Cancelling potential speculative or zombie tasks for this job
+2026-08-13 17:59:01,632 INFO scheduler.TaskSchedulerImpl: Killing all running tasks in stage 3: Stage finished
+2026-08-13 17:59:01,632 INFO scheduler.DAGScheduler: Job 3 finished: collect at SequentialKNN.scala:366, took 0.053647 s
+
+Actual training sample: 10000
+Actual testing sample: 1000
+
+Distance comparisons: 10,000,000
+
+Starting sequential KNN...
+2026-08-13 17:59:01,660 INFO storage.BlockManagerInfo: Removed broadcast_5_piece0 on 10.110.254.114:57596 in memory (size: 7.9 KiB, free: 434.3 MiB)
+Predicted 100/1000
+Predicted 200/1000
+Predicted 300/1000
+Predicted 400/1000
+Predicted 500/1000
+Predicted 600/1000
+Predicted 700/1000
+Predicted 800/1000
+Predicted 900/1000
+Predicted 1000/1000
+
+============================
+RUNTIME
+============================
+KNN runtime: 0.1658 seconds
+
+============================
+CONFUSION MATRIX
+============================
+True Negative:  851
+False Positive: 4
+False Negative: 58
+True Positive:  87
+
+============================
+METRICS
+============================
+Accuracy:  0.9380
+Precision: 0.9560
+Recall:    0.6000
+F1 Score:  0.7373
+
+============================
+BASELINE
+============================
+Baseline model: always predict NOT delayed
+Baseline accuracy: 0.8550
+
+Sequential KNN completed successfully.
+2026-08-13 17:59:01,807 INFO server.AbstractConnector: Stopped Spark@7ecec90d{HTTP/1.1, (http/1.1)}{0.0.0.0:4040}
+2026-08-13 17:59:01,809 INFO ui.SparkUI: Stopped Spark web UI at http://10.110.254.114:4040
+2026-08-13 17:59:01,814 INFO spark.MapOutputTrackerMasterEndpoint: MapOutputTrackerMasterEndpoint stopped!
+2026-08-13 17:59:01,826 INFO memory.MemoryStore: MemoryStore cleared
+2026-08-13 17:59:01,826 INFO storage.BlockManager: BlockManager stopped
+2026-08-13 17:59:01,827 INFO storage.BlockManagerMaster: BlockManagerMaster stopped
+2026-08-13 17:59:01,828 INFO scheduler.OutputCommitCoordinator$OutputCommitCoordinatorEndpoint: OutputCommitCoordinator stopped!
+2026-08-13 17:59:01,833 INFO spark.SparkContext: Successfully stopped SparkContext
+2026-08-13 17:59:01,834 INFO util.ShutdownHookManager: Shutdown hook called
+2026-08-13 17:59:01,835 INFO util.ShutdownHookManager: Deleting directory /private/var/folders/7t/jsjm7cp539576dt_scs5w6c40000gn/T/spark-ddf19444-b468-4261-93b0-016ce471a1dc
+2026-08-13 17:59:01,838 INFO util.ShutdownHookManager: Deleting directory /private/var/folders/7t/jsjm7cp539576dt_scs5w6c40000gn/T/spark-fc7f329e-9c31-4d22-9ef8-d294ec300570

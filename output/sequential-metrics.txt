@@ -1,0 +1,12 @@
+Actual training sample: 10000
+Actual evaluation sample: 1000
+Distance comparisons: 10,000,000
+True Negative:  774
+False Positive: 28
+False Negative: 68
+True Positive:  130
+Accuracy:  0.9040
+Precision: 0.8228
+Recall:    0.6566
+F1 Score:  0.7303
+Baseline accuracy: 0.8020
